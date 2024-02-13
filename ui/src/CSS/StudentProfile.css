@@ -1,0 +1,62 @@
+/* #StProfile{
+  width: 100%;
+  display: flex;
+
+} */
+#header2{
+  background-color: crimson;
+  color: aliceblue;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+  width: 100%;
+  height: 60px;
+  padding-top: 8px;
+}
+/* #header1{
+  display: inline;
+  position: relative;
+  left: -350px;
+  bottom: 5px;
+} */
+#bt1{
+  background-color: crimson;
+  color: aliceblue;
+}
+#mySidebar {
+  
+  width: 230px;
+  height: 530px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(61, 89, 123) ;
+  color: white;
+  position: absolute;
+  /* left: -px; */
+  border: 1.5px solid wheat;
+  top:68px;
+  font-size: 22px;
+  font-weight: 550;
+  text-align: center;
+  
+}
+
+/* #mySidebar.open {
+  display: flex;
+  
+  
+} */
+.s1{
+  margin-bottom: 10px;
+}
+#box1{
+  text-align: center;
+  display: inline-block;
+  background-color: burlywood;
+  position: relative;
+  margin-left: 300px;
+  width: 300px;
+  height: 300px;
+  margin-top: 20px;
+  /* border-radius: 50%; */
+}
