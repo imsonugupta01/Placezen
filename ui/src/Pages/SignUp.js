@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import "../CSS/SignUp.css";
 
 function SignUp(){
   let[Roll,setRoll]=useState();
@@ -111,7 +113,8 @@ function SignUp(){
   }
   return(
     <div>
-      <h1>SignUp Page</h1>
+       <div id="zzz"> I.K. Gujral Punjab Technical University</div>
+        <h1>SignUp Page</h1>
         <input onChange={input1} value={Roll} placeholder="Roll "></input><br></br>
         <input onChange={input2} value={Name} placeholder="Name "></input><br></br>
         <input onChange={input3} value={DOB} placeholder="DOB "></input><br></br>

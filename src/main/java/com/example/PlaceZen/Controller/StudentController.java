@@ -18,7 +18,6 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
     private final String path = "C:\\Springboot\\PlaceZen\\Images";
-    //private  final String path="D:\\SpringbootProject\\MySQLImages\\Doctor\\";
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> RegisterStudent(
