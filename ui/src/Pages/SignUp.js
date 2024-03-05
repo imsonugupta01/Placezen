@@ -113,8 +113,9 @@ function SignUp(){
   }
   return(
     <div>
-       <div id="zzz"> I.K. Gujral Punjab Technical University</div>
-        <h1>SignUp Page</h1>
+       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+        <h1 id="htrx">SignUp Form</h1>
+        <div id="fd">
         <input onChange={input1} value={Roll} placeholder="Roll "></input><br></br>
         <input onChange={input2} value={Name} placeholder="Name "></input><br></br>
         <input onChange={input3} value={DOB} placeholder="DOB "></input><br></br>
@@ -131,7 +132,7 @@ function SignUp(){
         <label>Choose your Image</label><br></br>
         <input onChange={input14} type="file"></input><br></br>
         <input onChange={input15} value={Password} placeholder="Password "></input><br></br>
-        <button onClick={submit}>SignUp</button>
+        <button onClick={submit}>SignUp</button></div>
     </div>
   );
 }

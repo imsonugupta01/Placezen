@@ -51,4 +51,9 @@ public class StudentController {
        return studentRepository.getId(username,password);
 
     }
+    @GetMapping("/getStudent/{Id}")
+    public Optional<Student> getprofiles(@PathVariable("Id") Integer Id)
+    {
+        return studentRepository.findById(Id);
+    }
 }

@@ -5,7 +5,8 @@ import ProfileLogo from "../Pics/ProfileLogo.jpg";
 import { Link, useParams } from "react-router-dom";
 
 function AdminProfile(){
-  let {Id}=useParams()
+  let {Id}=useParams();
+
   return(
     <div id="StProfile">
       <div id="header2"> I.K. Gujral Punjab Technical University 
