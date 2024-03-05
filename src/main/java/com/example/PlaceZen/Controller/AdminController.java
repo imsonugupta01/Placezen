@@ -10,10 +10,55 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
     @Autowired
     private AdminRepository adminRepository;
+//    @GetMapping("/getId/{username}/{password}")
+//    public int getProfileId(@PathVariable("username") String username,@PathVariable("password") String password)
+//    {
+//
+//                int r=adminRepository.getbyUsername(username,password);
+//                if(r!=-1){
+//                    return  r;
+//                }
+//                return 0;
+//
+//
+//    }
+
     @GetMapping("/getId/{username}/{password}")
-    public int getProfileId(@PathVariable("username") String username,@PathVariable("password") String password)
-    {
-        return  adminRepository.getbyUsername(username,password);
+    public int getProfileId(@PathVariable("username") String username, @PathVariable("password") String password) {
+        try {
+            Integer result = adminRepository.getbyUsername(username, password);
+
+            // Check for null and handle accordingly
+            if (result != null) {
+                return result.intValue();
+            } else {
+                // Handle the case where result is null (e.g., return a default value)
+                return -1;
+            }
+        } catch (Exception e) {
+            // Handle other exceptions, log the error, or return a specific value
+            e.printStackTrace();
+            return -1;
+        }
     }
+
+//@GetMapping("/getId/{username}/{password}")
+//public int getProfileId(@PathVariable("username") String username, @PathVariable("password") String password) {
+//    try {
+//        if (username != null && password != null) {
+//
+//            if (adminRepository.getbyUsername(username, password)!= null) {
+//                return adminRepository.getbyUsername(username, password);
+//            } else {
+//                return -1;
+//            }
+//        } else {
+//            return -1;
+//        }
+//    } catch (Exception e) {
+//        e.printStackTrace();
+//        return -1;
+//    }
+//}
 
 }

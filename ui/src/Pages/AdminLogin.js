@@ -28,7 +28,7 @@ function AdminLogin(){
         console.error('Error fetching data: ', error.message);
       }
     };
-    if(Username || Password)
+    if(Username && Password)
         {  console.log(Username +" " + Password )
           fetchData();}
 
