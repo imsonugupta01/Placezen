@@ -32,9 +32,9 @@ function AdminProfile(){
       <div id="box1">
         <h2 id="boxspan1">Online Hiring</h2>
        </div>
-       <div id="box2">
+       <Link to={`/OffHiring/${Id}`}><div id="box2">
         <h2 id="boxspan1">Campus Recuirtment</h2>
-       </div>
+       </div></Link>
        <div id="box3"><h2 id="boxspan1">Events</h2></div>
        <div id="box4"><h2 id="boxspan1">x</h2></div>
        <div id="box5"><h2 id="boxspan1">y</h2></div>
