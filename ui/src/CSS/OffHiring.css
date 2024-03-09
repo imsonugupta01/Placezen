@@ -6,7 +6,7 @@
 
 }
 #off1{
-  margin-left: 35%;
+  margin-left: 25%;
   background-color: crimson;
   color: white;
   font-size: 25px;
@@ -24,8 +24,9 @@
 #off2 Link{
   text-decoration: none;
 }
+/* 
 #doremon{
-  display: table-caption;
+  display:-ms-flexbox;
 }
 #thisthat{
   background-color: rgb(188, 180, 180);
@@ -46,4 +47,26 @@
   top: -25px;
   padding-bottom: -40px;
   
+} */
+
+#doremon {
+  display: flex; /* Use modern Flexbox */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: space-around; /* Space out items evenly */
+}
+
+#thisthat {
+  background-color: rgb(188, 180, 180);
+  width: calc(420px - 60px); /* Adjust width to fit 2 per row, accounting for margin */
+  margin: 25px 30px; /* Adjusted for demonstration; provides space around */
+  text-align: center;
+  color: black;
+}
+
+#thisthat h2 {
+  background-color: crimson;
+  color: white;
+  text-align: center;
+  margin-top: 0; /* Remove margin-top if not needed */
+  padding: 10px 0; /* Adjust padding as needed */
 }

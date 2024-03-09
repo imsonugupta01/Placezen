@@ -6,16 +6,27 @@
 #hrd{
   
   width: 40%;
-  margin-left: 30%;
+  margin-left: 10%;
   height: 80%;
   background-color: rgb(188, 180, 180);
+
 }
 #hrd h1{
+  
   background-color: crimson;
   color: whitesmoke;
   text-align: center;
   position: relative;
-  top: -5%;
+  /* top: -15%; */
+}
+#hihi{
+  background-color: crimson;
+  color: whitesmoke;
+  text-align: center;
+  /* width:400px; */
+  font-size: xx-large;
+  font-weight: 600;
+  
 }
 #hrd h3{
   text-align: center;
@@ -24,7 +35,17 @@
   text-align: right;
   position: relative;
   bottom: 80%;
+  left: 5%;
 }
 #op1 h2{
   margin-right: 10px;
+}
+#sj{
+  position: relative;
+  left: -31%;
+}
+#sj button{
+  width: 50%;
+  position: relative;
+  left: 0%;
 }

@@ -6,46 +6,51 @@ function HiringDetails(){
   let{Id,JobId}=useParams();
   let currentDate = new Date();
   let[hiring,sethiring]=useState("");
-  let[interest,setinterest]=useState(0);
+  const[interest,setinterest]=useState(0);
 
-  function adding(){
-    console.log(interest)
+  
 
-    if(interest===1){
-    const formdata = new FormData();
-    formdata.append('Jobid',JobId);
-    formdata.append('StudentId',Id);
-    formdata.append('date',currentDate);
 
-    fetch('http://localhost:8050/Applied/added', {
-      method:'POST',
-      body: formdata,
-    
+function input1(event) {
+  
+  const value = event.target.value;
+  setinterest(value === "Yes" ? 1 : 0);
+   console.log(interest)
+}
+useEffect(() => {
+  
+  console.log(interest); 
+  setinterest(interest)
+}, [interest]); 
+
+function adding(){
+ 
+  if(interest===1){
+  const formdata = new FormData();
+  formdata.append('Jobid',JobId);
+  formdata.append('StudentId',Id);
+  formdata.append('date',currentDate);
+
+  fetch('http://localhost:8050/Applied/added', {
+    method:'POST',
+    body: formdata,
+  
+  })
+    .then(response => response.text())
+    .then(data => {
+      console.log('Added successful:', data);
     })
-      .then(response => response.text())
-      .then(data => {
-        console.log('Added successful:', data);
-      })
-      .catch(error => {
-        console.error('Error during Added:', error);
-      });
-  }
+    .catch(error => {
+      console.error('Error during Added:', error);
+    });
+}
 
 
 
 }
 
-
-  function input1(event){
-    if(interest===0){
-      setinterest(1);
-    }
-    else{
-      setinterest(0);
-    }
-  }
-
   useEffect( ()=>{
+    
     const fetchData = async () => {
       try {
           const response = await fetch(`http://localhost:8050/Hiring/fetch/${JobId}`);
@@ -64,14 +69,15 @@ function HiringDetails(){
   {
       fetchData();
   }        
-   },[1])
+   },[])
   
   return(
     <div>
       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
       <div id="gupta">
       <div id="hrd">
-         <h1>{hiring.companyName}</h1> 
+         {/* <h1>{hiring.companyName}</h1>  */}
+         <div id="hihi">{hiring.companyName}</div>
          <h3>Location : {hiring.location}</h3>
          <h3>Role : {hiring.role}</h3>
          <h3>Eligible Branch : {hiring.branch}</h3>
@@ -85,12 +91,15 @@ function HiringDetails(){
          <h3>Application Closing Deadline : {hiring.endDate}</h3>
       </div>
       <div id="opl"> 
-        <h2>Are you Interested ? </h2>
-      <input type="radio" id="html" name="Are You Interested ? " value={interest} onChange={input1}></input>
-      <label for="Yes">YES</label><br></br>
-      <input type="radio" id="html" name="Are You Interested ? " value={interest} onChange={input1}></input>
-      <label for="No">NO</label><br></br><br></br>
+      <h2>Are you Interested?</h2>
+      <div id="sj">
+      <input  type="radio"  id="yes"  name="Are You Interested?"  value="Yes"  onChange={input1}  />
+      <label htmlFor="yes">YES</label> &nbsp;&nbsp;&nbsp;
+      
+      <input   type="radio"   id="no" name="Are You Interested?" value="No"  onChange={input1} />
+      <label htmlFor="no">NO</label><br /><br />
       <button onClick={adding}>Submit</button>
+      </div>
       </div>
       </div>
     </div>

@@ -29,12 +29,12 @@ function CampusDrive(){
     <div>
        <div id="bcd"> I.K. Gujral Punjab Technical University</div>
        <div id="offf">
-        <div id="off1">Off Campus Recuirtment</div>
+        <div id="off1">Campus Recuirtment</div>
        </div>
         <div id="doremon">
           {
             hiring && hiring.map(hire=>(
-              <Link to={`/HiringDetails/${Id}/${hire.jobId}`}><div id="thisthat"><h2>{hire.companyName}</h2>
+              <Link id="lal" to={`/HiringDetails/${Id}/${hire.jobId}`}><div id="thisthat"><h2>{hire.companyName}</h2>
               <h4>ROLE : {hire.role}</h4>
               <h4>LOCATION : {hire.location}</h4>
               <h4>CTC : {hire.ctc/100000} LPA</h4>
