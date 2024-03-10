@@ -25,5 +25,11 @@ public class AppliedController {
         return ResponseEntity.ok("Added successful");
 
     }
+    @GetMapping("/check/{Sid}/{Jid}")
+    public Applied applied(@PathVariable ("Sid")Integer sid, @PathVariable ("Jid")Integer jid){
+        return appliedRepository.check(sid,jid);
+    }
+
+
 
 }

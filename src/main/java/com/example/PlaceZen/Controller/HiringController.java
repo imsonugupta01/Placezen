@@ -45,6 +45,7 @@ public class HiringController {
     }
     @GetMapping("/fetch/{Id}")
     public Optional<Hiring> fetching(@PathVariable("Id")Integer id){
+
         return hiringRepository.findById(id);
     }
 }
