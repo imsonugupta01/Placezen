@@ -29,9 +29,9 @@ function AdminProfile(){
            {/* <span className="s1"></span> */}
       </div>
       
-      <div id="box1">
+      <Link to={`/OnlineHiring/${Id}`}> <div id="box1">
         <h2 id="boxspan1">Online Hiring</h2>
-       </div>
+       </div></Link>
        <Link to={`/OffHiring/${Id}`}><div id="box2">
         <h2 id="boxspan1">Campus Recuirtment</h2>
        </div></Link>

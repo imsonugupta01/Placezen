@@ -11,6 +11,8 @@ import OffHiring from "./Pages/OffHiring";
 import AddHiring from "./Pages/AddHiring";
 import CampusDrive from "./Pages/CapusDrive";
 import HiringDetails from "./Pages/HiringDetails";
+import OnlineHiring from "./Pages/OnlineHiring";
+import AddOnlineHiring from "./Pages/AddOnlineHiring";
 
 function App(){
     return(
@@ -27,6 +29,8 @@ function App(){
             <Route path="/AddHiring/:Id" element={<AddHiring/>}/>
             <Route path="/CampusDrive/:Id" element={<CampusDrive/>}/>
             <Route path="/HiringDetails/:Id/:JobId" element={<HiringDetails/>}/>
+            <Route path="/OnlineHiring/:Id" element={<OnlineHiring/>}/>
+            <Route path="/AddOnlineHiring/:Id" element={<AddOnlineHiring/>}/>
         </Routes>
     );
 }
