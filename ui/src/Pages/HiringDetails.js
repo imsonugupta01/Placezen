@@ -6,9 +6,8 @@ function HiringDetails(){
   let{Id,JobId}=useParams();
   let currentDate = new Date();
   let[hiring,sethiring]=useState("");
+  let[flag,setflag]=useState(0);
   const[interest,setinterest]=useState(0);
-
-  
 
 
 function input1(event) {
@@ -23,9 +22,28 @@ useEffect(() => {
   setinterest(interest)
 }, [interest]); 
 
-function adding(){
- 
-  if(interest===1){
+  const adding = async() =>{
+  
+  // const fetchData = async () => {
+    try {
+        const response = await fetch(`http://localhost:8050/Applied/check/{Sid}/{Jid}`);
+        if (!response.ok) {
+          throw new Error('Network response was not okk');
+        }
+        const data = await response.json();
+        console.log(data);
+        // sethiring(data);
+        if(data==null){
+          setflag(1);
+        }
+      } 
+      catch (error) {
+        console.error('Error fetching data: ', error.message);
+      }
+} 
+
+
+  if(interest===1 && flag==1){
   const formdata = new FormData();
   formdata.append('Jobid',JobId);
   formdata.append('StudentId',Id);
@@ -43,10 +61,6 @@ function adding(){
     .catch(error => {
       console.error('Error during Added:', error);
     });
-}
-
-
-
 }
 
   useEffect( ()=>{
