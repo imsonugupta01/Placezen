@@ -26,8 +26,11 @@ public class AppliedController {
 
     }
     @GetMapping("/check/{Sid}/{Jid}")
-    public Applied applied(@PathVariable ("Sid")Integer sid, @PathVariable ("Jid")Integer jid){
-        return appliedRepository.check(sid,jid);
+    public Integer applied(@PathVariable ("Sid")Integer sid, @PathVariable ("Jid")Integer jid){
+        Applied a=appliedRepository.check(sid,jid);
+         if(a!=null)
+             return 1;
+         return  0;
     }
 
 

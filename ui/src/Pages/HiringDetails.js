@@ -26,16 +26,26 @@ useEffect(() => {
   
   // const fetchData = async () => {
     try {
-        const response = await fetch(`http://localhost:8050/Applied/check/{Sid}/{Jid}`);
+        const response = await fetch(`http://localhost:8050/Applied/check/${Id}/${JobId}`);
         if (!response.ok) {
+          alert("Already Filled !!!")
           throw new Error('Network response was not okk');
+
         }
+       
+        
+       
+        //  const data = await response.type();
+        
+        console.log(response);
         const data = await response.json();
-        console.log(data);
+        console.log(data)
+        if(data==0)
+        setflag(1)
+
+
         // sethiring(data);
-        if(data==null){
-          setflag(1);
-        }
+        
       } 
       catch (error) {
         console.error('Error fetching data: ', error.message);
