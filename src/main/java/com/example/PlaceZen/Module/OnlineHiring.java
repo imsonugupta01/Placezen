@@ -18,31 +18,11 @@ public class OnlineHiring {
     private int JobId;
     private String CompanyName;
     private String Role;
-    private float Cgpa;
-    private float CTC;
-    private int Backlog;
-    private int StartSession;
-    private int Semester;
-    private String Branch;
-    private String Description;
-    private String Location;
-    private int Experience;
-    private String StartDate;
-    private String EndDate;
+    private String Link;
 
-    public OnlineHiring(String companyName, String role, float cgpa, float CTC, int backlog, int startSession, int semester, String branch, String description, String location, int experience, String startDate, String endDate) {
+    public OnlineHiring(String companyName, String role, String link) {
         CompanyName = companyName;
         Role = role;
-        Cgpa = cgpa;
-        this.CTC = CTC;
-        Backlog = backlog;
-        StartSession = startSession;
-        Semester = semester;
-        Branch = branch;
-        Description = description;
-        Location = location;
-        Experience = experience;
-        StartDate = startDate;
-        EndDate = endDate;
+        Link = link;
     }
 }

@@ -51,12 +51,12 @@
 }
 .s2{
   margin-bottom: 10px;
-  background-color: rgb(42, 66, 96) ;;
+  background-color: #bfc9ca ;
 }
 #box1{
   /* text-align: center; */
   display: inline-block;
-  background-color: #85c1e9;
+  background-color: #bfc9ca ;
   position: relative;
   margin-left: 285px;
   width: 250px;
@@ -68,7 +68,7 @@
 #box2{
   text-align: center;
   display: inline-block;
-  background-color:  #82e0aa ;
+  background-color:  #bfc9ca ;
   position: relative;
   margin-left: 100px;
   width: 250px;
@@ -90,7 +90,7 @@
 #box4{
   text-align: center;
   display: inline-block;
-  background-color:   #c39bd3 ;
+  background-color:   #bfc9ca ;
   position: relative;
   margin-left: 285px;
   width: 250px;
@@ -101,7 +101,7 @@
 #box5{
   text-align: center;
   display: inline-block;
-  background-color: #f1948a;
+  background-color: #bfc9ca ;
   position: relative;
   margin-left: 100px;
   width: 250px;
@@ -112,7 +112,7 @@
 #box6{
   text-align: center;
   display: inline-block;
-  background-color: burlywood;
+  background-color: #bfc9ca ;
   position: relative;
   margin-left: 100px;
   width: 250px;

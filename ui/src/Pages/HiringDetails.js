@@ -74,9 +74,7 @@ useEffect(() => {
       console.error('Error during Added:', error);
     });
 }
-else 
- alert("already submitted !!!")
-  }
+}
 
   useEffect( ()=>{
     
