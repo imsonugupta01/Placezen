@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,5 +48,13 @@ public class HiringController {
     public Optional<Hiring> fetching(@PathVariable("Id")Integer id){
 
         return hiringRepository.findById(id);
+    }
+
+    @GetMapping("/count")
+    public Integer findnumber()
+    {
+        List<Hiring> hire= new ArrayList<>();
+        hire= (List<Hiring>) hiringRepository.findAll();
+        return hire.size();
     }
 }

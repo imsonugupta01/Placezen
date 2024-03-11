@@ -50,10 +50,10 @@ useEffect(() => {
       catch (error) {
         console.error('Error fetching data: ', error.message);
       }
-} 
+ 
 
 
-  if(interest===1 && flag==1){
+  if(interest===1 && flag===1){
   const formdata = new FormData();
   formdata.append('Jobid',JobId);
   formdata.append('StudentId',Id);
@@ -67,11 +67,16 @@ useEffect(() => {
     .then(response => response.text())
     .then(data => {
       console.log('Added successful:', data);
+      alert("Submiited !!")
+      setflag(0);
     })
     .catch(error => {
       console.error('Error during Added:', error);
     });
 }
+else 
+ alert("already submitted !!!")
+  }
 
   useEffect( ()=>{
     

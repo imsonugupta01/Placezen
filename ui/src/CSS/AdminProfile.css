@@ -8,3 +8,9 @@
   height: 60px;
   padding-top: 8px;
 }
+#nob{
+  font-size: 60px;
+  font-stretch: expanded;
+  color: rgb(112, 112, 112);
+  font-weight: 600;
+}

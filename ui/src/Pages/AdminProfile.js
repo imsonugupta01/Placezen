@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/AdminProfile.css";
 import PTU_logo from "../Pics/PTU_logo.jpg";
 import ProfileLogo from "../Pics/ProfileLogo.jpg";
@@ -6,6 +6,30 @@ import { Link, useParams } from "react-router-dom";
 
 function AdminProfile(){
   let {Id}=useParams();
+  let[CDrives,setCDrives]=useState(0);
+  let[status,setStatus]=useState(1);
+  useEffect(()=>{
+        const fetchData = async ()=>{
+           try {
+            const response=await fetch(`http://localhost:8050/Hiring/count`);
+            
+            if(!response.ok)
+            {
+              throw new Error('Network response was not ok');
+            }
+            const data= await response.json();
+            console.log(data)
+            setCDrives(data)
+            setStatus(0)
+           } catch (error) {
+            console.error('Error fetching data: ', error.message);
+            
+           }
+        }
+
+        if(1)
+         fetchData();
+  },[1])
 
   return(
     <div id="StProfile">
@@ -31,11 +55,17 @@ function AdminProfile(){
       
       <Link to={`/OnlineHiring/${Id}`}> <div id="box1">
         <h2 id="boxspan1">Online Hiring</h2>
+        <div id="nob"><center>0</center></div>
        </div></Link>
+
        <Link to={`/OffHiring/${Id}`}><div id="box2">
-        <h2 id="boxspan1">Campus Recuirtment</h2>
+        <div><h2 id="boxspan1">Campus Recuirtment</h2></div>
+        
+        <div id="nob">{CDrives}  </div>
+        {/* <br></br> */}
+        
        </div></Link>
-       <div id="box3"><h2 id="boxspan1">Events</h2></div>
+       <div id="box3"><h2 id="boxspan1">UpcomingEvents</h2><div id="nob">0</div></div>
        <div id="box4"><h2 id="boxspan1">x</h2></div>
        <div id="box5"><h2 id="boxspan1">y</h2></div>
        <div id="box6"><h2 id="boxspan1">z</h2></div>
