@@ -66,7 +66,7 @@ function AdminProfile(){
         
        </div></Link>
        <div id="box3"><h2 id="boxspan1">UpcomingEvents</h2><div id="nob">0</div></div>
-       <div id="box4"><h2 id="boxspan1">x</h2></div>
+       <div id="box4"><h2 id="boxspan1">Results Statistics</h2></div>
        <div id="box5"><h2 id="boxspan1">y</h2></div>
        <div id="box6"><h2 id="boxspan1">z</h2></div>
        
