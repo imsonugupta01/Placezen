@@ -35,11 +35,11 @@ function OffHiring(){
         <div id="doremon">
           {
             hiring && hiring.map(hire=>(
-              <div id="thisthat"><h2>{hire.companyName}</h2>
+              <Link id="lalu" to={`/responseSheet/${Id}/${hire.jobId}`}><div id="thisthat"><h2>{hire.companyName}</h2>
               <h4>ROLE : {hire.role}</h4>
               <h4>LOCATION : {hire.location}</h4>
               <h4>CTC : {hire.ctc/100000} LPA</h4>
-              </div>
+              </div></Link>
             ))
           }
           
