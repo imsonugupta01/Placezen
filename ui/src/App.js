@@ -14,6 +14,9 @@ import HiringDetails from "./Pages/HiringDetails";
 import OnlineHiring from "./Pages/OnlineHiring";
 import AddOnlineHiring from "./Pages/AddOnlineHiring";
 import HiringResponseSheet from "./Pages/HiringResponseSheeet";
+import StuOnlineHiring from "./Pages/StuOnlineHiring";
+import EventAdmin from "./Session/EventAdmin";
+import EventDetailsAdd from "./Session/EventDetailsAdd";
 
 function App(){
     return(
@@ -33,6 +36,9 @@ function App(){
             <Route path="/OnlineHiring/:Id" element={<OnlineHiring/>}/>
             <Route path="/AddOnlineHiring/:Id" element={<AddOnlineHiring/>}/>
             <Route path="/responseSheet/:Id/:jobId" element={<HiringResponseSheet/>}/>
+            <Route path="/OnlineHiring2/:Id" element={<StuOnlineHiring/>}/>
+            <Route path="/Events/:Id" element={<EventAdmin/>}/>
+            <Route path="/addEvents/:Id" element={<EventDetailsAdd/>}/>
         </Routes>
     );
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/AddOn")
 @CrossOrigin
@@ -24,5 +26,9 @@ public class OnlineHiringController {
         return ResponseEntity.ok("Added successful");
 
 
+    }
+    @GetMapping("/alll")
+    public List<OnlineHiring> allHiring(){
+        return (List<OnlineHiring>) onlineHiringRepository.findAll();
     }
 }

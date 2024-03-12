@@ -53,11 +53,8 @@ function StudentProfile(){
 
        <Link to={`/CampusDrive/${Id}`}><div id="box1"><h2 id="boxspan1">Campus Drives</h2></div></Link>
 
-       <div id="box2">
-        <h2 id="boxspan1">Online Hiring</h2>
-       
-        {/* <FontAwesomeIcon icon={faGraduationCap} style={{ color: 'green', width: '90px', height: '200px' }}/> */}
-       </div>
+       <Link to={`/OnlineHiring2/${Id}`}><div id="box2"><h2 id="boxspan1">Online Hiring</h2></div></Link>
+
        <div id="box3"><h2 id="boxspan1">Preparation Material</h2></div>
        <div id="box4"><h2 id="boxspan1">Placement Guide</h2></div>
        <div id="box5"><h2 id="boxspan1">Placement Results</h2></div>
