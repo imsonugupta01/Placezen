@@ -1,0 +1,16 @@
+#tabu,td,th{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+   
+}
+#tabu{
+    width: 70%;
+    margin-left: 16%;
+    margin-top: 2%;
+
+}
+.tt{
+    background-color: crimson;
+    color: white;
+}
