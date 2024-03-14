@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../Session/EventAdmin.css";
 import { Link, useParams } from "react-router-dom";
-function EventAdmin(){
+function EventStudent(){
   let{Id}=useParams();
   let[eventt,seteventt]=useState("");
   useEffect( ()=>{
@@ -30,7 +29,6 @@ function EventAdmin(){
         <div id="bcd"> I.K. Gujral Punjab Technical University</div>
         <div id="offf">
         <div id="off1">Sessions</div>
-        <Link to={`/addEvents/${Id}`}><div id="off2">Add More +</div></Link>
        </div>
 
        <div id="nobita">
@@ -51,4 +49,4 @@ function EventAdmin(){
     </div>
   )
 }
-export default EventAdmin;
+export default EventStudent;

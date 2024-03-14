@@ -20,17 +20,14 @@ function EventDetailsAdd()
   {console.log(event.target.value)
     setLocation(event.target.value);
   }
-
   function input3(event)
   {console.log(event.target.value)
     setSpeaker(event.target.value);
   }
-
   function input4(event)
   {console.log(event.target.value)
     setEventDate(event.target.value);
   }
-
   function input5(event)
   {console.log(event.target.value)
     setEventTimings(event.target.value);

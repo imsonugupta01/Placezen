@@ -43,11 +43,11 @@ function StudentProfile(){
            <span className="s1">Resume</span>
            <span className="s1">Post</span>
            <span className="s1">Alumni</span>
-           <span className="s1">Applied</span>
-           <span className="s1">Pending</span>
-           <span className="s1">Top Recruiters</span>
-           <span className="s1">T & P Coordinators</span>
-           <span className="s1">Contact Us</span>
+           <Link id="llll" to={`/StuApplied/${Id}`}><span className="s1">Applied</span></Link>
+           <Link id="llll" to={`/StuPending/${Id}`}><span className="s1">Pending</span></Link>
+           <Link id="llll" to={`/Coordinators`}><span className="s1">T & P Coordinators</span></Link>
+           <Link id="llll" to={`/Recuriter`}><span className="s1">Top Recruiters</span></Link>
+           <Link id="llll" to={`/Contactus`}> <span className="s1">Contact Us</span></Link>
       </div>
       
 
@@ -58,7 +58,7 @@ function StudentProfile(){
        <div id="box3"><h2 id="boxspan1">Preparation Material</h2></div>
        <div id="box4"><h2 id="boxspan1">Placement Guide</h2></div>
        <div id="box5"><h2 id="boxspan1">Placement Results</h2></div>
-       <div id="box6"><h2 id="boxspan1">Upcoming Sessions</h2></div>
+       <Link to={`/EventStudent/${Id}`}><div id="box6"><h2 id="boxspan1">Upcoming Sessions</h2></div></Link>
        
 
     </div>

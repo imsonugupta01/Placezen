@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/session")
 @CrossOrigin
@@ -27,6 +29,10 @@ public class SessionController {
         Session session=new Session(Name,Location,Date,Speaker,Timing,Description);
         sessionRepository.save(session);
         return ResponseEntity.ok("Added successful");
+    }
+    @GetMapping("/hate")
+    public List<Session> hated(){
+        return (List<Session>) sessionRepository.findAll();
     }
 
 }

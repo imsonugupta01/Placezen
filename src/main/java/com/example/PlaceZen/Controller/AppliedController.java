@@ -1,9 +1,8 @@
 package com.example.PlaceZen.Controller;
 
-import com.example.PlaceZen.Module.Applied;
-import com.example.PlaceZen.Module.Student;
-import com.example.PlaceZen.Module.StudentRespose;
+import com.example.PlaceZen.Module.*;
 import com.example.PlaceZen.Repository.AppliedRepository;
+import com.example.PlaceZen.Repository.HiringRepository;
 import com.example.PlaceZen.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Applied")
@@ -22,6 +22,9 @@ public class AppliedController {
     private AppliedRepository appliedRepository;
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private HiringRepository hiringRepository;
 
     @PostMapping("/added")
     public ResponseEntity<String> addedApplied(
@@ -69,8 +72,55 @@ public class AppliedController {
               return studentResposeList;
 
     }
+    @GetMapping("/find/{Id}")
+    public List<StuApplied> details(@PathVariable("Id") Integer Id){
+        List<Applied> applieds = (List<Applied>) appliedRepository.findu(Id);
+        System.out.println(applieds.size());
+        List<StuApplied> stuAppliedList=new ArrayList<>();
+        Optional<Student> student = studentRepository.findById(Id);
+        List<Hiring> hirings = (List<Hiring>) hiringRepository.findAll();
+        for(int i=0;i<applieds.size();i++){
+            for(int j=0;j<hirings.size();j++){
+                if(applieds.get(i).getJobId()==hirings.get(j).getJobId()){
+                    StuApplied stuApplied = new StuApplied();
+                    stuApplied.setCompanyName(hirings.get(j).getCompanyName());
+                    stuApplied.setLocation(hirings.get(j).getLocation());
+                    stuApplied.setRole(hirings.get(j).getRole());
+                    stuApplied.setCTC(hirings.get(j).getCTC());
+                    stuApplied.setDateApplied(applieds.get(i).getDate());
+                    stuAppliedList.add(stuApplied);
 
+                }
+            }
 
+        }
+        return stuAppliedList;
+
+    }
+    @GetMapping("/queen/{Id}")
+    private List<Hiring> hire(@PathVariable("Id") Integer Id){
+        List<Hiring> Phirings = new ArrayList<>();
+        List<Applied> applieds = (List<Applied>) appliedRepository.findAll();
+        List<Hiring> hirings1 = (List<Hiring>) hiringRepository.findAll();
+        for(int i=0;i<hirings1.size();i++){
+            for(int j=0;j<applieds.size();j++){
+                if(applieds.get(j).getStudentId()==Id && hirings1.get(i).getJobId()!=applieds.get(j).getJobId()){
+              System.out.println(hirings1.get(i).getJobId()+ " "+ applieds.get(j).getJobId() );
+
+                    Hiring hiring =new Hiring();
+                    hiring.setCompanyName(hirings1.get(i).getCompanyName());
+                    hiring.setRole(hirings1.get(i).getRole());
+                    hiring.setLocation(hirings1.get(i).getLocation());
+                    hiring.setCTC(hirings1.get(i).getCTC());
+                    hiring.setEndDate(hirings1.get(i).getEndDate());
+
+                    Phirings.add(hiring);
+                }
+            }
+        }
+        return  Phirings;
+
+    }
 
 
 

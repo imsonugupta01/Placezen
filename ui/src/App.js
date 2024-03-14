@@ -17,6 +17,12 @@ import HiringResponseSheet from "./Pages/HiringResponseSheeet";
 import StuOnlineHiring from "./Pages/StuOnlineHiring";
 import EventAdmin from "./Session/EventAdmin";
 import EventDetailsAdd from "./Session/EventDetailsAdd";
+import EventStudent from "./Session/EventStudent";
+import Contactus from "./Pages/Contactus";
+import Recuriter from "./Pages/Recuriter";
+import Coordinator from "./Pages/Coordinators";
+import StuApplied from "./Pages/StuApplied";
+import StuPending from "./Pages/StuPending";
 
 function App(){
     return(
@@ -39,6 +45,12 @@ function App(){
             <Route path="/OnlineHiring2/:Id" element={<StuOnlineHiring/>}/>
             <Route path="/Events/:Id" element={<EventAdmin/>}/>
             <Route path="/addEvents/:Id" element={<EventDetailsAdd/>}/>
+            <Route path="/EventStudent/:Id" element={<EventStudent/>}/>
+            <Route path="/Contactus" element = {<Contactus/>}/>
+            <Route path="/Recuriter" element={<Recuriter/>}/>
+            <Route path="/Coordinators" element={<Coordinator/>}/>
+            <Route path="/StuApplied/:Id" element={<StuApplied/>}/>
+            <Route path="/StuPending/:Id" element={<StuPending/>}/>
         </Routes>
     );
 }

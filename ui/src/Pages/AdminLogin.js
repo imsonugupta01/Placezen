@@ -43,7 +43,7 @@ function AdminLogin(){
         <label><center>Username</center></label>
         <center><input value ={Username} onChange={input1} placeholder="Username "></input></center>
         <center><label>Password</label></center>
-        <center><input value={Password} onChange={input2} placeholder="Password "></input></center>
+        <center><input value={Password} type="password" onChange={input2} placeholder="Password "></input></center>
         <center><button id="boss" ><Link to={`/AdminProfile/${Id}`}>Login</Link></button></center><br></br></div>
       </div>
     </div>

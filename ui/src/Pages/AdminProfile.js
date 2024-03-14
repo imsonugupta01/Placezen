@@ -44,7 +44,7 @@ function AdminProfile(){
           
            <span className="s1">Profile</span>
            {/* <span className="s1" ><Link to={`AdminApprovals/${Id}`}>Approvals</Link></span> */}
-           <Link to={`/AdminApprovals/${Id}`} > <span className="s1" >Approvals</span></Link>
+           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span className="s1" >Approvals</span></Link>
            {/* <span className="s1">Posts</span> */}
            <span className="s1">Alumni</span>
            <span className="s1">Results</span>

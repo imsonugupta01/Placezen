@@ -1,0 +1,8 @@
+#ikg{
+  display: flex;
+  flex-direction: row;
+  margin-left: 5%;
+}
+#ikg div{
+  margin-right: 16%;
+}
