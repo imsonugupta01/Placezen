@@ -102,20 +102,24 @@ public class AppliedController {
         List<Hiring> Phirings = new ArrayList<>();
         List<Applied> applieds = (List<Applied>) appliedRepository.findAll();
         List<Hiring> hirings1 = (List<Hiring>) hiringRepository.findAll();
+        int j=0;
         for(int i=0;i<hirings1.size();i++){
-            for(int j=0;j<applieds.size();j++){
-                if(applieds.get(j).getStudentId()==Id && hirings1.get(i).getJobId()!=applieds.get(j).getJobId()){
-              System.out.println(hirings1.get(i).getJobId()+ " "+ applieds.get(j).getJobId() );
-
-                    Hiring hiring =new Hiring();
-                    hiring.setCompanyName(hirings1.get(i).getCompanyName());
-                    hiring.setRole(hirings1.get(i).getRole());
-                    hiring.setLocation(hirings1.get(i).getLocation());
-                    hiring.setCTC(hirings1.get(i).getCTC());
-                    hiring.setEndDate(hirings1.get(i).getEndDate());
-
-                    Phirings.add(hiring);
+            for( j=0;j<applieds.size();j++){
+                if(applieds.get(j).getStudentId()==Id && hirings1.get(i).getJobId()==applieds.get(j).getJobId()){
+                 break;
                 }
+
+            }
+            if(j==applieds.size())
+            {
+                Hiring hiring =new Hiring();
+                hiring.setCompanyName(hirings1.get(i).getCompanyName());
+                hiring.setRole(hirings1.get(i).getRole());
+                hiring.setLocation(hirings1.get(i).getLocation());
+                hiring.setCTC(hirings1.get(i).getCTC());
+                hiring.setEndDate(hirings1.get(i).getEndDate());
+
+                Phirings.add(hiring);
             }
         }
         return  Phirings;
