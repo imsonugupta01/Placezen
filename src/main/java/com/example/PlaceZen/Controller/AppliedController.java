@@ -4,6 +4,7 @@ import com.example.PlaceZen.Module.*;
 import com.example.PlaceZen.Repository.AppliedRepository;
 import com.example.PlaceZen.Repository.HiringRepository;
 import com.example.PlaceZen.Repository.StudentRepository;
+import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,10 +52,10 @@ public class AppliedController {
 
               List<StudentRespose> studentResposeList =new ArrayList<>();
               List<Applied> appList;
-              appList= (List<Applied>) appliedRepository.findAllById(Collections.singleton(Jid));
+              appList= (List<Applied>) appliedRepository.findus(Jid);
               List<Student> stList;
               stList= (List<Student>) studentRepository.findAll();
-
+             System.out.println(appList.size()+" "+ stList.size());
               for(int i=0;i<appList.size();i++)
               {  
                   for(int j=0;j<stList.size();j++)

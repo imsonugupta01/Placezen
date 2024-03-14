@@ -17,12 +17,14 @@ import java.util.Optional;
 public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
-    private final String path = "C:\\Springboot\\PlaceZen\\Images";
+    private final String path = "C:\\Springboot\\Trial3\\Images";
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> RegisterStudent(
             @RequestParam("roll") Integer Roll,
             @RequestParam("name") String Name,
+            @RequestParam("semester") Integer Semester,
+            @RequestParam("branch") String Branch,
             @RequestParam("dob") String DOB,
             @RequestParam("mobile") String Mobile,
             @RequestParam("gender") String Gender,
@@ -30,6 +32,7 @@ public class StudentController {
             @RequestParam("linkedin") String Linkedin,
             @RequestParam("github") String Github,
             @RequestParam("cgpa") Float CGPA,
+            @RequestParam("backlog") Integer Backlog,
             @RequestParam("skills") String Skills,
             @RequestParam("interest") String Interest,
             @RequestParam("portfolio") String Portfolio,
@@ -42,7 +45,7 @@ public class StudentController {
         String ImageName = file.getOriginalFilename();
         String ImageType = file.getContentType();
         String ImagePath = fullPath;
-        Student student = new Student(Roll,Name,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Skills,Interest,Portfolio,Experience,ImageName,ImagePath,ImageType,Password);
+        Student student = new Student(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,ImageName,ImagePath,ImageType,Password);
         studentRepository.save(student);
         return ResponseEntity.ok("Upload successful");
     }

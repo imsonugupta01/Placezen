@@ -16,5 +16,8 @@ public interface AppliedRepository extends CrudRepository<Applied,Integer> {
     @Query("SELECT m from Applied m WHERE m.StudentId=:Sid")
     public List<Applied> findu(@Param("Sid") Integer Sid );
 
+    @Query("SELECT m from Applied m WHERE m.JobId=:Jid")
+    public  List<Applied> findus(@Param("Jid") Integer Jid);
+
 //    List<Applied> findAllById(Integer jid);
 }
