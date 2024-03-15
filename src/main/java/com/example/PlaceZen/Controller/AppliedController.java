@@ -56,9 +56,9 @@ public class AppliedController {
               stList= (List<Student>) studentRepository.findAll();
 
               for(int i=0;i<appList.size();i++)
-              {  
+              {
                   for(int j=0;j<stList.size();j++)
-                  { 
+                  {
                       if(appList.get(i).getStudentId()==stList.get(j).getId())
                       { StudentRespose studentRespose = new StudentRespose();
                         studentRespose.setName(stList.get(j).getName());

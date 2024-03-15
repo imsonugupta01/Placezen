@@ -23,8 +23,7 @@ public class SessionController {
             @RequestParam("date") String Date,
             @RequestParam("speaker") String Speaker,
             @RequestParam("timing") String Timing,
-            @RequestParam("description") String Description
-    ){
+            @RequestParam("description") String Description){
 
         Session session=new Session(Name,Location,Date,Speaker,Timing,Description);
         sessionRepository.save(session);
