@@ -39,7 +39,7 @@ function StudentProfile(){
       <div  id="mySidebar">
       <span className="s2">Student Dashboard</span>
           <span className="s1"><img id ="simg" height="120" width="120" src={PTU_logo}></img></span>
-           <span className="s1">Profile</span>
+          <Link id="llll" to={`/StuProfilePage/${Id}`}><span className="s1">Profile</span></Link>
            <span className="s1">Resume</span>
            <span className="s1">Post</span>
            <span className="s1">Alumni</span>

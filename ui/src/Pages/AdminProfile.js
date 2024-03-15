@@ -49,7 +49,7 @@ function AdminProfile(){
            <span className="s1">Alumni</span>
            <span className="s1">Results</span>
            <span className="s1">Students</span>
-           <span className="s1">T & P Coordinators</span>
+           <Link id="llll" to={`/AdminCoordinators/${Id}`}><span className="s1">T & P Coordinators</span></Link>
            {/* <span className="s1"></span> */}
       </div>
       

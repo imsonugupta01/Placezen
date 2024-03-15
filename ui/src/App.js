@@ -23,6 +23,9 @@ import Recuriter from "./Pages/Recuriter";
 import Coordinator from "./Pages/Coordinators";
 import StuApplied from "./Pages/StuApplied";
 import StuPending from "./Pages/StuPending";
+import AdminCoordinator from "./Pages/AdminCoordinators";
+import AddCoorniators from "./Pages/AddCoordinators";
+import StuProfilePage from "./Pages/StuProfilePage";
 
 function App(){
     return(
@@ -51,6 +54,9 @@ function App(){
             <Route path="/Coordinators" element={<Coordinator/>}/>
             <Route path="/StuApplied/:Id" element={<StuApplied/>}/>
             <Route path="/StuPending/:Id" element={<StuPending/>}/>
+            <Route path="/AdminCoordinators/:Id" element={<AdminCoordinator/>}/>
+            <Route path="/AddCoordinators/:Id" element={<AddCoorniators/>}/>
+            <Route path="/StuProfilePage/:Id" element={<StuProfilePage/>}/>
         </Routes>
     );
 }
