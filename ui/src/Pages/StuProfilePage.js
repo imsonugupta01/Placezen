@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 function StuProfilePage(){
-  let[profile,setprofile]=useState("");
+  let[pf,setprofile]=useState("");
   let {Id}=useParams();
    useEffect( ()=>{
    const fetchData = async () => {
@@ -13,7 +13,7 @@ function StuProfilePage(){
          const data = await response.json();
          console.log(data);
          setprofile(data);
-         console.log(profile); 
+        //  console.log(profile); 
        } 
        catch (error) {
          console.error('Error fetching data: ', error.message);
@@ -33,8 +33,8 @@ function StuProfilePage(){
          </div>
 
          <div id="doremon">
-          {
-            profile && profile.map(pf=>(
+          
+           
               <div id="thisthat">
               <h4>RollNo. : {pf.roll}</h4>
               <h4>Name : {pf.name}</h4>
@@ -53,8 +53,7 @@ function StuProfilePage(){
               <h4>Portfolio : {pf.portfolio}</h4>
               <h4>Experience : {pf.experience}</h4>
               </div>
-            ))
-          }
+         
           
         </div>
     </div>

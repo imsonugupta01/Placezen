@@ -10,10 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @RestController
 @RequestMapping("/Applied")
@@ -119,6 +118,22 @@ public class AppliedController {
                 hiring.setLocation(hirings1.get(i).getLocation());
                 hiring.setCTC(hirings1.get(i).getCTC());
                 hiring.setEndDate(hirings1.get(i).getEndDate());
+
+
+//              String date1= (hirings1.get(i).getEndDate());
+//               System.out.println(date1);
+
+//                LocalDate now = LocalDate.now();
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//                String date2 = now.format(formatter);
+//                System.out.println(date2);
+
+//                LocalDate dd1= LocalDate.parse(date1);
+//                LocalDate dd2=LocalDate.parse(date2);
+//                LocalDate dd1 = LocalDate.parse(date1);
+
+//                System.out.println(dd1+"  "+dd2);
+
 
                 Phirings.add(hiring);
             }
