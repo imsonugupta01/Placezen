@@ -1,25 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams ,useNavigate} from "react-router-dom";
 import "../CSS/StProfile.css"
 function StuProfilePage(){
   let[pf,setprofile]=useState("");
   let[imageURL,setImageUrl]=useState("")
   let {Id}=useParams();
+  // const navigate = useNavigate();
+
+  
+  // const handleLogout = () => {
+    
+  //   console.log('Performing logout operations');
+
+  //   // Redirect to the homepage or login page and replace the current entry in the history stack
+  //   navigate('/', { replace: true });
+  // };
    useEffect( ()=>{
    const fetchData = async () => {
      try {
          const response = await fetch(`http://localhost:8050/student/getStudent/${Id}`);
-         const response2 = await fetch(`http://localhost:8050/student/downloadImage/${Id}`);
-         if (!response.ok || !response2.ok) {
-           throw new Error('Network response was not okk');
-         }
+        //  const response2 = await fetch(`http://localhost:8050/student/downloadImage/${Id}`);
+        //  if (!response.ok || !response2.ok) {
+        //    throw new Error('Network response was not okk');
+        //  }
+         if (!response.ok ) {
+          throw new Error('Network response was not okk');
+        }
          const data = await response.json();
-         const imageBlob = await response2.blob();
+        //  const imageBlob = await response2.blob();
                
-        const imageObjectUrl = URL.createObjectURL(imageBlob);
+        // const imageObjectUrl = URL.createObjectURL(imageBlob);
          console.log(data);
          setprofile(data);
-         setImageUrl(imageObjectUrl);
+        //  setImageUrl(imageObjectUrl);
         //  console.log(profile); 
        } 
        catch (error) {
@@ -39,9 +52,9 @@ function StuProfilePage(){
       <div  id="mySidebar">
       <span className="s2" id="sus">Welcome {pf.name}</span>
           <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span>
-          <Link id="llll" to='#'> <span className="s1">Dashboard</span></Link>
-          <Link id="llll" to="#"> <span className="s1">Password</span></Link>
-           <Link id="llll" to="#"> <span className="s1">Logout</span></Link>
+          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to="#"> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
 
       <div id="pff">
