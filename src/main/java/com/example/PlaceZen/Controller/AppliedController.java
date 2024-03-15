@@ -104,12 +104,23 @@ public class AppliedController {
         List<Hiring> hirings1 = (List<Hiring>) hiringRepository.findAll();
         int j=0;
         for(int i=0;i<hirings1.size();i++){
-            for( j=0;j<applieds.size();j++){
+
+
+            String date1= (hirings1.get(i).getEndDate());
+            LocalDate date= LocalDate.parse(date1);
+            LocalDate now = LocalDate.now();
+            j=0;
+
+            for( j=0; j<applieds.size() && ( date.isAfter(now) || date.isEqual(now) ) ;j++){
+
+                System.out.println(date);
+
                 if(applieds.get(j).getStudentId()==Id && hirings1.get(i).getJobId()==applieds.get(j).getJobId()){
                  break;
                 }
 
             }
+
             if(j==applieds.size())
             {
                 Hiring hiring =new Hiring();
@@ -118,25 +129,13 @@ public class AppliedController {
                 hiring.setLocation(hirings1.get(i).getLocation());
                 hiring.setCTC(hirings1.get(i).getCTC());
                 hiring.setEndDate(hirings1.get(i).getEndDate());
+                hiring.setJobId(hirings1.get(i).getJobId());
 
 
-//              String date1= (hirings1.get(i).getEndDate());
-//               System.out.println(date1);
+                    Phirings.add(hiring);
 
-//                LocalDate now = LocalDate.now();
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//                String date2 = now.format(formatter);
-//                System.out.println(date2);
-
-//                LocalDate dd1= LocalDate.parse(date1);
-//                LocalDate dd2=LocalDate.parse(date2);
-//                LocalDate dd1 = LocalDate.parse(date1);
-
-//                System.out.println(dd1+"  "+dd2);
-
-
-                Phirings.add(hiring);
             }
+
         }
         return  Phirings;
 

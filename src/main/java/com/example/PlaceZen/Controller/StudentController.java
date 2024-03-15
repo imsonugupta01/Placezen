@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Optional;
 
 @CrossOrigin
@@ -17,14 +18,14 @@ import java.util.Optional;
 public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
-    private final String path = "C:\\Springboot\\Trial3\\Images";
-    @ResponseStatus(value = HttpStatus.OK)
-    @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    private final String path = "C:\\Springboot\\Trial3\\Images";
+
+//    @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+
+    @PostMapping("/add")
     public ResponseEntity<String> RegisterStudent(
             @RequestParam("roll") Integer Roll,
             @RequestParam("name") String Name,
-            @RequestParam("semester") Integer Semester,
-            @RequestParam("branch") String Branch,
             @RequestParam("dob") String DOB,
             @RequestParam("mobile") String Mobile,
             @RequestParam("gender") String Gender,
@@ -32,21 +33,23 @@ public class StudentController {
             @RequestParam("linkedin") String Linkedin,
             @RequestParam("github") String Github,
             @RequestParam("cgpa") Float CGPA,
-            @RequestParam("backlog") Integer Backlog,
             @RequestParam("skills") String Skills,
+            @RequestParam("backlog") Integer Backlog,
             @RequestParam("interest") String Interest,
             @RequestParam("portfolio") String Portfolio,
             @RequestParam("experience") String Experience,
-            @RequestParam("file")MultipartFile file,
-            @RequestParam("password") String Password
+            @RequestParam("imageName") String imageName,
+            @RequestParam("imagePath") String imagePath,
+            @RequestParam("imageType") String imageType,
+            @RequestParam("password") String Password,
+            @RequestParam("semester") Integer Semester,
+            @RequestParam("branch") String Branch
     )  throws IOException{
-        String fullPath = path + file.getOriginalFilename();
-        file.transferTo(new File(fullPath));
-        String ImageName = file.getOriginalFilename();
-        String ImageType = file.getContentType();
-        String ImagePath = fullPath;
-        Student student = new Student(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,ImageName,ImagePath,ImageType,Password);
+
+//        Student student = new Student(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,ImageName,ImagePath,ImageType,Password);
+        Student student= new Student(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,imageName,imagePath,imageType,Password);
         studentRepository.save(student);
+
         return ResponseEntity.ok("Upload successful");
     }
     @GetMapping("/GetProfile/{Username}/{Password}")
@@ -58,5 +61,16 @@ public class StudentController {
     public Optional<Student> getprofiles(@PathVariable("Id") Integer Id)
     {
         return studentRepository.findById(Id);
+    }
+
+    @GetMapping("/downloadImage/{id}")
+    public ResponseEntity<byte[]> StudentImage(@PathVariable("id") int id) throws IOException {
+        String fileName=studentRepository.getFileName(id);
+        System.out.println(fileName);
+        Optional<Student> imageObject=studentRepository.findByAdminImageName(fileName);
+        String fullPath = imageObject.get().getImagePath();
+        byte[] image= Files.readAllBytes(new File(fullPath).toPath());
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+        //return fileName;
     }
 }

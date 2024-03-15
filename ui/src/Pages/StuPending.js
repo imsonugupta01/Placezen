@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link, Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import "../CSS/StPending.css"
 function StuPending(){
   let {Id}=useParams();
   let[hiring,sethiring]=useState("");
+  const navigate = useNavigate();
 
   useEffect( ()=>{
     const fetchData = async () => {
@@ -24,6 +27,12 @@ function StuPending(){
       fetchData();
   }  
 },[])
+
+const next =(jobId)=>{
+  
+  navigate(`/HiringDetails/${Id}/${jobId}`);
+
+}
   return(
 
     <div>
@@ -43,12 +52,12 @@ function StuPending(){
                     </thead>
                     {
                         hiring && hiring.map(hire =>(
-                            <tr>
+                            <tr  key={hire.jobId} onClick={() => next(hire.jobId)} className="clickable-row" >
                                <td>{hire.companyName}</td>
                                <td>{hire.role}</td>
                                <td>{hire.location}</td>
                                <td>{hire.ctc}</td>
-                              <td>{hire.endDate}</td> 
+                              <td>{hire.endDate}</td>
                             </tr>
                         ))
                     }

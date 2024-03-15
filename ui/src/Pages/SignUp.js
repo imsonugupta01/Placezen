@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import "../CSS/SignUp.css";
 
 function SignUp(){
+  const navigate = useNavigate();
+
   let[Roll,setRoll]=useState();
   let[Name,setName]=useState();
   let[DOB,setDOB]=useState();
@@ -116,7 +119,7 @@ function SignUp(){
     formdata.append('backlog',Backlog);
     
 
-    fetch('http://localhost:8050/student/signup', {
+    fetch('http://localhost:8050/signApprov/signup', {
       method:'POST',
       body: formdata,
     
@@ -124,6 +127,9 @@ function SignUp(){
       .then(response => response.text())
       .then(data => {
         console.log('SignUp successful:', data);
+        alert("Request Sent , Please Wait for confirmation !!!");
+        navigate("/StudentLogin");
+       
       })
       .catch(error => {
         console.error('Error during SignUp:', error);

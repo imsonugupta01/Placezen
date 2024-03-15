@@ -56,7 +56,7 @@
 }
 
 #thisthat {
-  background-color: rgb(188, 180, 180);
+  background-color: rgb(217, 212, 212);
   width: calc(420px - 60px); /* Adjust width to fit 2 per row, accounting for margin */
   margin: 25px 30px; /* Adjusted for demonstration; provides space around */
   text-align: center;

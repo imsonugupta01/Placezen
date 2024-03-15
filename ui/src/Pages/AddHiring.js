@@ -116,9 +116,9 @@ function AddHiring(){
         <label>Location</label><br></br>
         <input placeholder="location" onChange={input9} value={location}/><br></br>
         <label>StartDate</label><br></br>
-        <input placeholder="Start Date" onChange={input10} value={date1}/><br></br>
+        <input placeholder="Start Date" type="date" onChange={input10} value={date1}/><br></br>
         <label>EndDate</label><br></br>
-        <input placeholder="End Date" onChange={input11} value={date2}/><br></br>
+        <input placeholder="End Date" type="date" onChange={input11} value={date2}/><br></br>
         <button onClick={submitadd}>Add</button>
       </div>
     </div>
