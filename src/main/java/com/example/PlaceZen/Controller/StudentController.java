@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -72,5 +73,11 @@ public class StudentController {
         byte[] image= Files.readAllBytes(new File(fullPath).toPath());
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
         //return fileName;
+    }
+
+    @GetMapping("/all")
+    public List<Student> allStudets()
+    {
+        return (List<Student>) studentRepository.findAll();
     }
 }

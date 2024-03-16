@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import "../CSS/HiringResponseSheet.css"
 function HiringResponseSheet ()
 { 
     let {Id,jobId}=useParams();
     let[hiring,sethiring]=useState("")
-    let[students,setStudents]=useState("")   
+    let[students,setStudents]=useState("") 
+    let i=1;  
 
 useEffect( ()=>{
     
@@ -68,8 +69,26 @@ function convertDate(dateStr) {
     return(
         <div>
             <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+            <div  id="mySidebar">
+           <span className="s2" id="sus" >{hiring.companyName}</span>
+          
+          {/* <span className="s1"><img id ="simg" height="120" width="120" ></img></span> */}
+          
+           <span className="s1">Results</span>
+           {/* <span className="s1" ><Link to={`AdminApprovals/${Id}`}>Approvals</Link></span> */}
+           <span className="s1" >Statistics</span>
+           {/* <span className="s1">Posts</span> */}
+           <span className="s1">Our Alumni</span>
+           <span className="s1">Upcoming Events</span>
+           {/* <span className="s1">Results</span>
+           <span className="s1">Students</span>
+           <Link id="llll" to={`/AdminCoordinators/${Id}`}><span className="s1">T & P Coordinators</span></Link> */}
+           {/* <span className="s1"></span> */}
+      </div>
+      
             <table id="tabu">
                 <thead className="tt" id="tabuh">
+                    
                     <th>Company Name</th>
                     <th>Role</th>
                     <th>CTC</th>
@@ -78,6 +97,7 @@ function convertDate(dateStr) {
                     <th>Last Date</th>
                 </thead>
                 <tr id="tabuh">
+                    
                     <td>{hiring.companyName}</td>
                     <td>{hiring.role}</td>
                     <td>{hiring.ctc/100000} LPA</td>
@@ -93,15 +113,17 @@ function convertDate(dateStr) {
                 
                 <table id="tabu">
                     <thead className="tt" id="tabuh">
+                        <th>Sl No.</th>
                         <th>Student Name</th>
                         <th>Roll Number</th>
                         <th>Branch</th>
                         <th>Date</th>
                         
                     </thead>
-                    {
+                    {   
                         students && students.map(student =>(
                             <tr>
+                               <td>{i++}</td>
                                <td>{student.name}</td>
                                <td>{student.roll}</td>
                                <td>CSE</td>

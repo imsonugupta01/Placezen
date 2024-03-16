@@ -42,14 +42,14 @@ function AdminProfile(){
       <span className="s2">Admin Dashboard</span>
           <span className="s1"><img id ="simg" height="120" width="120" src={PTU_logo}></img></span>
           
-           <span className="s1">Profile</span>
+           <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
            {/* <span className="s1" ><Link to={`AdminApprovals/${Id}`}>Approvals</Link></span> */}
-           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span className="s1" >Approvals</span></Link>
+           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span className="s1" style={{ fontSize: '20px' }} >Approvals</span></Link>
            {/* <span className="s1">Posts</span> */}
-           <span className="s1">Alumni</span>
-           <span className="s1">Results</span>
-           <span className="s1">Students</span>
-           <Link id="llll" to={`/AdminCoordinators/${Id}`}><span className="s1">T & P Coordinators</span></Link>
+           <span className="s1" style={{ fontSize: '20px' }}>Alumni</span>
+           <span className="s1" style={{ fontSize: '20px' }}>Results</span>
+           <Link id="llll" to="/allStudents"><span className="s1" style={{ fontSize: '20px' }}>Students</span></Link>
+           <Link id="llll" to={`/AdminCoordinators/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>T & P Coordinators</span></Link>
            {/* <span className="s1"></span> */}
       </div>
       

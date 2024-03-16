@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 function StudentProfile(){
   let {Id} = useParams();
+  const [flag, setFlag] = useState(0);
   console.log(Id);
   let[profile,setProfile]=useState("");
    useEffect( ()=>{
@@ -29,25 +30,52 @@ function StudentProfile(){
       fetchData();
   }        
    },[Id])
+  
+   
+  //  function show() {
+  //   if (flag === 0) {
+  //     var element = document.getElementById("hid");
+  //     element.style.display = "flex";
+  //     element.style.color = "white";
+  //     element.style.flexDirection = "column";
+  //     element.style.fontSize = "13px";
+  //     element.style.fontWeight = "600";
+  //     element.style.backgroundColor = "gray";
+  //     element.style.width = "100px";
+  //     element.style.position = "absolute";
+  //     element.style.top = "60px";
+  //     element.style.right = "0px";
+      
+  //     setFlag(1);
+  //   } else if (flag === 1) {
+  //     var element = document.getElementById("hid");
+  //     element.style.display = "none"; // Change "hidden" to "none" to hide the element
+  //     setFlag(0);
+  //   }
+  // }
    if(profile===null)
    return(<div><h1><center>Page not found !!!!</center></h1></div>)
   return(
     <div id="StProfile">
       <div id="header2"> I.K. Gujral Punjab Technical University 
       <img id ="img2"  src={ProfileLogo}></img>
+      <div id="hid" >
+        <div>change password </div>
+        <div>logout</div>
+      </div>
       </div>
       <div  id="mySidebar">
-      <span className="s2">Student Dashboard</span>
+      <span className="s2" id="sus">Student Dashboard</span>
           <span className="s1"><img id ="simg" height="120" width="120" src={PTU_logo}></img></span>
-          <Link id="llll" to={`/StuProfilePage/${Id}`}><span className="s1">Profile</span></Link>
-           <span className="s1">Resume</span>
-           <span className="s1">Post</span>
-           <span className="s1">Alumni</span>
-           <Link id="llll" to={`/StuApplied/${Id}`}><span className="s1">Applied</span></Link>
-           <Link id="llll" to={`/StuPending/${Id}`}><span className="s1">Pending</span></Link>
-           <Link id="llll" to={`/Coordinators`}><span className="s1">T & P Coordinators</span></Link>
-           <Link id="llll" to={`/Recuriter`}><span className="s1">Top Recruiters</span></Link>
-           <Link id="llll" to={`/Contactus`}> <span className="s1">Contact Us</span></Link>
+          <Link id="llll" to={`/StuProfilePage/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <span className="s1" style={{ fontSize: '20px' }}>Resume</span>
+           <span className="s1" style={{ fontSize: '20px' }}>Post</span>
+           <span className="s1" style={{ fontSize: '20px' }}>Alumni</span>
+           <Link id="llll" to={`/StuApplied/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Applied</span></Link>
+           <Link id="llll" to={`/StuPending/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Pending</span></Link>
+           <Link id="llll" to={`/Coordinators`}><span className="s1" style={{ fontSize: '20px' }}>T & P Coordinators</span></Link>
+           <Link id="llll" to={`/Recuriter`}><span className="s1" style={{ fontSize: '20px' }}>Top Recruiters</span></Link>
+           <Link id="llll" to={`/Contactus`}> <span className="s1" style={{ fontSize: '20px' }}>Contact Us</span></Link>
       </div>
       
 
