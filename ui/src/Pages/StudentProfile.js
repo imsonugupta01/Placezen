@@ -31,28 +31,6 @@ function StudentProfile(){
   }        
    },[Id])
   
-   
-  //  function show() {
-  //   if (flag === 0) {
-  //     var element = document.getElementById("hid");
-  //     element.style.display = "flex";
-  //     element.style.color = "white";
-  //     element.style.flexDirection = "column";
-  //     element.style.fontSize = "13px";
-  //     element.style.fontWeight = "600";
-  //     element.style.backgroundColor = "gray";
-  //     element.style.width = "100px";
-  //     element.style.position = "absolute";
-  //     element.style.top = "60px";
-  //     element.style.right = "0px";
-      
-  //     setFlag(1);
-  //   } else if (flag === 1) {
-  //     var element = document.getElementById("hid");
-  //     element.style.display = "none"; // Change "hidden" to "none" to hide the element
-  //     setFlag(0);
-  //   }
-  // }
    if(profile===null)
    return(<div><h1><center>Page not found !!!!</center></h1></div>)
   return(
@@ -69,7 +47,7 @@ function StudentProfile(){
           <span className="s1"><img id ="simg" height="120" width="120" src={PTU_logo}></img></span>
           <Link id="llll" to={`/StuProfilePage/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
            <span className="s1" style={{ fontSize: '20px' }}>Resume</span>
-           <span className="s1" style={{ fontSize: '20px' }}>Post</span>
+           <Link id="llll" to={`/PostStudent`}><span className="s1" style={{ fontSize: '20px' }}>Post</span></Link>
            <span className="s1" style={{ fontSize: '20px' }}>Alumni</span>
            <Link id="llll" to={`/StuApplied/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Applied</span></Link>
            <Link id="llll" to={`/StuPending/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Pending</span></Link>
@@ -80,9 +58,7 @@ function StudentProfile(){
       
 
        <Link to={`/CampusDrive/${Id}`}><div id="box1"><h2 id="boxspan1">Campus Drives</h2></div></Link>
-
        <Link to={`/OnlineHiring2/${Id}`}><div id="box2"><h2 id="boxspan1">Online Hiring</h2></div></Link>
-
        <div id="box3"><h2 id="boxspan1">Preparation Material</h2></div>
        <div id="box4"><h2 id="boxspan1">Placement Guide</h2></div>
        <div id="box5"><h2 id="boxspan1">Placement Results</h2></div>

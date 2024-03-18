@@ -28,6 +28,9 @@ import AddCoorniators from "./Pages/AddCoordinators";
 import StuProfilePage from "./Pages/StuProfilePage";
 import AllStudents from "./Students/AllStudents";
 import ChangePassword from "./Pages/ChangePassword";
+import AdminProfilePage from "./Pages/AdminProfilePage";
+import PostStudent from "./Pages/PostStudent";
+import AddHiringStudent from "./Pages/AddHiringStudent";
 
 function App(){
     return(
@@ -61,6 +64,9 @@ function App(){
             <Route path="/StuProfilePage/:Id" element={<StuProfilePage/>}/>
             <Route path="/allStudents" element={<AllStudents/>}/>
             <Route path="/changePass/:Id" element={<ChangePassword/>}/>
+            <Route path="/AdminProfilePage/:Id" element={<AdminProfilePage/>}/>
+            <Route path="/PostStudent" element={<PostStudent/>}/>
+            <Route path="/AddHiringStudent/:Id" element={<AddHiringStudent/>}/>
         </Routes>
     );
 }

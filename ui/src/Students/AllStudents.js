@@ -40,7 +40,7 @@ function AllStudents()
           
            <span className="s1">Electrical</span>
            <span className="s1">Civil</span>
-           <span className="s1">Machenical</span>
+           <span className="s1">Mechanical</span>
           
       </div>
       <div>

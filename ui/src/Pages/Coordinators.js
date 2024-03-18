@@ -28,24 +28,42 @@ function AdminCoordinator(){
   return(
     <div>
         <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+        <div  id="mySidebar">
+        <span className="s2" id="sus">Welcome</span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
+          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/StuProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      </div>
+
         <div id="offf">
          <div id="off1">T & P Coordinators</div>
          </div>
+          <div> 
+                <table id="tabu">
+                    <thead className="tt" id="tabuh">
+                        <th>Name</th>
+                        <th>Branch</th>
+                        <th>Semester</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        
+                    </thead>
+                    {
+                        tp && tp.map(cl =>(
+                            <tr>
+                               <td>{cl.name}</td>
+                               <td>{cl.branch}</td>
+                               <td>{cl.semester}</td>
+                               <td>{cl.contact}</td>
+                              <td>{cl.email}</td>
+                            </tr>
+                        ))
+                    }
+                </table>
+            </div>
 
-         <div id="doremon">
-          {
-            tp && tp.map(cl=>(
-              <div id="thisthat">
-              <h4>Name : {cl.name}</h4>
-              <h4>Branch : {cl.branch}</h4>
-              <h4>Semester : {cl.semester}</h4>
-              <h4>Contact : {cl.contact}</h4>
-              <h4>Email : {cl.email}</h4>
-              </div>
-            ))
-          }
         </div>
-     </div>
    )
 }
 export default AdminCoordinator;

@@ -1,8 +1,12 @@
 package com.example.PlaceZen.Controller;
 
+import com.example.PlaceZen.Module.Admin;
+import com.example.PlaceZen.Module.Student;
 import com.example.PlaceZen.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -29,5 +33,10 @@ public class AdminController {
             e.printStackTrace();
             return -1;
         }
+    }
+    @GetMapping("/getAdmin/{Id}")
+    public Optional<Admin> getprofile(@PathVariable("Id") Integer Id)
+    {
+        return adminRepository.findById(Id);
     }
 }

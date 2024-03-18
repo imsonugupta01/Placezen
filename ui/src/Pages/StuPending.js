@@ -41,11 +41,12 @@ const next =(jobId)=>{
       <span className="s2" id="sus">Welcome</span>
           {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
           <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/StuProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
           <Link id="llll" to={`/StuApplied/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Applied</span></Link>
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
 
-       <h3><center>Pending Campus Recuirtment</center></h3>
+       <h2><center>Pending Campus Recuirtment</center></h2>
             <div>
                 
                 <table id="tabu">

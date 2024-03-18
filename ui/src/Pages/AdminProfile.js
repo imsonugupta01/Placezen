@@ -39,10 +39,10 @@ function AdminProfile(){
       </div>
 
       <div  id="mySidebar">
-      <span className="s2">Admin Dashboard</span>
+      <span className="s2" id="sus">Admin Dashboard</span>
           <span className="s1"><img id ="simg" height="120" width="120" src={PTU_logo}></img></span>
           
-           <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
+          <Link id="llll" to={`/AdminProfilePage/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
            {/* <span className="s1" ><Link to={`AdminApprovals/${Id}`}>Approvals</Link></span> */}
            <Link id="llll" to={`/AdminApprovals/${Id}`} > <span className="s1" style={{ fontSize: '20px' }} >Approvals</span></Link>
            {/* <span className="s1">Posts</span> */}

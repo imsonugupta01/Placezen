@@ -44,7 +44,7 @@ function convertDate(dateStr) {
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
        
-      <h3><center>Applied Forms for Campus Recuirtment</center></h3>
+      <h2><center>Applied Forms for Campus Recuirtment</center></h2>
             <div>
                 
                 <table id="tabu">
