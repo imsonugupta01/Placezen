@@ -24,7 +24,7 @@ function AddHiringStudent(){
     formdata.append('Role',role)
     formdata.append('Apply',link)
    
-    fetch('http://localhost:8050/OnlineApproval/Online/adds', {
+    fetch('http://localhost:8050/OnlineApproval/adds', {
       method:'POST',
       body: formdata,
     

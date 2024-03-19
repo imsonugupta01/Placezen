@@ -29,9 +29,9 @@ function OnlineHiringApproval(){
 
    const next = async (request)=>{
     const formdata = new FormData();
-    formdata.append('companyName',request.companyName)
-    formdata.append('role',request.role)
-    formdata.append('Link',request.link)
+    formdata.append('Company',request.companyName)
+    formdata.append('Role',request.role)
+    formdata.append('Apply',request.link)
     fetch('http://localhost:8050/OnlineApproval/adds', {
       method:'POST',
       body: formdata,
