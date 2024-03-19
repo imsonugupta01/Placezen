@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from "react";
 import { Link, useParams,useNavigate } from "react-router-dom";
+import "../CSS/ApprovHiringDetails.css"
 function ApproveHiringDetails(){
   let {Id,jobId} = useParams();
   let[requests,setRequests]=useState("");
@@ -32,16 +33,33 @@ function ApproveHiringDetails(){
    },[student])
   return(
     <div>
-      <div id="header2"> I.K. Gujral Punjab Technical University</div><br></br>
+      <div id="header2"> I.K. Gujral Punjab Technical University</div>
+      <div  id="mySidebar">
+           <span className="s2" id="sus" >Welcome</span>
+          
+          
+          
+           <span className="s1">Dashboard</span>
+          
+           <span className="s1" >Profile</span>
+          
+           <span className="s1">Logout</span>
+           
+          
+      </div><br></br>
     
-      <div id="hrd">
+      <div id="hrd" className="hmm">
          {/* <h1>{hiring.companyName}</h1>  */}
-         <div id="hihi">{requests.companyName}</div>
+         <div id="hihi">Company Name : {requests.companyName}</div>
          <h3>Role : {requests.role}</h3>
-         <h3>Role : {requests.role}</h3>
-         <h3>Posted By : </h3>
-         <h3>Name : {student.name}</h3>
-         <h3>Roll No. : {student.roll}</h3>
+         <h3>Posted By : : {student.name}</h3>
+         <h3>Branch : {student.branch}</h3>
+         <h3>Semester : {student.semester}th</h3>
+         <h3><a href={`${requests.link}`} target="_blank" >View Details</a></h3>
+      </div>
+      <div id="devu">
+        <button className="devus">Approve Request</button>
+        <button className="devus">Decline Request</button>
       </div>
     </div>
   )

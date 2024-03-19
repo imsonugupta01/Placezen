@@ -50,14 +50,26 @@ function AdminApprovals(){
     <div>
       <div id="header2"> I.K. Gujral Punjab Technical University</div>
       <div id="navbar1">
-        <div id="navbox1">Online Hiring Request</div>
+        <div id="navbox1"></div>
         <Link id="lul" to = {`/SignUpRequest/${Id}`}><div id="navbox2">SignUp Request</div></Link>
         <Link id="lul"><div id="navbox3">Profile Edit Request</div></Link>
         <Link id="lul"><div id="navbox4">Remove Student</div></Link>
         <Link id="lul"><div id="navbox5">Add Admins</div></Link>
        </div>
-
-       <div id="doremon">
+       <div  id="mySidebar">
+           <span className="s2" id="sus" >Welcome</span>
+          
+          
+          
+           <span className="s1">Dashboard</span>
+          
+           <span className="s1" >Profile</span>
+          
+           <span className="s1">Logout</span>
+           
+          
+      </div>
+       <div id="doremon" className="dor">
         { requests && requests.map(request =>(<Link id="lalu" to={`/ApproveHiringDetails/${request.sid}/${request.jobId}`}>
            <div id="thisthat">
             <h3>Company : {request.companyName}</h3>

@@ -97,8 +97,9 @@ function SignUpRequest(){
         <Link id="lul"><div id="navbox4">Remove Student</div></Link>
         <Link id="lul"><div id="navbox5">Add Admins</div></Link>
        </div>
+       
 
-       <div id="doremon">
+       <div id="doremon" >
         { requrets && requrets.map(request =>(
            <div id="thisthat">
             <h1 id="boxspan1">{request.name}</h1>
