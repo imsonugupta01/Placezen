@@ -31,6 +31,7 @@ import ChangePassword from "./Pages/ChangePassword";
 import AdminProfilePage from "./Pages/AdminProfilePage";
 import PostStudent from "./Pages/PostStudent";
 import AddHiringStudent from "./Pages/AddHiringStudent";
+import ApproveHiringDetails from "./Pages/ApproveHiringDetails";
 
 function App(){
     return(
@@ -65,8 +66,9 @@ function App(){
             <Route path="/allStudents" element={<AllStudents/>}/>
             <Route path="/changePass/:Id" element={<ChangePassword/>}/>
             <Route path="/AdminProfilePage/:Id" element={<AdminProfilePage/>}/>
-            <Route path="/PostStudent" element={<PostStudent/>}/>
+            <Route path="/PostStudent/:Id" element={<PostStudent/>}/>
             <Route path="/AddHiringStudent/:Id" element={<AddHiringStudent/>}/>
+            <Route path="/ApproveHiringDetails/:Id/:jobId" element={<ApproveHiringDetails/>}/>
         </Routes>
     );
 }

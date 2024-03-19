@@ -1,25 +1,3 @@
-// import React from "react";
-// import { Link, useParams } from "react-router-dom";
-// import "../CSS/AdminApporvals.css";
-// function AdminApprovals(){
-//   let {Id} = useParams();
-//   return(
-//     <div>
-//        <div id="header2"> I.K. Gujral Punjab Technical University</div>
-//        <div id="navbar1">
-//         <div id="navbox1">Online Hiring Request</div>
-//         <Link id="lul" to = {`/SignUpRequest/${Id}`}><div id="navbox2">SignUp Request</div></Link>
-//         <Link id="lul"><div id="navbox3">Profile Edit Request</div></Link>
-//         <Link id="lul"><div id="navbox4">Remove Student</div></Link>
-//         <Link id="lul"><div id="navbox5">Add Admins</div></Link>
-//        </div>
-//     </div>
-//   )
-// }
-// export default AdminApprovals;
-
-
-
 import React, { useState ,useEffect} from "react";
 import { Link, useParams,useNavigate } from "react-router-dom";
 import "../CSS/AdminApporvals.css";
@@ -80,13 +58,11 @@ function AdminApprovals(){
        </div>
 
        <div id="doremon">
-        { requests && requests.map(request =>(
+        { requests && requests.map(request =>(<Link id="lalu" to={`/ApproveHiringDetails/${request.sid}/${request.jobId}`}>
            <div id="thisthat">
             <h3>Company : {request.companyName}</h3>
-            <h3>Role : {request.role}</h3>
-            <h3>Apply Here :{request.link}</h3>
-            <h1><button onClick={() => next(request)}style={{ width: '80px', color:"crimson" }}>Add</button></h1>
-           </div>
+            <h3>View details</h3>
+           </div></Link>
         ))
         }
        </div>

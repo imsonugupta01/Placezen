@@ -20,10 +20,12 @@ public class OnlineHiringApproval {
     private String CompanyName;
     private String Role;
     private String Link;
+    private int SId;
 
-    public OnlineHiringApproval(String companyName, String role, String link) {
+    public OnlineHiringApproval(String companyName, String role, String link, int SId) {
         CompanyName = companyName;
         Role = role;
         Link = link;
+        this.SId = SId;
     }
 }

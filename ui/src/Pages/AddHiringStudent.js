@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../CSS/AddOnlineHiring.css";
+import { useParams } from "react-router-dom";
 function AddHiringStudent(){
+  let{Id}=useParams();
   let[companyName,setcompanyName]=useState("");
   let[role,setrole]=useState("");
   let[link,setlink]=useState("");
@@ -23,6 +25,7 @@ function AddHiringStudent(){
     formdata.append('Company',companyName)
     formdata.append('Role',role)
     formdata.append('Apply',link)
+    formdata.append('SId',Id)
    
     fetch('http://localhost:8050/OnlineApproval/adds', {
       method:'POST',
