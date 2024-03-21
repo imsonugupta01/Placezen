@@ -1,0 +1,33 @@
+#Co{
+    display: flex;
+    flex-direction: row;
+}
+#titud{
+    display: inline-block;
+    height: 90vh;
+    width: 18%;
+
+    background-color:rgb(61, 89, 123) ;;
+}
+#titu{
+   
+    display: inline-flexbox;
+    
+    width: 100%;
+    color: white;
+    
+    
+}
+ #titu, #tri,#thi{
+    border-collapse: collapse;
+}
+#tri{
+    height: 2rem;
+}
+#addu{
+     /* background-color: aqua; */
+     height: 2%;
+     margin-left: 70vw;
+     color: red;
+     margin-top: 1vh;
+}
