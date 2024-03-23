@@ -24,10 +24,11 @@
 #tri{
     height: 2rem;
 }
-#addu{
-     /* background-color: aqua; */
-     height: 2%;
+ #addu{
+     
+     /* height: 2%; */
      margin-left: 70vw;
-     color: red;
+     /* color: red; */
      margin-top: 1vh;
-}
+     /* background-color: green; */
+} 

@@ -24,7 +24,7 @@ function Adminresult()
 
            
             <Link id="addu" to={`/AddResult/${Id}`}><button >Add more results</button></Link>
-          
+            {/* <Link id="addu" to={`/AddResult/${Id}`}><button style={{ width: '60%', backgroundColor: 'green', color: '#fff', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Save All</button></Link> */}
             </div>
         </div>
     )

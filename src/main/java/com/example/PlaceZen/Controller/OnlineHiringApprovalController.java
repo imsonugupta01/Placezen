@@ -42,5 +42,12 @@ public class OnlineHiringApprovalController {
     public Optional<OnlineHiringApproval> getby(@PathVariable("id") int id){
         return  onlineHiringApprovalRepository.findById(id);
     }
+    @GetMapping("/delete/{Id}")
+    public String remove(@PathVariable("Id") Integer Id){
+        onlineHiringApprovalRepository.deleteById(Id);
+        return "deleted";
+
+
+    }
 
 }
