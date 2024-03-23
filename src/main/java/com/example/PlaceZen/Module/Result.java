@@ -15,13 +15,13 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int JId;
-    private int sid;
+    private int SId;
     private int CTC;
     private String CName;
     private String Role;
-    public Result(int JId, int sid, int CTC, String CName, String role) {
+    public Result(int JId, int SId, int CTC, String CName, String role) {
         this.JId = JId;
-        this.sid = sid;
+        this.SId = SId;
         this.CTC = CTC;
         this.CName = CName;
         Role = role;
