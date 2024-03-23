@@ -30,9 +30,6 @@ function SignUpRequest(){
    },[status])
 
    const next = async (request)=>{
-  
-    // navigate(`/HiringDetails/${Id}/${jobId}`);
-
     const formdata = new FormData();
     formdata.append('roll',request.roll)
     formdata.append('name',request.name)
