@@ -34,6 +34,8 @@ import AddHiringStudent from "./Pages/AddHiringStudent";
 import ApproveHiringDetails from "./Pages/ApproveHiringDetails";
 import Adminresult from "./Results/Adminresult";
 import AddResult from "./Results/AddResult";
+import CompanyWiseResult from "./Results/CompanyWiseResult";
+import StudentResult from "./Results/StudentResult";
 
 function App(){
     return(
@@ -73,6 +75,8 @@ function App(){
             <Route path="/ApproveHiringDetails/:Id/:jobId" element={<ApproveHiringDetails/>}/>
             <Route path="/Adminresult/:Id" element={<Adminresult/>}/>
             <Route path ="/AddResult/:Id" element={<AddResult/>}/>
+            <Route path="/CompanyWiseResult/:comp" element={<CompanyWiseResult/>}/>
+            <Route path="/StudentResult" element={<StudentResult/>}/>
         </Routes>
     );
 }

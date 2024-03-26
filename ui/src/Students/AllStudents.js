@@ -29,6 +29,7 @@ function AllStudents()
     return(
      <div>
         <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+
         <div  id="mySidebar">
            <span className="s2" id="sus" >All Students</span>
           
@@ -43,6 +44,7 @@ function AllStudents()
            <span className="s1">Mechanical</span>
           
       </div>
+      
       <div>
                 
                 <table id="tabu">

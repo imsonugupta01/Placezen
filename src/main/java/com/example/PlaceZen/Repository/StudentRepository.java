@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -23,4 +24,5 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
 
     @Query("select m from Student m where m.ImageName=:filename")
     Optional<Student> findByAdminImageName(@Param("filename") String filename);
+
 }

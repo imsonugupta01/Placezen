@@ -38,8 +38,9 @@ public class SignUpApprovals {
     private String ImagePath;
     private String ImageType;
     private String Password;
+    private int SSession;
 
-    public SignUpApprovals(int roll, String name, int semester, String branch, String DOB, String mobile, String gender, String email, String linkedin, String github, Float cgpa, int backlog, String skills, String interest, String portfolio, String experience, String imageName, String imagePath, String imageType, String password) {
+    public SignUpApprovals(int roll, String name, int semester, String branch, String DOB, String mobile, String gender, String email, String linkedin, String github, Float cgpa, int backlog, String skills, String interest, String portfolio, String experience, String imageName, String imagePath, String imageType, String password,int ssession) {
         Roll = roll;
         Name = name;
         Semester = semester;
@@ -60,6 +61,7 @@ public class SignUpApprovals {
         ImagePath = imagePath;
         ImageType = imageType;
         Password = password;
+        SSession=ssession;
     }
 
 

@@ -21,7 +21,7 @@ public class SignUpApprovalsController {
 
     @Autowired
     private SignupApprovRepo signupApprovRepo;
-    private final String path = "D:\\SpringbootProject\\Trial2\\Images";
+    private final String path = "C:\\Springboot\\Trial3\\Images";
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> RegisterStudent(
@@ -42,14 +42,15 @@ public class SignUpApprovalsController {
             @RequestParam("portfolio") String Portfolio,
             @RequestParam("experience") String Experience,
             @RequestParam("file") MultipartFile file,
-            @RequestParam("password") String Password
+            @RequestParam("password") String Password,
+            @RequestParam("s") Integer SSession
     )  throws IOException {
         String fullPath = path + file.getOriginalFilename();
         file.transferTo(new File(fullPath));
         String ImageName = file.getOriginalFilename();
         String ImageType = file.getContentType();
         String ImagePath = fullPath;
-        SignUpApprovals student = new SignUpApprovals(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,ImageName,ImagePath,ImageType,Password);
+        SignUpApprovals student = new SignUpApprovals(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,ImageName,ImagePath,ImageType,Password,SSession);
         signupApprovRepo.save(student);
         return ResponseEntity.ok("Upload successful");
     }

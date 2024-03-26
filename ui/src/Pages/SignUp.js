@@ -24,6 +24,7 @@ function SignUp(){
   let[Semester,setSemester]=useState();
   let[Branch,setBranch]=useState();
   let[Backlog,setBacklog]=useState();
+  let[session,setSession]=useState();
 
   function input1(event){
     console.log(event.target.value)
@@ -96,6 +97,11 @@ function SignUp(){
     console.log(event.target.value)
     setBacklog(event.target.value)
   }
+
+  function input19(event){
+    console.log(event.target.value)
+    setSession(event.target.value);
+  }
   function submit(event){
     event.preventDefault();
     const formdata = new FormData();
@@ -117,6 +123,7 @@ function SignUp(){
     formdata.append('semester',Semester)
     formdata.append('branch',Branch)
     formdata.append('backlog',Backlog);
+    formdata.append('s',session)
     
 
     fetch('http://localhost:8050/signApprov/signup', {
@@ -145,6 +152,8 @@ function SignUp(){
         <input onChange={input1} value={Roll} placeholder="Roll "></input><br></br>
         <label>Name</label><br></br>
         <input onChange={input2} value={Name} placeholder="Name "></input><br></br>
+        <label>Enter Start Session </label><br></br>
+        <input onChange={input19} value={session} placeholder="Start Session "></input><br></br>
         <label>Date of Birth</label><br></br>
         <input onChange={input3} value={DOB} placeholder="DOB "></input><br></br>
         <label>Mobile</label><br></br>

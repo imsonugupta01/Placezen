@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from "react";
-import "./Adminresult.css"
 import { Link, useParams } from "react-router-dom";
-function Adminresult()
-{ 
-let{Id}=useParams();
-const [company,setcompany] = useState();
-const [result,setresult] = useState();
-const[student,setStudetns]=useState();
-var i=1;
-useEffect(() => {
+function CompanyWiseResult(){
+  let{comp}=useParams();
+  console.log(comp);
+  const [result,setStudents] = useState("");
+  const [company,setcompany] = useState();
+  var i=1;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8050/student/details/${comp}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log(data);
+        setStudents(data);
+      } catch (error) {
+        console.error('Error fetching data: ', error.message);
+      }
+    };
+    fetchData();
+  }, [1]);
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:8050/result/allC");
@@ -24,30 +38,20 @@ useEffect(() => {
     };
     fetchData();
   }, []);
+
+
+
+
+
+  return(
+
+    
  
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8050/student/allS");
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log(data);
-        setresult(data);
-      } catch (error) {
-        console.error('Error fetching data: ', error.message);
-      }
-    };
-    fetchData();
-  }, []);
+    <div>
+       <div id="bcd">I.K. Gujral Punjab Technical University</div>
 
-    return(
-        <div>
-            <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-            
-            <div  id="mySidebar">
+       <div  id="mySidebar">
             <span className="s2" id="sus" >All Students</span>
                 {
                     company && company.map(index=>(
@@ -56,7 +60,8 @@ useEffect(() => {
                 }
 
            </div>
-           <Link id="addu" to={`/AddResult/${Id}`}><button >Add more results</button></Link>
+
+
            <div>
                 
                 <table id="tabu">
@@ -89,12 +94,8 @@ useEffect(() => {
                     }
                 </table>
             </div>
-
-           
-           
-            {/* <Link id="addu" to={`/AddResult/${Id}`}><button style={{ width: '60%', backgroundColor: 'green', color: '#fff', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Save All</button></Link> */}
-            
-        </div>
-    )
+          
+    </div>
+  )
 }
-export default Adminresult;
+export default CompanyWiseResult;

@@ -61,7 +61,7 @@ function StudentProfile(){
        <Link to={`/OnlineHiring2/${Id}`}><div id="box2"><h2 id="boxspan1">Online Hiring</h2></div></Link>
        <div id="box3"><h2 id="boxspan1">Preparation Material</h2></div>
        <div id="box4"><h2 id="boxspan1">Placement Guide</h2></div>
-       <div id="box5"><h2 id="boxspan1">Placement Results</h2></div>
+       <Link to={`/StudentResult`}><div id="box5"><h2 id="boxspan1">Placement Results</h2></div></Link>
        <Link to={`/EventStudent/${Id}`}><div id="box6"><h2 id="boxspan1">Upcoming Sessions</h2></div></Link>
        
 

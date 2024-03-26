@@ -51,6 +51,7 @@ function SignUpRequest(){
     formdata.append('password',request.password)
     formdata.append('semester',request.semester)
     formdata.append('branch',request.branch)
+    formdata.append('s',request.ssession)
 
     fetch('http://localhost:8050/student/add', {
       method:'POST',

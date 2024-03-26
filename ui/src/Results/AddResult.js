@@ -10,6 +10,7 @@ function AddResult() {
   const [studentData, setStudentData] = useState([{ jid: "", cname: "", sid: "", role: "", ctc: "" }]);
   const [CName, setCName] = useState();
   const [CId, setCId] = useState();
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +29,8 @@ function AddResult() {
     };
     fetchData();
   }, []);
+
+  
 
   function input1(event) {
     setSelectedOption(event.target.value);
@@ -98,21 +101,9 @@ function AddResult() {
              
              {/* <input id="oii" disabled value={index+1} ></input> */}
              {/* {index+1} */}
-              <input id="oi"
-                placeholder="Roll Number"
-                value={student.sid}
-                onChange={(e) => handleInputChange(index, "sid", e.target.value)}
-              />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input
-                placeholder="Role"
-                value={student.role}
-                onChange={(e) => handleInputChange(index, "role", e.target.value)}
-              />&nbsp;&nbsp;&nbsp;&nbsp;
-              <input
-                placeholder="CTC"
-                value={student.ctc}
-                onChange={(e) => handleInputChange(index, "ctc", e.target.value)}
-              />
+              <input id="oi" placeholder="Roll Number" value={student.sid} onChange={(e) => handleInputChange(index, "sid", e.target.value)}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input placeholder="Role" value={student.role} onChange={(e) => handleInputChange(index, "role", e.target.value)} />&nbsp;&nbsp;&nbsp;&nbsp;
+              <input placeholder="CTC" value={student.ctc} onChange={(e) => handleInputChange(index, "ctc", e.target.value)} />
               <br /><br />
             </div>
           ))}

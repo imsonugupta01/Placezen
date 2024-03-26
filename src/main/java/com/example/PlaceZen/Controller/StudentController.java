@@ -1,5 +1,8 @@
 package com.example.PlaceZen.Controller;
+import com.example.PlaceZen.Module.Result;
+import com.example.PlaceZen.Module.ResultShow;
 import com.example.PlaceZen.Module.Student;
+import com.example.PlaceZen.Repository.ResultRepository;
 import com.example.PlaceZen.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +23,9 @@ import java.util.Optional;
 public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
-//    private final String path = "C:\\Springboot\\Trial3\\Images";
+    @Autowired
+    private ResultRepository resultRepository;
+   private final String path = "C:\\Springboot\\Trial3\\Images";
 
 //    @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 
@@ -44,11 +50,12 @@ public class StudentController {
             @RequestParam("imageType") String imageType,
             @RequestParam("password") String Password,
             @RequestParam("semester") Integer Semester,
-            @RequestParam("branch") String Branch
+            @RequestParam("branch") String Branch,
+            @RequestParam("s") Integer SSession
     )  throws IOException{
 
 //        Student student = new Student(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,ImageName,ImagePath,ImageType,Password);
-        Student student= new Student(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,imageName,imagePath,imageType,Password);
+        Student student= new Student(Roll,Name,Semester,Branch,DOB,Mobile,Gender,Email,Linkedin,Github,CGPA,Backlog,Skills,Interest,Portfolio,Experience,imageName,imagePath,imageType,Password,SSession);
         studentRepository.save(student);
 
         return ResponseEntity.ok("Upload successful");
@@ -79,5 +86,67 @@ public class StudentController {
     public List<Student> allStudets()
     {
         return (List<Student>) studentRepository.findAll();
+    }
+
+    @GetMapping("allS")
+    public List<ResultShow> find()
+    {
+       List<Student> students= (List<Student>) studentRepository.findAll();
+       List<Result> results= (List<Result>) resultRepository.findAll();
+       List<ResultShow> rs=new ArrayList<>();
+       for(int i=0;i<results.size();i++)
+       {
+           for(int j=0;j<students.size();j++)
+           {
+               if(results.get(i).getSId()== students.get(j).getRoll())
+               {
+                   ResultShow resultShow=new ResultShow();
+                   resultShow.setCompName(results.get(i).getCName());
+                   resultShow.setBranch(students.get(j).getBranch());
+                   resultShow.setRole(results.get(i).getRole());
+                   resultShow.setCTC(results.get(i).getCTC());
+                   resultShow.setRoll(students.get(j).getRoll());
+                   resultShow.setStudName(students.get(j).getName());
+                   resultShow.setSession(students.get(j).getSSession());
+                   rs.add(resultShow);
+//                   break;
+               }
+           }
+       }
+       return  rs;
+
+    }
+
+
+    @GetMapping("/details/{name}")
+    public List<ResultShow> resultShows(@PathVariable("name")String Name){
+        List<Student> students= (List<Student>) studentRepository.findAll();
+        List<Result> results= (List<Result>) resultRepository.findAll();
+        List<ResultShow> rs=new ArrayList<>();
+        for(int i=0;i<results.size();i++)
+        {
+            if(results.get(i).getCName().equals(Name)){
+                for(int j=0;j<students.size();j++)
+                {
+                    if(results.get(i).getSId()== students.get(j).getRoll())
+                    {
+                        ResultShow resultShow=new ResultShow();
+                        resultShow.setCompName(results.get(i).getCName());
+                        resultShow.setBranch(students.get(j).getBranch());
+                        resultShow.setRole(results.get(i).getRole());
+                        resultShow.setCTC(results.get(i).getCTC());
+                        resultShow.setRoll(students.get(j).getRoll());
+                        resultShow.setStudName(students.get(j).getName());
+                        resultShow.setSession(students.get(j).getSSession());
+                        rs.add(resultShow);
+//                   break;
+                    }
+                }
+            }
+
+        }
+        return  rs;
+
+
     }
 }

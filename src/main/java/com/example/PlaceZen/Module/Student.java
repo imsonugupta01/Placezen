@@ -26,6 +26,7 @@ public class Student {
     private String Linkedin;
     private String Github;
     private Float Cgpa;
+    private int SSession;
     private int Backlog;
     private String Skills;
     private String Interest;
@@ -36,7 +37,7 @@ public class Student {
     private String ImageType;
     private String Password;
 
-    public Student(int roll, String name, int semester, String branch, String DOB, String mobile, String gender, String email, String linkedin, String github, Float cgpa, int backlog, String skills, String interest, String portfolio, String experience, String imageName, String imagePath, String imageType, String password) {
+    public Student(int roll, String name, int semester, String branch, String DOB, String mobile, String gender, String email, String linkedin, String github, Float cgpa, int backlog, String skills, String interest, String portfolio, String experience, String imageName, String imagePath, String imageType, String password,int sSession) {
         Roll = roll;
         Name = name;
         Semester = semester;
@@ -57,6 +58,7 @@ public class Student {
         ImagePath = imagePath;
         ImageType = imageType;
         Password = password;
+        SSession=sSession;
     }
 }
 
