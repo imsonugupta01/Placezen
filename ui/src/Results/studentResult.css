@@ -1,0 +1,53 @@
+#dis {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 26%; /* Adjust margin instead of padding */
+    margin-right: 10%; /* Adjust margin instead of padding */
+    margin-top: 2%;
+}
+
+.dis1 {
+    width: calc(25% - 20px); /* Each item takes up approximately one-third of the container width */
+    background-color: #e3dfdf; /* Background color of each item */
+    border-radius: 10px;
+    margin-bottom: 20px; /* Adds space between rows */
+    /* margin-left:2px; */
+    text-align: center;
+   
+}
+
+/* Rest of the CSS remains the same */
+ 
+
+.company-heading {
+    width: 100%; /* Same width as the parent */
+    background-color: crimson; /* Background color for the company name */
+    color: white; /* Text color */
+     /* Padding for better spacing */
+    border-top-left-radius: 10px; /* Rounded corners */
+    border-top-right-radius: 10px; /* Rounded corners */
+    margin-top: 0; /* Remove margin for better alignment */
+    margin-bottom: 10px; /* Add margin for better spacing */
+}
+
+.dis1 img {
+    width: 120px; /* Increased width for student image */
+    height: 120px; /* Increased height for student image */
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 10px; /* Add space below the image */
+}
+
+.dis1 h3 {
+    margin: 5px 0; /* Adjust margin for the student name */
+}
+
+.dis1 h4 {
+    margin: 5px 0;
+    font-size: 18px; /* Adjust the font size of the ctc */
+}
+
+.dis1 p {
+    margin: 5px 0;
+    font-size: 16px; /* Adjust the font size of the role */
+}

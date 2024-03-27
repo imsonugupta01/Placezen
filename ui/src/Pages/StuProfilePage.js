@@ -9,7 +9,7 @@ function StuProfilePage(){
    const fetchData = async () => {
      try {
          const response = await fetch(`http://localhost:8050/student/getStudent/${Id}`);
-        //  const response2 = await fetch(`http://localhost:8050/student/downloadImage/${Id}`);
+          const response2 = await fetch(`http://localhost:8050/student/downloadImage/${Id}`);
          if (!response.ok ) {
            throw new Error('Network response was not okk');
          }
@@ -17,11 +17,11 @@ function StuProfilePage(){
         //   throw new Error('Network response was not okk');
         // }
          const data = await response.json();
-        //  const imageBlob = await response2.blob(); 
-        //  const imageObjectUrl = URL.createObjectURL(imageBlob);
+         const imageBlob = await response2.blob(); 
+         const imageObjectUrl = URL.createObjectURL(imageBlob);
          console.log(data);
          setprofile(data);
-          // setImageUrl(imageObjectUrl);
+           setImageUrl(imageObjectUrl);
         //  console.log(profile); 
        } 
        catch (error) {
@@ -38,7 +38,7 @@ function StuProfilePage(){
       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
       <div  id="mySidebar">
       <span className="s2" id="sus">Welcome  {pf.name}</span>
-          <span className="s1"><img id ="simg" height="120" width="120"  ></img></span>
+          <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span>
           <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
           <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>

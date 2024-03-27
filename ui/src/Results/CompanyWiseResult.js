@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-function CompanyWiseResult(){
-  let{comp}=useParams();
-  console.log(comp);
-  const [result,setStudents] = useState("");
-  const [company,setcompany] = useState();
-  var i=1;
+import "./CompanyWiseReult.css"
+
+function CompanyWiseResult() {
+  let { comp } = useParams();
+  const [result, setStudents] = useState([]);
+  const [company, setCompany] = useState([]);
+  const [loading, setLoading] = useState(true); // State to track loading status
+
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Set loading to true when fetching data starts
       try {
         const response = await fetch(`http://localhost:8050/student/details/${comp}`);
         if (!response.ok) {
@@ -18,10 +21,13 @@ function CompanyWiseResult(){
         setStudents(data);
       } catch (error) {
         console.error('Error fetching data: ', error.message);
+      } finally {
+        setLoading(false); // Set loading to false when data fetching is complete
       }
     };
     fetchData();
-  }, [1]);
+  }, [comp]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,7 +37,7 @@ function CompanyWiseResult(){
         }
         const data = await response.json();
         console.log(data);
-        setcompany(data);
+        setCompany(data);
       } catch (error) {
         console.error('Error fetching data: ', error.message);
       }
@@ -39,63 +45,57 @@ function CompanyWiseResult(){
     fetchData();
   }, []);
 
-
-
-
-
-  return(
-
-    
- 
-
+  return (
     <div>
-       <div id="bcd">I.K. Gujral Punjab Technical University</div>
+      <div id="bcd">I.K. Gujral Punjab Technical University</div>
 
-       <div  id="mySidebar">
-            <span className="s2" id="sus" >All Students</span>
-                {
-                    company && company.map(index=>(
-                        <Link id="llll" to={`/CompanyWiseResult/${index}`}><span className="s1">{index}</span></Link>
-                    ))
-                }
+      <div id="mySidebar">
+        <span className="s2" id="sus" >All Students</span>
+        {
+          company && company.map(index => (
+            <Link id="llll" to={`/CompanyWiseResult/${index}`} key={index}><span className="s1">{index}</span></Link>
+          ))
+        }
+      </div>
 
-           </div>
-
-
-           <div>
-                
-                <table id="tabu">
-                    <thead className="tt" id="tabuh">
-                        <th>Sl No.</th>
-                        <th>Company Name</th>
-                        <th>Student Name</th>
-                        <th>Roll Number</th>
-                        <th>Session</th>
-                        <th>Branch</th>
-                        <th>Role</th>
-                        <th>CTC</th>
-                        {/* <th>Branch</th> */}
-                        {/* <th>Date</th> */}
-                        
-                    </thead>
-                    {   
-                        result && result.map(result =>(
-                            <tr>
-                               <td>{i++}</td>
-                               <td>{result.compName}</td>
-                               <td>{result.studName}</td>
-                               <td>{result.roll}</td>
-                               <td>{result.session}</td>
-                               <td>{result.branch}</td>
-                               <td>{result.role}</td>
-                               <td>{result.ctc/100000} LPA</td>
-                            </tr>
-                        ))
-                    }
-                </table>
-            </div>
-          
+      {loading ? ( // Display loading spinner while fetching data
+        <div className="loader"></div> // Use CSS to style loader
+      ) : (
+        <div>
+          <div>
+            <table id="tabu">
+              <thead className="tt" id="tabuh">
+                <tr>
+                  <th>Sl No.</th>
+                  <th>Company Name</th>
+                  <th>Student Name</th>
+                  <th>Roll Number</th>
+                  <th>Session</th>
+                  <th>Branch</th>
+                  <th>Role</th>
+                  <th>CTC</th>
+                </tr>
+              </thead>
+              <tbody>
+                {result && result.map((result, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{result.compName}</td>
+                    <td>{result.studName}</td>
+                    <td>{result.roll}</td>
+                    <td>{result.session}</td>
+                    <td>{result.branch}</td>
+                    <td>{result.role}</td>
+                    <td>{result.ctc / 100000} LPA</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
+
 export default CompanyWiseResult;

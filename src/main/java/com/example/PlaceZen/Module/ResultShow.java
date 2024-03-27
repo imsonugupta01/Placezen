@@ -13,6 +13,7 @@ public class ResultShow {
 
     private  String CompName;
     private  String StudName;
+    private String Gender;
     private int Roll;
     private int Session;
     private String Branch;

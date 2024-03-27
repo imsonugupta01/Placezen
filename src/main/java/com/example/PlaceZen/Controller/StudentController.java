@@ -108,6 +108,7 @@ public class StudentController {
                    resultShow.setRoll(students.get(j).getRoll());
                    resultShow.setStudName(students.get(j).getName());
                    resultShow.setSession(students.get(j).getSSession());
+                   resultShow.setGender(students.get(j).getGender());
                    rs.add(resultShow);
 //                   break;
                }
@@ -138,6 +139,7 @@ public class StudentController {
                         resultShow.setRoll(students.get(j).getRoll());
                         resultShow.setStudName(students.get(j).getName());
                         resultShow.setSession(students.get(j).getSSession());
+                        resultShow.setGender(students.get(j).getGender());
                         rs.add(resultShow);
 //                   break;
                     }

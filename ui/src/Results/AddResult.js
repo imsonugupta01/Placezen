@@ -7,7 +7,7 @@ function AddResult() {
   const { Id } = useParams();
   const [hiring, setHiring] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
-  const [studentData, setStudentData] = useState([{ jid: "", cname: "", sid: "", role: "", ctc: "" }]);
+  const [studentData, setStudentData] = useState([]);
   const [CName, setCName] = useState();
   const [CId, setCId] = useState();
  
@@ -30,8 +30,6 @@ function AddResult() {
     fetchData();
   }, []);
 
-  
-
   function input1(event) {
     setSelectedOption(event.target.value);
     const [companyId, companyName] = event.target.value.split(",");
@@ -40,8 +38,13 @@ function AddResult() {
   }
 
   function addRow() {
-    setStudentData([...studentData, { jid: CId, cname: CName, sid: "", role: "", ctc: "" }]);
+    if (CId && CName) {
+      setStudentData([...studentData, { jid: CId, cname: CName, sid: "", role: "", ctc: "" }]);
+    } else {
+      alert("Please select a company before adding results.");
+    }
   }
+  
 
   function handleInputChange(index, fieldName, value) {
     const newData = [...studentData];
@@ -98,9 +101,6 @@ function AddResult() {
           
           {studentData.map((student, index) => (
             <div key={index}>
-             
-             {/* <input id="oii" disabled value={index+1} ></input> */}
-             {/* {index+1} */}
               <input id="oi" placeholder="Roll Number" value={student.sid} onChange={(e) => handleInputChange(index, "sid", e.target.value)}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <input placeholder="Role" value={student.role} onChange={(e) => handleInputChange(index, "role", e.target.value)} />&nbsp;&nbsp;&nbsp;&nbsp;
               <input placeholder="CTC" value={student.ctc} onChange={(e) => handleInputChange(index, "ctc", e.target.value)} />
