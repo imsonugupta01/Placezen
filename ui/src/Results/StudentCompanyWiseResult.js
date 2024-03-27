@@ -1,33 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "./StudCompWiseResult.css"
 import boy from "../Pics/boy.jpg";
 import girl from "../Pics/girl.jpg"
-import "./studentResult.css";
-
-function StudentResult() {
-  let { Id } = useParams();
+function StudentCompWiseResult(){
+  let{comp}=useParams();
+  const [result, setStudents] = useState([]);
   let [company, setCompany] = useState();
-  const [result, setResult] = useState();
-  const [loading, setLoading] = useState(true); // Loading state
-
+  const [loading, setLoading] = useState(true); // State to track loading status
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response1 = await fetch("http://localhost:8050/result/allC");
-        const response2 = await fetch("http://localhost:8050/student/allS");
-
-        if (!response1.ok || !response2.ok) {
+        const response = await fetch("http://localhost:8050/result/allC");
+        if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
-        const data1 = await response1.json();
-        const data2 = await response2.json();
-
-        console.log(data1);
-        console.log(data2);
-
-        setCompany(data1);
-        setResult(data2);
+        const data = await response.json();
+        console.log(data);
+        setCompany(data);
+      } catch (error) {
+        console.error('Error fetching company data: ', error.message);
+      }
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true); // Set loading to true when fetching data starts
+      try {
+        const response = await fetch(`http://localhost:8050/student/details/${comp}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log(data);
+        setStudents(data);
       } catch (error) {
         console.error('Error fetching data: ', error.message);
       } finally {
@@ -35,22 +42,22 @@ function StudentResult() {
       }
     };
     fetchData();
-  }, []);
+  }, [comp]);
 
   return (
     <div>
-
       <div id="bcd">I.K. Gujral Punjab Technical University</div>
-
       <div id="mySidebar">
-        <span className="s2" id="sus">Results</span>
-        {company &&
-          company.map(index => (
+        <span className="s2" id="sus">{comp} Results</span>
+        {company && company.map(index => (
             <Link id="llll" to={`/CompStudResult/${index}`} key={index}>
               <span className="s1">{index}</span>
             </Link>
           ))}
       </div>
+      
+        {/* <span id="huh">{comp} </span>
+        <span id="huh1"> Congratulates</span> */}
 
       {loading ? ( // Render loader while fetching data
         <div className="loader"></div>
@@ -61,7 +68,7 @@ function StudentResult() {
               result.map(res => (
                 <div className="dis1" key={res.id}>
                   <h2 className="company-heading">{res.compName}</h2>
-                  <p>Congratulates</p>
+                  {/* <p>Congratulates</p> */}
                   <img src={res.gender === 'Female' ? girl : boy} style={{ width: '120px', height: '120px' }}alt="Student"/>
                   <h3>{res.studName} ({res.branch})</h3>
                   <p>{res.session} - {res.session+4}</p>
@@ -73,8 +80,9 @@ function StudentResult() {
           </div>
         </div>
       )}
-    </div>
-  );
-}
 
-export default StudentResult;
+    </div>
+  )
+
+}
+export default StudentCompWiseResult;

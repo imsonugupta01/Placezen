@@ -1,4 +1,4 @@
-#dis {
+    #dis {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -9,7 +9,7 @@
 
 .dis1 {
     width: calc(25% - 20px); /* Each item takes up approximately one-third of the container width */
-    background-color: #e3dfdf; /* Background color of each item */
+    background-color: #a8d8f9; /* Background color of each item */
     border-radius: 10px;
     margin-bottom: 20px; /* Adds space between rows */
     /* margin-left:2px; */
@@ -22,6 +22,7 @@
 
 .company-heading {
     width: 100%; /* Same width as the parent */
+    font-family: cursive;
     background-color: crimson; /* Background color for the company name */
     color: white; /* Text color */
      /* Padding for better spacing */

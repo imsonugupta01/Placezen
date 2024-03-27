@@ -36,6 +36,7 @@ import Adminresult from "./Results/Adminresult";
 import AddResult from "./Results/AddResult";
 import CompanyWiseResult from "./Results/CompanyWiseResult";
 import StudentResult from "./Results/StudentResult";
+import StudentCompWiseResult from "./Results/StudentCompanyWiseResult";
 
 function App(){
     return(
@@ -77,6 +78,7 @@ function App(){
             <Route path ="/AddResult/:Id" element={<AddResult/>}/>
             <Route path="/CompanyWiseResult/:comp" element={<CompanyWiseResult/>}/>
             <Route path="/StudentResult" element={<StudentResult/>}/>
+            <Route path="/CompStudResult/:comp" element={<StudentCompWiseResult/>}/>
         </Routes>
     );
 }
