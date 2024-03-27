@@ -68,9 +68,10 @@ function StudentCompWiseResult(){
               result.map(res => (
                 <div className="dis1" key={res.id}>
                   <h2 className="company-heading">{res.compName}</h2>
-                  {/* <p>Congratulates</p> */}
+                  <p id="cngr">Congratulates</p>
                   <img src={res.gender === 'Female' ? girl : boy} style={{ width: '120px', height: '120px' }}alt="Student"/>
-                  <h3>{res.studName} ({res.branch})</h3>
+                  <h3>{res.studName}</h3>
+                  <h3>{res.branch}</h3>
                   <p>{res.session} - {res.session+4}</p>
                   <p style={{ fontSize: '30px', fontWeight: '700',color:'crimson' }}>{res.ctc / 100000} LPA</p>
 
