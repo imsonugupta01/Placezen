@@ -51,6 +51,7 @@ function AllStudents()
                     <thead className="tt" id="tabuh">
                         <th>Sl No.</th>
                         <th>Student Name</th>
+                        <th>Session</th>
                         <th>Roll Number</th>
                         <th>Branch</th>
                         {/* <th>Date</th> */}
@@ -61,8 +62,9 @@ function AllStudents()
                             <tr>
                                <td>{i++}</td>
                                <td>{student.name}</td>
+                               <td>{student.ssession} - {student.ssession+4}</td>
                                <td>{student.roll}</td>
-                               <td>CSE</td>
+                               <td>{student.branch}</td>
                                {/* <td>{convertDate(student.date)}</td> */}
                             </tr>
                         ))

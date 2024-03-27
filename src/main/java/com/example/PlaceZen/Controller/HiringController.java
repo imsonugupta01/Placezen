@@ -57,6 +57,13 @@ public class HiringController {
         }
        return hr;
     }
+
+    @GetMapping("/gett")
+    public  List<Hiring> thisthat2()
+    {
+        return (List<Hiring>) hiringRepository.findAll();
+
+    }
     @GetMapping("/fetch/{Id}")
     public Optional<Hiring> fetching(@PathVariable("Id")Integer id){
 

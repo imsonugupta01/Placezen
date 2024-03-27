@@ -50,6 +50,7 @@
 } */
 
 #doremon {
+  margin-left: 16%;
   display: flex; /* Use modern Flexbox */
   flex-wrap: wrap; /* Allow items to wrap to the next line */
   justify-content: space-around; /* Space out items evenly */

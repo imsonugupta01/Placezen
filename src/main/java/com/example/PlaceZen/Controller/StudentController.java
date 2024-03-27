@@ -25,7 +25,7 @@ public class StudentController {
     private StudentRepository studentRepository;
     @Autowired
     private ResultRepository resultRepository;
-   private final String path = "C:\\Springboot\\Trial3\\Images";
+   private final String path = "../../Images";
 
 //    @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 
@@ -154,4 +154,47 @@ public class StudentController {
     {
         return  studentRepository.findID(Id);
     }
+
+
+    @GetMapping("/cal/{year}")
+    public Integer Calcu(@PathVariable("year") Integer year)
+    {
+        List<Student> students= (List<Student>) studentRepository.findAll();
+        List<Result> results= (List<Result>) resultRepository.findAll();
+        Integer count=0;
+//        System.out.println(results.size());
+        for(int i=0;i<results.size();i++)
+        {
+            for(int j=0;j<students.size();j++)
+            {
+                if(results.get(i).getSId()==students.get(j).getRoll() && students.get(j).getSSession()==year)
+                {
+//                    System.out.println(students.get(j).getName());
+                    count++;
+                    break;}
+            }
+        }
+        return count;
+    }
+
+//    @GetMapping("/calc/{branch}")
+//    public Integer Calcus(@PathVariable("branch") String branch)
+//    {
+//        List<Student> students= (List<Student>) studentRepository.findAll();
+//        List<Result> results= (List<Result>) resultRepository.findAll();
+//        Integer count=0;
+////        System.out.println(results.size());
+//        for(int i=0;i<results.size();i++)
+//        {
+//            for(int j=0;j<students.size();j++)
+//            {
+//                if(results.get(i).getSId()==students.get(j).getRoll() && students.get(j).getBranch().equals(branch))
+//                {
+////                    System.out.println(students.get(j).getName());
+//                    count++;
+//                    break;}
+//            }
+//        }
+//        return count;
+//    }
 }

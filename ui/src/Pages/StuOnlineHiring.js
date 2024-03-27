@@ -30,10 +30,22 @@ function StuOnlineHiring() {
   return (
     <div>
       <div id="bcd">I.K. Gujral Punjab Technical University</div>
-      <div id="offf">
-        <div id="off1">Off Campus Recruitment</div>
-        {/* <Link to={`/AddOnlineHiring/${Id}`}><div id="off2">Add More +</div></Link> */}
+       <div id="mySidebar">
+        <span className="s2" id="sus">Welcome</span>
+        <Link id="llll" to={`/StudentProfile/${Id}`}>
+          <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span>
+        </Link>
+        <Link id="llll" to={`/StuProfilePage/${Id}`}>
+          <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
+        </Link>
+        <Link id="llll" to={`/StuPending/${Id}`}>
+          <span className="s1" style={{ fontSize: '20px' }}>Pending</span>
+        </Link>
+        <Link id="llll" to="/">
+          <span className="s1" style={{ fontSize: '20px' }}>Logout</span>
+        </Link>
       </div>
+      <div id="iui">Online Hirings</div>
 
       {loading ? (
         <div className="loader"></div>

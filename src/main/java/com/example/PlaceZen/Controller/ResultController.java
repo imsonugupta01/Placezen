@@ -63,11 +63,8 @@ public class ResultController {
             }
         }
         return cnt;
-
-
-
-
-
     }
+
+
 
 }

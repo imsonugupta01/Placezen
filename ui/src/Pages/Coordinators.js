@@ -42,10 +42,11 @@ function AdminCoordinator() {
           <span className="s1" style={{ fontSize: '20px' }}>Logout</span>
         </Link>
       </div>
+      <div id="iui">Coordinators</div>
 
-      <div id="offf">
+      {/* <div id="offf">
         <div id="off1">T & P Coordinators</div>
-      </div>
+      </div> */}
       
       {loading ? (
         <div className="loader"></div>

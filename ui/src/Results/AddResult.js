@@ -16,7 +16,7 @@ function AddResult() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8050/Hiring/get");
+        const response = await fetch("http://localhost:8050/Hiring/gett");
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

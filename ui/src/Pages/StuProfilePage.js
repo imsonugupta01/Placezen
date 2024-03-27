@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams ,useNavigate} from "react-router-dom";
 import "../CSS/StProfile.css"
+
 function StuProfilePage(){
   let[pf,setprofile]=useState("");
   let[imageURL,setImageUrl]=useState("")
@@ -96,7 +97,8 @@ function StuProfilePage(){
           <span>Interest</span><br></br>
           <input id="iti"value={pf.interest} disabled></input><br></br>
           <br></br><br></br>
-         <button style={{ width: '100px', color:"crimson" }}>Save details</button>
+         {/* <button style={{ width: '100px', color:"white",backgroundColor:'green' }}>Save details</button> */}
+         <button  style={{ backgroundColor: 'green', color: '#fff', marginLeft: '30%', marginRight: '10%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Save Details</button>
           
 
         </div>

@@ -36,11 +36,11 @@ function StudentProfile(){
   return(
     <div id="StProfile">
       <div id="header2"> I.K. Gujral Punjab Technical University 
-      <img id ="img2"  src={ProfileLogo}></img>
+      {/* <img id ="img2"  src={ProfileLogo}></img>
       <div id="hid" >
         <div>change password </div>
         <div>logout</div>
-      </div>
+      </div> */}
       </div>
       <div  id="mySidebar">
       <span className="s2" id="sus">Student Dashboard</span>

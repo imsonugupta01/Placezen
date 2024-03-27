@@ -52,3 +52,25 @@
     margin: 5px 0;
     font-size: 16px; /* Adjust the font size of the role */
 }
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 6%;
+    /* margin-bottom: 20px; */
+    margin-left: 30%;
+    height: 90vh;
+  }
+  
+  .chart {
+    /* height: 30rem; */
+    width: 90%; /* Increase the width to occupy more space */
+    margin-right: 10%;
+    max-width: 800px; /* Adjust the maximum width as needed */
+  }
+  
+  canvas {
+    width: 100%; /* Set the width of the canvas to 100% to fill the container */
+    height: 1000px; /* Adjust the height of the canvas as needed */
+  }
+  
+  

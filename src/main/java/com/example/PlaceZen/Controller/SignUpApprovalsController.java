@@ -21,7 +21,7 @@ public class SignUpApprovalsController {
 
     @Autowired
     private SignupApprovRepo signupApprovRepo;
-    private final String path = "C:\\Springboot\\Trial3\\Images";
+    private final String path = "../../Images";
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> RegisterStudent(
