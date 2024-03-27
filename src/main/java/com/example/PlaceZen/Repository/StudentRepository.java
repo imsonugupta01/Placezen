@@ -25,4 +25,7 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     @Query("select m from Student m where m.ImageName=:filename")
     Optional<Student> findByAdminImageName(@Param("filename") String filename);
 
+    @Query("select m.Roll from Student m where m.id=:id")
+    Integer findID (@Param("id") Integer id);
+
 }

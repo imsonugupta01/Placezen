@@ -117,8 +117,6 @@ public class StudentController {
        return  rs;
 
     }
-
-
     @GetMapping("/details/{name}")
     public List<ResultShow> resultShows(@PathVariable("name")String Name){
         List<Student> students= (List<Student>) studentRepository.findAll();
@@ -150,5 +148,10 @@ public class StudentController {
         return  rs;
 
 
+    }
+    @GetMapping("/find/{Id}")
+    public  Integer finduuu(@PathVariable("Id") Integer Id)
+    {
+        return  studentRepository.findID(Id);
     }
 }

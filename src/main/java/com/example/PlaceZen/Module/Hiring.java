@@ -19,7 +19,7 @@ public class Hiring {
     private String CompanyName;
     private String Role;
     private float Cgpa;
-    private float CTC;
+    private Integer CTC;
     private int Backlog;
     private int StartSession;
     private int Semester;
@@ -29,7 +29,7 @@ public class Hiring {
     private String StartDate;
     private String EndDate;
 
-    public Hiring(String companyName, String role, float cgpa, float CTC, int backlog, int startSession, int semester, String branch, String description, String location, String startDate, String endDate) {
+    public Hiring(String companyName, String role, float cgpa, Integer CTC, int backlog, int startSession, int semester, String branch, String description, String location, String startDate, String endDate) {
         CompanyName = companyName;
         Role = role;
         Cgpa = cgpa;
@@ -43,6 +43,8 @@ public class Hiring {
         StartDate = startDate;
         EndDate = endDate;
     }
+
+
 }
 
 
