@@ -63,7 +63,7 @@
   
   .chart {
     /* height: 30rem; */
-    width: 90%; /* Increase the width to occupy more space */
+    width: 120%; /* Increase the width to occupy more space */
     margin-right: 10%;
     max-width: 800px; /* Adjust the maximum width as needed */
   }

@@ -67,7 +67,7 @@ function AdminProfile(){
        </div></Link>
 
        <Link to={`/Events/${Id}`}><div id="box3"><h2 id="boxspan1">UpcomingEvents</h2><div id="nob">0</div></div></Link>
-       <div id="box4"><h2 id="boxspan1">Results Statistics</h2></div>
+       <Link to={`/ResultStats/${Id}`}><div id="box4"><h2 id="boxspan1">Results Statistics</h2></div></Link>
        <div id="box5"><h2 id="boxspan1">Placement Guides</h2></div>
        <div id="box6"><h2 id="boxspan1">z</h2></div>
        

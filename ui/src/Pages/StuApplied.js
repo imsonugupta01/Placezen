@@ -8,6 +8,9 @@ import "../CSS/StApplied.css"
 
 function StuApplied() {
 
+
+
+
 //   let[y2025,sety2025]=useState(0)
 //   let[y2024,sety2024]=useState(0)
 //   let[y2023,sety2023]=useState(0)
@@ -140,6 +143,7 @@ function StuApplied() {
 
 //   return (
 //     <div className="chart-container">
+//     {/* {Ece} {Cse} */}
 //       <div className="chart">
 //         <canvas ref={barChartRef} />
 //       </div>
@@ -148,28 +152,6 @@ function StuApplied() {
 //       </div>
 //     </div>
 //   );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

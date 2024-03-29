@@ -177,24 +177,33 @@ public class StudentController {
         return count;
     }
 
-//    @GetMapping("/calc/{branch}")
-//    public Integer Calcus(@PathVariable("branch") String branch)
-//    {
-//        List<Student> students= (List<Student>) studentRepository.findAll();
-//        List<Result> results= (List<Result>) resultRepository.findAll();
-//        Integer count=0;
-////        System.out.println(results.size());
-//        for(int i=0;i<results.size();i++)
-//        {
-//            for(int j=0;j<students.size();j++)
-//            {
-//                if(results.get(i).getSId()==students.get(j).getRoll() && students.get(j).getBranch().equals(branch))
-//                {
-////                    System.out.println(students.get(j).getName());
-//                    count++;
-//                    break;}
-//            }
-//        }
-//        return count;
-//    }
+    @GetMapping("/calc/{branch}")
+    public Integer Calcus(@PathVariable("branch") String branch)
+    {
+        List<Student> students= (List<Student>) studentRepository.findAll();
+        List<Result> results= (List<Result>) resultRepository.findAll();
+        Integer count=0;
+//        System.out.println(results.size());
+        for(int i=0;i<results.size();i++)
+        {
+            for(int j=0;j<students.size();j++)
+            {
+                if(results.get(i).getSId()==students.get(j).getRoll() && students.get(j).getBranch().equals(branch))
+                {
+//                    System.out.println(students.get(j).getName());
+                    count++;
+                    break;}
+            }
+        }
+        return count;
+    }
+
+    @GetMapping("/delete/{id}")
+    public  String deletu(@PathVariable("id") Integer id)
+    {
+        studentRepository.deleteById(id);
+        return "Deleted";
+    }
+
+
 }

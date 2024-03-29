@@ -37,6 +37,9 @@ import AddResult from "./Results/AddResult";
 import CompanyWiseResult from "./Results/CompanyWiseResult";
 import StudentResult from "./Results/StudentResult";
 import StudentCompWiseResult from "./Results/StudentCompanyWiseResult";
+import AdminResultStats from "./Results/AdminResultStats";
+import RemoveStudents from "./Approval NavPage/RemoveStudetns";
+import StPostMaterial from "./Post/StPostMaterial";
 
 function App(){
     return(
@@ -79,6 +82,9 @@ function App(){
             <Route path="/CompanyWiseResult/:comp" element={<CompanyWiseResult/>}/>
             <Route path="/StudentResult" element={<StudentResult/>}/>
             <Route path="/CompStudResult/:comp" element={<StudentCompWiseResult/>}/>
+            <Route path ="/ResultStats/:Id" element={<AdminResultStats/>}/>
+            <Route path="/removeStudents/:Id" element={<RemoveStudents/>}/>
+            <Route path="/stPostMaterial/:Id" element={<StPostMaterial/>}/>
         </Routes>
     );
 }

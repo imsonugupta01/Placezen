@@ -18,7 +18,7 @@ function PostStudent(){
        
        <div id="box1"><h2 id="boxspan1">Off Campus Result</h2></div>
        <Link to={`/AddHiringStudent/${Id}`}><div id="box2"><h2 id="boxspan1">Online Hiring</h2></div></Link>
-       <div id="box3"><h2 id="boxspan1">Preparation Material</h2></div>
+       <Link to={`/stPostMaterial/${Id}`}><div id="box3"><h2 id="boxspan1">Preparation Material</h2></div></Link>
 
     </div>
   )
