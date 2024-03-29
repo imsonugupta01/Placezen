@@ -52,7 +52,7 @@ function OnlineHiringApproval(){
         <Link id="lul" to={`/AdminApprovals/${Id}`}><div id="navbox1">Online Hiring Request</div></Link>
         <div id="navbox2">SignUp Request</div>
         <Link id="lul" ><div id="navbox3">Profile Edit Request</div></Link>
-        <Link id="lul"><div id="navbox4">Remove Student</div></Link>
+        <Link id="lul" to={`/removeStudents/${Id}`}><div id="navbox4">Remove Student</div></Link>
         <Link id="lul"><div id="navbox5">Add Admins</div></Link>
        </div>
 
