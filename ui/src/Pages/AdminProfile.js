@@ -33,7 +33,9 @@ function AdminProfile(){
 
   return(
     <div id="StProfile">
-      <div id="header2"> I.K. Gujral Punjab Technical University 
+      <div id="bcd1"> 
+       <div id="sd">☰</div>
+       I.K. Gujral Punjab Technical University 
       <img id ="img2"  src={ProfileLogo}></img> 
       
       </div>
@@ -50,6 +52,7 @@ function AdminProfile(){
            <span className="s1">Results</span>
            <span className="s1">Students</span>
            <span className="s1">T & P Coordinators</span>
+           <span className="s1" id="delL">Logout</span>
            {/* <span className="s1"></span> */}
       </div>
       
