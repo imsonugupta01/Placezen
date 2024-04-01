@@ -177,6 +177,7 @@ function StudentResult() {
               <span className="s1">{index}</span>
             </Link>
           ))}
+          <Link id="llll" to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
 
       <div>
@@ -194,31 +195,6 @@ function StudentResult() {
 
         )}
       </div>
-
-      {/* {loading ? ( // Render loader while fetching data
-        <div className="loader"></div>
-      ) : (
-        <div>
-          <div id="dis">
-            {result &&
-              result.map(res => (
-                <div className="dis1" key={res.id}>
-                  <h2 className="company-heading">{res.compName}</h2>
-                  <p>Congratulates</p>
-                  <img src={res.gender === 'Female' ? girl : boy} style={{ width: '120px', height: '120px' }}alt="Student"/>
-                  <h3>{res.studName} ({res.branch})</h3>
-                  <p>{res.session} - {res.session+4}</p>
-                  <p style={{ fontSize: '30px', fontWeight: '700',color:'crimson' }}>{res.ctc / 100000} LPA</p>
-
-                  <p>{res.role}</p>
-                </div>
-              ))}
-          </div>
-        </div>
-        
-        
-
-      )} */}
 
     </div>
   );

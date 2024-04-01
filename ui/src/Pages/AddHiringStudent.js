@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import "../CSS/AddOnlineHiring.css";
-import { useParams } from "react-router-dom";
 function AddHiringStudent(){
   let{Id}=useParams();
   let[companyName,setcompanyName]=useState("");
@@ -45,6 +45,14 @@ function AddHiringStudent(){
   return(
     <div>
        <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+       <div  id="mySidebar">
+      <span className="s2" id="sus">Welcome </span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
+          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      </div>
+      <div id="iui">Post Online Hiring</div>
        <div id="yess">
         <label>Company Name</label><br></br>
         <input placeholder="Company Name" value={companyName} onChange={input1}></input><br></br>

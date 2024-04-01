@@ -51,9 +51,9 @@ function StudentProfile(){
            <span className="s1" style={{ fontSize: '20px' }}>Alumni</span>
            <Link id="llll" to={`/StuApplied/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Applied</span></Link>
            <Link id="llll" to={`/StuPending/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Pending</span></Link>
-           <Link id="llll" to={`/Coordinators`}><span className="s1" style={{ fontSize: '20px' }}>T & P Coordinators</span></Link>
-           <Link id="llll" to={`/Recuriter`}><span className="s1" style={{ fontSize: '20px' }}>Top Recruiters</span></Link>
-           <Link id="llll" to={`/Contactus`}> <span className="s1" style={{ fontSize: '20px' }}>Contact Us</span></Link>
+           <Link id="llll" to={`/Coordinators/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>T & P Coordinators</span></Link>
+           <Link id="llll" to={`/Recuriter/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Top Recruiters</span></Link>
+           <Link id="llll" to={`/Contactus/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Contact Us</span></Link>
       </div>
       
 
@@ -61,7 +61,7 @@ function StudentProfile(){
        <Link to={`/OnlineHiring2/${Id}`}><div id="box2"><h2 id="boxspan1">Online Hiring</h2></div></Link>
        <div id="box3"><h2 id="boxspan1">Preparation Material</h2></div>
        <div id="box4"><h2 id="boxspan1">Placement Guide</h2></div>
-       <Link to={`/StudentResult`}><div id="box5"><h2 id="boxspan1">Placement Results</h2></div></Link>
+       <Link to={`/StudentResult/${Id}`}><div id="box5"><h2 id="boxspan1">Placement Results</h2></div></Link>
        <Link to={`/EventStudent/${Id}`}><div id="box6"><h2 id="boxspan1">Upcoming Sessions</h2></div></Link>
        
 

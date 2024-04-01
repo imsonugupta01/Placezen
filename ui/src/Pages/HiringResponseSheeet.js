@@ -59,13 +59,6 @@ function convertDate(dateStr) {
     return date.toLocaleDateString();
 }
 
-
-
-
-
-
-
-
     return(
         <div>
             <div id="bcd"> I.K. Gujral Punjab Technical University</div>

@@ -53,6 +53,7 @@ function Adminresult() {
         {company && company.map(index => (
           <Link id="llll" to={`/CompanyWiseResult/${index}`} key={index}><span className="s1">{index}</span></Link>
         ))}
+         <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
       <Link id="addu" to={`/AddResult/${Id}`}><button >Add more results</button></Link>
       {loading ? ( // Display loading spinner while fetching data

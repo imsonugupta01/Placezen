@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-
+import { Link, useParams } from "react-router-dom";
 function AllStudents()
 {
-
+    let {Id}=useParams();
     let[students,setStudetns]=useState("");
     var i=1;
 
@@ -32,17 +32,12 @@ function AllStudents()
 
         <div  id="mySidebar">
            <span className="s2" id="sus" >All Students</span>
-          
-          
-          
            <span className="s1">Computer Science</span>
-          
            <span className="s1" >Electronics</span>
-          
            <span className="s1">Electrical</span>
            <span className="s1">Civil</span>
            <span className="s1">Mechanical</span>
-          
+           <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
       
       <div>

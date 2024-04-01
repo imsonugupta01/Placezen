@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "../CSS/AddOnlineHiring.css";
+import { Link, useParams } from "react-router-dom";
 function AddCoorniators(){
+  let {Id}=useParams();
+
   let[name,setname]=useState("");
   let[branch,setbranch]=useState("");
   let[semester,setsemester]=useState("");
@@ -67,6 +70,14 @@ function AddCoorniators(){
   return(
     <div>
        <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+       <div  id="mySidebar">
+        <span className="s2" id="sus">Welcome</span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
+          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      </div>
+      <div id="iui">Add Coordinators</div>
        <div id="yess">
         <label>Name</label><br></br>
         <input placeholder="Name" value={name} onChange={input1}></input><br></br>

@@ -28,7 +28,7 @@ function onFileChange(event) {
         <input type="file" onChange={onFileChange} ></input><br></br><br></br>
 
         
-        <textarea placeholder="Write Description Selecteed File..." rows="15" cols="80"></textarea>
+        <textarea placeholder="Write Description about Selected File..." rows="15" cols="80"></textarea>
         <button  style={{width:'150px', backgroundColor: 'green', color: '#fff', marginLeft: '46%', marginTop:'3%',marginRight: '10%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Post Material</button>
       </div>
          </div>
