@@ -204,6 +204,11 @@ public class StudentController {
         studentRepository.deleteById(id);
         return "Deleted";
     }
-
-
+//    @GetMapping("update/{roll}")
+//    public String updatuu(@PathVariable("roll")Integer roll)
+//    {
+////        studentRepository.updte(roll);
+//        studentRepository.;
+//        return "Updated";
+//    }
 }

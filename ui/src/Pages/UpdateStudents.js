@@ -62,7 +62,7 @@ function UpdateStudents(){
                                <td>{student.semester}</td>
                                <td>{student.roll}</td>
                                <td>{student.branch}</td>
-                               <td><input placeholder="Enter ${student.semester+1} th Semester CGPA "></input></td>
+                               <td><input placeholder={`${student.semester}th Semester CGPA`}></input></td>
                                {/* <td>{convertDate(student.date)}</td> */}
                               <td><button style={{width:'100%', backgroundColor: 'green', color: '#fff', marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Update</button></td> 
                             </tr>
