@@ -28,8 +28,20 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
 
     @Query("select m.Roll from Student m where m.id=:id")
     Integer findID (@Param("id") Integer id);
-// @Modifying
-// @Query("update Student m set m.Semester = m.Semester + 1 where m.Roll = :roll")
-// void updte(@Param("roll") Integer roll);
+
+    @Query("select m from Student m where m.Roll=:roll")
+    Student Stud (@Param("roll") Integer roll);
+ @Modifying
+ @Query("update Student m set m.Semester = m.Semester + 1 where m.Roll = :roll")
+ void updte(@Param("roll") Integer roll);
+
+ @Modifying
+ @Query("update Student m set m.Cgpa =:cgpa where m.Roll = :roll")
+ void updteCgpa(@Param("roll") Integer roll,@Param("cgpa") Float cgpa);
+
+
+
+
 
 }
+// update Student m set m.Cgpa =cgpa where m.Roll = :roll

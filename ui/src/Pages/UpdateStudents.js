@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 function UpdateStudents(){
   let {Id}=useParams();
   let[students,setStudents]=useState();
+  let[status,setStatus]=useState(0)
   var i=1;
   useEffect( ()=>{
     const fetchData = async () => {
@@ -26,7 +27,22 @@ function UpdateStudents(){
   {
       fetchData();
   }        
-   },[])
+   },[status])
+
+   const update = async(roll,cgpa)=>{
+    console.log(roll,cgpa)
+
+    const response= await fetch(`http://localhost:8050/student/update/${roll}/${cgpa}`)
+    .then(response => response.text())
+    .then(data => {
+      console.log('Successfully Deleted also:', data);
+      status++;
+      setStatus(status);
+    })
+    .catch(error => {
+      console.error('Error during Deletion:', error);
+    });
+   }
 
   return(
     <div>
@@ -55,20 +71,28 @@ function UpdateStudents(){
                         
                     </thead>
                     {   
-                        students && students.map(student =>(
-                            <tr>
-                               <td>{i++}</td>
-                               <td>{student.name}</td>
-                               <td>{student.semester}</td>
-                               <td>{student.roll}</td>
-                               <td>{student.branch}</td>
-                               <td><input placeholder={`${student.semester}th Semester CGPA`}></input></td>
-                               {/* <td>{convertDate(student.date)}</td> */}
-                              <td><button style={{width:'100%', backgroundColor: 'green', color: '#fff', marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Update</button></td> 
-                            </tr>
-                            
-                        ))
-                    }
+    students && students.map(student => {
+        if (student.semester !== 9) {
+            return (
+                <tr key={student.roll}>
+                    <td>{i++}</td>
+                    <td>{student.name}</td>
+                    <td>{student.semester}</td>
+                    <td>{student.roll}</td>
+                    <td>{student.branch}</td>
+                    <td><input placeholder={`${student.semester}th Semester CGPA`} /></td>
+                    {/* <td>{convertDate(student.date)}</td> */}
+                    <td>
+                        <button onClick={() => update(student.roll, student.cgpa)} style={{ width:'100%', backgroundColor: 'green', color: '#fff', marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Update</button>
+                    </td> 
+                </tr>
+            );
+        } else {
+            return null; // Skip rendering for students with semester 9
+        }
+    })
+}
+
                 </table>
             </div>
 
