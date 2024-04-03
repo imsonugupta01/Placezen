@@ -42,6 +42,7 @@ import RemoveStudents from "./Approval NavPage/RemoveStudetns";
 import StPostMaterial from "./Post/StPostMaterial";
 import UpdateStudents from "./Pages/UpdateStudents";
 import Alumnii from "./Alumni/Alumnii";
+import StAlumni from "./Alumni/StAlumni";
 
 function App(){
     return(
@@ -88,7 +89,8 @@ function App(){
             <Route path="/removeStudents/:Id" element={<RemoveStudents/>}/>
             <Route path="/stPostMaterial/:Id" element={<StPostMaterial/>}/>
             <Route path="/UpdateStudents/:Id" element={<UpdateStudents/>}/>
-            <Route path="/Alumni/:Id" element={<Alumnii/>}/>
+            <Route path="/Alumnii/:Id" element={<Alumnii/>}/>
+            <Route path="/StAlumni/:Id" element={<StAlumni/>}/>
         </Routes>
     );
 }
