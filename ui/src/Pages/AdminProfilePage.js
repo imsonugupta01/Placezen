@@ -145,7 +145,7 @@ function AdminProfilePage(){
 
  <div id="sidud">
   <div id="sidudd">Password</div>
-  <div id="sidudd">{pr.password}</div>
+  <div id="sidudd" >{pr.password}</div>
   
 </div>
 <div><Link to="#"><center>change password</center></Link></div>

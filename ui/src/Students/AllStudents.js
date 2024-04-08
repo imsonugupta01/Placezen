@@ -39,6 +39,7 @@ function AllStudents()
            <span className="s1">Mechanical</span>
            <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
+      <div id="iui">All Students</div>
       
       <div>
                 

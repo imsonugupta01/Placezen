@@ -142,6 +142,7 @@
           <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
+      <div id="iui">Result Statistics</div>
       <div>
         {loading ? (
           <div className="loader"></div>

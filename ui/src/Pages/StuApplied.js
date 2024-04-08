@@ -56,7 +56,9 @@ function StuApplied() {
         </Link>
       </div>
 
-      <h2><center>Applied Forms for Campus Recruitment</center></h2>
+      {/* <h2><center>Applied Forms for Campus Recruitment</center></h2> */}
+      <div id="iui">Applied Forms for Campus Recruitment</div>
+
       {loading ? (
         <div className="loader"></div>
       ) : (

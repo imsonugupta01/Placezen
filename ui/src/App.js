@@ -43,6 +43,10 @@ import StPostMaterial from "./Post/StPostMaterial";
 import UpdateStudents from "./Pages/UpdateStudents";
 import Alumnii from "./Alumni/Alumnii";
 import StAlumni from "./Alumni/StAlumni";
+import PrepMaterial from "./Post/PrepMaterial";
+import StResume from "./Pages/StResume";
+import AlumniDetail from "./Alumni/AluminiDetail";
+import StAluminiDetail from "./Alumni/StAluminiDetails";
 
 function App(){
     return(
@@ -91,7 +95,11 @@ function App(){
             <Route path="/UpdateStudents/:Id" element={<UpdateStudents/>}/>
             <Route path="/Alumnii/:Id" element={<Alumnii/>}/>
             <Route path="/StAlumni/:Id" element={<StAlumni/>}/>
-        </Routes>
+            <Route path="/prepMaterial/:Id" element={<PrepMaterial/>}/>
+            <Route path="/StResume/:Id" element={<StResume/>}/>
+            <Route path="/AluminiDetail/:Id/:Idd" element={<AlumniDetail/>}/>
+            <Route path="/StAluminiDetails/:Id/:Idd" element={<StAluminiDetail/>}/>
+            </Routes>
     );
 }
 export default App;

@@ -16,9 +16,7 @@ function Recuriter(){
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
 
-       <div id="offf">
-        <div id="off1">Top Recruiters</div>
-        </div>
+      <div id="iui">Top Recruiters</div>
 
     <div id="aaaaa">
       <img height="1000" width="1100"src={top}></img>

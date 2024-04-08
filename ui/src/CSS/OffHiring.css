@@ -7,7 +7,7 @@
 }
 #off1{
   margin-left: 25%;
-  background-color: crimson;
+  background-color: rgb(250, 250, 250);
   color: white;
   font-size: 25px;
   width: 300px;
@@ -16,10 +16,16 @@
 }
 #off2{
   /* margin-left: 39%; */
-  background-color: crimson;
+  background-color: green;
   color: white;
   position: relative;
+  height: 30px;
+  width: 100px;
+  border-radius: 10%;
   right: -50px;
+  text-decoration: none;
+  padding-left: 15px;
+  padding-top: 5px;
 }
 #off2 Link{
   text-decoration: none;

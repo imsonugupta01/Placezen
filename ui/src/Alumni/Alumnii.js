@@ -1,3 +1,28 @@
+// import React from "react";
+// import { Link, useParams } from "react-router-dom";
+// function Alumnii()
+// { let{Id}=useParams();
+
+
+//     return (
+//     <div>
+//       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+//        <div  id="mySidebar">
+//         <span className="s2" id="sus">Welcome</span>
+//           {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
+//           <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+//           <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+//            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+//       </div>
+//       <div id="iui">Our Alumnii</div>
+
+
+
+
+//     </div>
+//     )
+// }
+// export default Alumnii;
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
@@ -66,7 +91,7 @@ function Alumnii()
                     {/* <td><input placeholder={`${student.semester}th Semester CGPA`} /></td> */}
                     {/* <td>{convertDate(student.date)}</td> */}
                     <td>
-                        <button style={{ width:'100%', backgroundColor: 'green', color: '#fff', marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>View Profile</button>
+                        <Link to={`/AluminiDetail/${student.roll}/${Id}`}><button style={{ width:'100%', backgroundColor: 'green', color: '#fff', marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>View Profile</button></Link>
                     </td> 
                 </tr>
             );

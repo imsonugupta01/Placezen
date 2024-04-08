@@ -55,6 +55,7 @@ function Adminresult() {
         ))}
          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
+      <div id="iui">Placed Students</div>
       <Link id="addu" to={`/AddResult/${Id}`}><button >Add more results</button></Link>
       {loading ? ( // Display loading spinner while fetching data
         <div className="loader"></div> // Use CSS to style loader

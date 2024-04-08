@@ -46,8 +46,8 @@ function StudentProfile(){
       <span className="s2" id="sus">Student Dashboard</span>
           <span className="s1"><img id ="simg" height="120" width="120" src={PTU_logo}></img></span>
           <Link id="llll" to={`/StuProfilePage/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-           <span className="s1" style={{ fontSize: '20px' }}>Resume</span>
-           <Link id="llll" to={`/PostStudent/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Post</span></Link>
+           <Link id="llll" to={`/StResume/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Resume</span></Link>
+           <Link id="llll" to={`/AddHiringStudent/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Post</span></Link>
            <Link id="llll" to={`/StAlumni/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Alumni</span></Link>
            <Link id="llll" to={`/StuApplied/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Applied</span></Link>
            <Link id="llll" to={`/StuPending/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Pending</span></Link>

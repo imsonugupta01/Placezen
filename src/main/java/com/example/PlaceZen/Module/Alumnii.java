@@ -1,9 +1,6 @@
 package com.example.PlaceZen.Module;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -18,16 +15,37 @@ public class Alumnii {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int Roll;
-    private String JobName;
-    private String JobRole;
-    private float CTC;
+    private String Job;
+    private String Name;
+    private Integer Session;
+//    private String JobRole;
+//    private float CTC;
     private String Description;
+    @Transient
+    private String Gender;
 
-    public Alumnii(int roll, String jobName, String jobRole, float CTC, String description) {
+    public Alumnii(int roll, String job, String name, Integer session, String description) {
         Roll = roll;
-        JobName = jobName;
-        JobRole = jobRole;
-        this.CTC = CTC;
+        Job = job;
+        Name = name;
+        Session = session;
         Description = description;
     }
+
+    public Alumnii(int roll, String job, String name, Integer session, String description, String gender) {
+        Roll = roll;
+        Job = job;
+        Name = name;
+        Session = session;
+        Description = description;
+        Gender = gender;
+    }
+    public Alumnii(String job, String description) {
+
+        Job = job;
+
+        Description = description;
+
+    }
+
 }
