@@ -54,8 +54,8 @@ function RemoveStudents()
           {/* <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span> */}
            <Link id="llll" to = {`/SignUpRequest/${Id}`} > <span className="s1" style={{ fontSize: '20px' }}>SignUp Request</span></Link>
            <Link id="llll" to={`/removeStudents/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Remove Student</span></Link>
-           <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link>
-           <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
+           {/* <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link> */}
+           <Link id="llll" to={`/AddAdmins/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
            <Link id="llll" to={`/AdminApprovals/${Id}`} > <span  className="s1" style={{ fontSize: '20px' }}>Online Hiring Request</span></Link>
       </div>
             <div id="iui">Students Removal Page</div>

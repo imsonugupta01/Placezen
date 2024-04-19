@@ -75,14 +75,25 @@ function SignUpRequest(){
       })
       .catch(error => {
         console.error('Error during Deletion:', error);
-      });
-
-      
-
-      
-
-    
+      }); 
   
+  }
+
+  const delet = async (request)=>{
+
+    const response= await fetch(`http://localhost:8050/signApprov/delete/${request.id}`)
+      .then(response => response.text())
+      .then(data => {
+        console.log('Successfully Deleted also:', data);
+        status++;
+        setStatus(status);
+      })
+      .catch(error => {
+        console.error('Error during Deletion:', error);
+      }); 
+
+
+
   }
   
   return(
@@ -93,8 +104,8 @@ function SignUpRequest(){
           {/* <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span> */}
            <Link id="llll" to = {`/SignUpRequest/${Id}`} > <span className="s1" style={{ fontSize: '20px' }}>SignUp Request</span></Link>
            <Link id="llll" to={`/removeStudents/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Remove Student</span></Link>
-           <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link>
-           <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
+           {/* <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link> */}
+           <Link id="llll" to={`/AddAdmins/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
            <Link id="llll" to={`/AdminApprovals/${Id}`} > <span  className="s1" style={{ fontSize: '20px' }}>Online Hiring Request</span></Link>
       </div>
             <div id="iui">SignUp Request</div>
@@ -107,7 +118,12 @@ function SignUpRequest(){
             <h3>Roll No : {request.roll}</h3>
             <h3>branch: {request.branch}</h3>
             <h3>Semester:{request.semester}th</h3>
-            <h1><button onClick={() => next(request)}style={{ width: '80px', color:"crimson" }}>Add</button></h1>
+            
+            <button onClick={() => next(request)}style={{ width:'20%', backgroundColor: 'green', color: '#fff', marginLeft:'10%',marginRight: '18%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Approve</button>
+            <button onClick={() => delet(request)}style={{ width:'20%', backgroundColor: 'green', color: '#fff', marginRight: '1%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Decline</button>
+            
+            {/* <button onClick={() => next(request)}style={{ width: '80px', color:"white" ,backgroundColor:"green" }}>Add</button></span> */}
+            {/* <span><button onClick={() => delet(request)}style={{ width: '80px', color:"crimson" }}>Decline</button></span> */}
 
 
 

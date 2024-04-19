@@ -87,7 +87,7 @@ function AdminProfilePage(){
 
       <div id="sidud">
       <div id="sidudd">Linkedin </div>
-        <div id="sidudd">saloninarang_27</div>
+        <div id="sidudd">{pr.linkedin}</div>
        </div>
 
 

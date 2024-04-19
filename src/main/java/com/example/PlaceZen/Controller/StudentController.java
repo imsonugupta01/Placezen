@@ -221,4 +221,10 @@ public class StudentController {
 
         return "Updated";
     }
+
+    @GetMapping("/stu/{dept}")
+    public List<Student> deptu(@PathVariable("dept") String dept)
+    {
+        return  studentRepository.deptStd(dept);
+    }
 }

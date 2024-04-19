@@ -47,6 +47,7 @@ import PrepMaterial from "./Post/PrepMaterial";
 import StResume from "./Pages/StResume";
 import AlumniDetail from "./Alumni/AluminiDetail";
 import StAluminiDetail from "./Alumni/StAluminiDetails";
+import AddAdmins from "./Pages/AddAdmins";
 
 function App(){
     return(
@@ -99,6 +100,7 @@ function App(){
             <Route path="/StResume/:Id" element={<StResume/>}/>
             <Route path="/AluminiDetail/:Id/:Idd" element={<AlumniDetail/>}/>
             <Route path="/StAluminiDetails/:Id/:Idd" element={<StAluminiDetail/>}/>
+            <Route path="/AddAdmins/:Id" element={<AddAdmins/>}/>
             </Routes>
     );
 }

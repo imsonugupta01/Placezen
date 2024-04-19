@@ -39,6 +39,9 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
  @Query("update Student m set m.Cgpa =:cgpa where m.Roll = :roll")
  void updteCgpa(@Param("roll") Integer roll,@Param("cgpa") Float cgpa);
 
+ @Query("Select m from Student m where m.Branch=:dept")
+ List<Student> deptStd(@Param("dept") String dept);
+
 
 
 

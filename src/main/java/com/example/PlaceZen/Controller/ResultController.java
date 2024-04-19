@@ -36,6 +36,7 @@ public class ResultController {
     }
     @GetMapping("/allC")
     public Set<String> allCompany(){
+
         List<Result> results= (List<Result>) resultRepository.findAll();
         Set<String> set = new HashSet<String>();
         for(int i=0;i<results.size();i++)
@@ -64,6 +65,7 @@ public class ResultController {
         }
         return cnt;
     }
+
 
 
 

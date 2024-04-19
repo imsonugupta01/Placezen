@@ -36,7 +36,7 @@ function EventAdmin(){
           <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
-      <div id="iui">T & P Coordinators</div>
+      <div id="iui">Upcoming Events</div>
         <div id="offf">
         <div id="off1"></div>
         <Link to={`/addEvents/${Id}`}><div id="off2">Add More +</div></Link>

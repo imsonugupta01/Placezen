@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import "./EventDetailsAdd.css"
+import { useParams,Link,useNavigate } from "react-router-dom";
+import "./EventDetailsAdd.css";
 function EventDetailsAdd()
 { 
   let{Id}=useParams();
@@ -10,6 +10,7 @@ function EventDetailsAdd()
   let[eventDate,setEventDate]=useState("");
   let[eventTimings,setEventTimings]=useState("");
   let[eventDescription,setEventDescription]=useState("");
+  const navigate = useNavigate();
 
 
   function input1(event)
@@ -55,6 +56,8 @@ function EventDetailsAdd()
       .then(response => response.text())
       .then(data => {
         console.log('Added successful:', data);
+        alert("Successfully Added!!!")
+        navigate(`/AdminProfile/${Id}`)
       })
       .catch(error => {
         console.error('Error during adding:', error);
@@ -63,9 +66,18 @@ function EventDetailsAdd()
 
   return(
      <div>
-       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+        <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+        <div  id="mySidebar">
+        <span className="s2" id="sus">Welcome</span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
+          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      </div>
+      <div id="iui">Add Events</div>
 
-       <div id="aed">
+       <div id="fd">
+       <br></br><br></br>
         <label>Event Name</label><br></br>
         <input placeholder="Event name" value={eventName} onChange={input1}></input><br></br>
         <label>Event location</label><br></br>
@@ -73,12 +85,14 @@ function EventDetailsAdd()
         <label>Name of Speaker</label><br></br>
         <input placeholder="Event Spreaker" value={eventSpeaker} onChange={input3}></input><br></br>
         <label>Event Date</label><br></br>
-        <input placeholder="Event date" value={eventDate} onChange={input4}></input><br></br>
+        <input placeholder="Event date" type="date" value={eventDate} onChange={input4}></input><br></br>
         <label>Event timing</label><br></br>
         <input placeholder="Event timing" value={eventTimings} onChange={input5}></input><br></br>
         <label>Event Theme</label><br></br>
         <input placeholder="Description" value={eventDescription} onChange={input6}></input><br></br>
-        <button id="babu" onClick={submit}>Add</button>
+        <br></br>
+        {/* <button id="babu" onClick={submit}>Add</button> */}
+        <button onClick={submit} style={{ width:'20%', backgroundColor: 'green', color: '#fff', marginLeft:'10%',marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Submit</button>
        </div>
 
      </div>

@@ -91,10 +91,21 @@ function ApproveHiringDetails(){
          {/* <h1>{hiring.companyName}</h1>  */}
          <div id="hihi">Company Name : {requests.companyName}</div>
          <h3>Role : {requests.role}</h3>
-         <h3>Posted By : {student.name}</h3>
-         <h3>Branch : {student.branch}</h3>
-         <h3>Semester : {student.semester}th</h3>
-         <h3>Roll No : {student.roll}</h3>
+         {student && (
+          <h3>Branch : {student.branch}</h3>
+          
+         )}
+         {student && (
+          <h3>Branch : {student.semester}</h3>
+          
+         )}
+         {student && (
+          <h3>Branch : {student.roll}</h3>
+          
+         )}
+         
+         
+         {/* <h3>Roll No : {student.roll}</h3> */}
          <h3><a href={`${requests.link}`} target="_blank" >View Details</a></h3>
       </div>
       <div id="devu">

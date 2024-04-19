@@ -4,12 +4,13 @@ function AllStudents()
 {
     let {Id}=useParams();
     let[students,setStudetns]=useState("");
+    let[dept,setDept]=useState("CSE")
     var i=1;
 
     useEffect( ()=>{
         const fetchData = async () => {
           try {
-              const response = await fetch(`http://localhost:8050/student/all`);
+              const response = await fetch(`http://localhost:8050/student/stu/${dept}`);
               if (!response.ok) {
                 throw new Error('Network response was not okk');
               }
@@ -25,18 +26,25 @@ function AllStudents()
       {
           fetchData();
       }  
-    },[])
+    },[dept])
+
+    const branchHandler = (branch) => {
+        // Your logic here when the span is clicked
+        console.log(branch); // For example, just log the branch name
+        setDept(branch)
+    };
+
     return(
      <div>
         <div id="bcd"> I.K. Gujral Punjab Technical University</div>
 
         <div  id="mySidebar">
            <span className="s2" id="sus" >All Students</span>
-           <span className="s1">Computer Science</span>
-           <span className="s1" >Electronics</span>
-           <span className="s1">Electrical</span>
-           <span className="s1">Civil</span>
-           <span className="s1">Mechanical</span>
+           <span onClick={() => branchHandler("CSE")} className="s1">Computer Science</span>
+           <span onClick={() => branchHandler("ECE")}className="s1" >Electronics</span>
+           <span onClick={() => branchHandler("EE")}className="s1">Electrical</span>
+           <span onClick={() => branchHandler("Civil")}className="s1">Civil</span>
+           <span onClick={() => branchHandler("ME")}className="s1">Mechanical</span>
            <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
       <div id="iui">All Students</div>

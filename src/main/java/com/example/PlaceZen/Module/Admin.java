@@ -13,7 +13,7 @@ import lombok.*;
 @Entity
 @ToString
 
-public class Admin {
+public class  Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,4 +25,15 @@ public class Admin {
     private String Department;
     private String Username;
     private String Password;
+
+    public Admin(String name, String phone, String email, String linkedin, String designation, String department, String username, String password) {
+        Name = name;
+        Phone = phone;
+        Email = email;
+        Linkedin = linkedin;
+        Designation = designation;
+        Department = department;
+        Username = username;
+        Password = password;
+    }
 }
