@@ -87,9 +87,9 @@ function App(){
             <Route path="/ApproveHiringDetails/:Id/:jobId" element={<ApproveHiringDetails/>}/>
             <Route path="/Adminresult/:Id" element={<Adminresult/>}/>
             <Route path ="/AddResult/:Id" element={<AddResult/>}/>
-            <Route path="/CompanyWiseResult/:comp" element={<CompanyWiseResult/>}/>
+            <Route path="/CompanyWiseResult/:comp/:Id" element={<CompanyWiseResult/>}/>
             <Route path="/StudentResult/:Id" element={<StudentResult/>}/>
-            <Route path="/CompStudResult/:comp" element={<StudentCompWiseResult/>}/>
+            <Route path="/CompStudResult/:comp/:Id" element={<StudentCompWiseResult/>}/>
             <Route path ="/ResultStats/:Id" element={<AdminResultStats/>}/>
             <Route path="/removeStudents/:Id" element={<RemoveStudents/>}/>
             <Route path="/stPostMaterial/:Id" element={<StPostMaterial/>}/>

@@ -82,8 +82,9 @@ function ApproveHiringDetails(){
       <div id="header2"> I.K. Gujral Punjab Technical University</div>
       <div  id="mySidebar">
            <span className="s2" id="sus" >Welcome</span>  
-           <span className="s1">Dashboard</span> 
-           <span className="s1" >Profile</span> 
+           {/* <span className="s1">Dashboard</span>  */}
+           <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+           {/* <span className="s1" >Profile</span>  */}
            <span className="s1">Logout</span>
       </div><br></br>
     

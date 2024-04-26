@@ -173,7 +173,7 @@ function StudentResult() {
         <span className="s2" id="sus">Results</span>
         {company &&
           company.map(index => (
-            <Link id="llll" to={`/CompStudResult/${index}`} key={index}>
+            <Link id="llll" to={`/CompStudResult/${index}/${Id}`} key={index}>
               <span className="s1">{index}</span>
             </Link>
           ))}

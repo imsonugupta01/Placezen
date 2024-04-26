@@ -7,7 +7,7 @@ function EventAdmin(){
   useEffect( ()=>{
     const fetchData = async () => {
       try {
-          const response = await fetch(`http://localhost:8050/session/hate`);
+          const response = await fetch(`http://localhost:8050/session/get`);
           if (!response.ok) {
             throw new Error('Network response was not okk');
           }

@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import "./CompanyWiseReult.css"
 
 function CompanyWiseResult() {
-  let { comp } = useParams();
+  let { comp ,Id} = useParams();
   const [result, setStudents] = useState([]);
   const [company, setCompany] = useState([]);
   const [loading, setLoading] = useState(true); // State to track loading status
@@ -56,6 +56,7 @@ function CompanyWiseResult() {
             <Link id="llll" to={`/CompanyWiseResult/${index}`} key={index}><span className="s1">{index}</span></Link>
           ))
         }
+        <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
 
       {loading ? ( // Display loading spinner while fetching data

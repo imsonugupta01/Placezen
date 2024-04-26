@@ -10,7 +10,7 @@ function EventStudent() {
     const fetchData = async () => {
       setLoading(true); // Set loading to true when fetching data starts
       try {
-        const response = await fetch(`http://localhost:8050/session/hate`);
+        const response = await fetch(`http://localhost:8050/session/get`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
