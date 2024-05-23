@@ -34,7 +34,7 @@ function AdminProfilePage(){
       <div  id="mySidebar">
       <span className="s2" id="sus">Welcome {pr.name}  </span>
           <span className="s1"><img id ="simg" height="120" width="120" src={girl} ></img></span>
-          <Link id="llll"  > <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
           <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
@@ -87,7 +87,7 @@ function AdminProfilePage(){
 
       <div id="sidud">
       <div id="sidudd">Linkedin </div>
-        <div id="sidudd">saloninarang_27</div>
+        <div id="sidudd">{pr.linkedin}</div>
        </div>
 
 
@@ -145,7 +145,7 @@ function AdminProfilePage(){
 
  <div id="sidud">
   <div id="sidudd">Password</div>
-  <div id="sidudd">{pr.password}</div>
+  <div id="sidudd" >{pr.password}</div>
   
 </div>
 <div><Link to="#"><center>change password</center></Link></div>

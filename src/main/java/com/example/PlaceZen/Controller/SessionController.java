@@ -1,11 +1,14 @@
 package com.example.PlaceZen.Controller;
 
+import com.example.PlaceZen.Module.Hiring;
 import com.example.PlaceZen.Module.Session;
 import com.example.PlaceZen.Repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -31,7 +34,28 @@ public class SessionController {
     }
     @GetMapping("/hate")
     public List<Session> hated(){
+
+
         return (List<Session>) sessionRepository.findAll();
+
+    }
+
+    @GetMapping("/get")
+    public List<Session> thisthat(){
+//      return (List<Hiring>) hiringRepository.findAll();
+
+        List<Session> sessions= (List<Session>) sessionRepository.findAll();
+        List<Session> ss=new ArrayList<>();
+        for(int i=0;i<sessions.size();i++)
+        {
+            String date1= (sessions.get(i).getDate());
+            LocalDate date= LocalDate.parse(date1);
+            LocalDate now = LocalDate.now();
+            if(( date.isAfter(now) || date.isEqual(now) )){
+                ss.add(sessions.get(i));
+            }
+        }
+        return ss;
     }
 
 }

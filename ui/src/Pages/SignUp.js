@@ -146,11 +146,13 @@ function SignUp(){
   return(
     <div>
        <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-        <h1 id="htrx">SignUp Form</h1>
-        <div id="fd">
+        <h1 id="htrx">Student Registration Form</h1>
+        <div id="fd2">
+        <div >
         <label>Roll Number</label><br></br>
         <input onChange={input1} value={Roll} placeholder="Roll "></input><br></br>
-        <label>Name</label><br></br>
+        <label>Name</label>
+        <br></br>
         <input onChange={input2} value={Name} placeholder="Name "></input><br></br>
         <label>Enter Start Session </label><br></br>
         <input onChange={input19} value={session} placeholder="Start Session "></input><br></br>
@@ -159,11 +161,13 @@ function SignUp(){
         <label>Mobile</label><br></br>
         <input onChange={input4} value={Mobile} placeholder="Mobile "></input><br></br>
         <label>Gender</label><br></br>
-        <input onChange={input5} value={Gender} placeholder="Gender "></input><br></br>
+        <input onChange={input5} value={Gender} placeholder="Gender "></input><br></br></div>
+        <div>
         <label>Email</label><br></br>
         <input onChange={input6} value={Email} placeholder="Email " type="email"></input><br></br>
         <label>Linkedin</label><br></br>
         <input onChange={input7} value={Linkedin} placeholder="Linkedin Link "></input><br></br>
+
         <label>Github</label><br></br>
         <input onChange={input8} value={Github} placeholder="Github Link "></input><br></br>
         <label>CGPA</label><br></br>
@@ -173,7 +177,8 @@ function SignUp(){
         <label>Interest</label><br></br>
         <input onChange={input11} value={Interest} placeholder="Interest "></input><br></br>
         <label>Portfolio</label><br></br>
-        <input onChange={input12} value={Portfolio} placeholder="Portfolio Link "></input><br></br>
+        <input onChange={input12} value={Portfolio} placeholder="Portfolio Link "></input><br></br></div>
+        <div>
         <label>Experience</label><br></br>
         <input onChange={input13} value={Experience} placeholder="Experience "></input><br></br>
         <label>Choose your Image</label><br></br>
@@ -185,8 +190,12 @@ function SignUp(){
         <label>Branch</label><br></br>
         <input onChange={input17} value={Branch} placeholder="Branch "></input><br></br> 
         <label>Backlogs if any</label><br></br>
-        <input onChange={input18} value={Backlog} placeholder="Backlogs if any "></input><br></br>
-        <button onClick={submit}>SignUp</button></div>
+        <input onChange={input18} value={Backlog} placeholder="Backlogs if any "></input><br></br><br></br></div>
+        
+        </div>
+        <br></br>
+        <center><button onClick={submit}style={{ width:'20%', backgroundColor: 'green', color: '#fff', marginLeft:'10%',marginRight: '18%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Register</button></center>
+        {/* <button onClick={submit}>SignUp</button></div> */}
     </div>
   );
 }

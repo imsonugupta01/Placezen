@@ -1,5 +1,6 @@
 package com.example.PlaceZen.Repository;
 import com.example.PlaceZen.Module.Student;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -28,4 +29,22 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     @Query("select m.Roll from Student m where m.id=:id")
     Integer findID (@Param("id") Integer id);
 
+    @Query("select m from Student m where m.Roll=:roll")
+    Student Stud (@Param("roll") Integer roll);
+ @Modifying
+ @Query("update Student m set m.Semester = m.Semester + 1 where m.Roll = :roll")
+ void updte(@Param("roll") Integer roll);
+
+ @Modifying
+ @Query("update Student m set m.Cgpa =:cgpa where m.Roll = :roll")
+ void updteCgpa(@Param("roll") Integer roll,@Param("cgpa") Float cgpa);
+
+ @Query("Select m from Student m where m.Branch=:dept")
+ List<Student> deptStd(@Param("dept") String dept);
+
+
+
+
+
 }
+// update Student m set m.Cgpa =cgpa where m.Roll = :roll

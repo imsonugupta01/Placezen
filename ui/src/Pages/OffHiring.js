@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../CSS/OffHiring.css";
 import { Link, useParams } from "react-router-dom";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 function OffHiring(){
   let[hiring,sethiring]=useState("");
   let {Id}=useParams();
@@ -28,9 +29,17 @@ function OffHiring(){
   return(
     <div>
        <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+       <div  id="mySidebar">
+        <span className="s2" id="sus">Welcome</span>
+          
+          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      </div>
+      <div id="iui">Campus Recruitment </div>
        <div id="offf">
-        <div id="off1">Campus Recuirtment</div>
-        <Link to={`/addHiring/${Id}`}><div id="off2">Add More +</div></Link>
+        <div id="off1"></div>
+        <Link id="lola"to={`/addHiring/${Id}`}><div id="off2">Add More +</div></Link>
        </div>
         <div id="doremon">
           {
@@ -44,6 +53,7 @@ function OffHiring(){
           }
           
         </div>
+        
     </div>
   )
 }

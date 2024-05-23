@@ -81,10 +81,12 @@ function AddResult() {
 
       <div id="mySidebar">
         <span className="s2" id="sus">Welcome </span>
-        <Link id="llll" to="#"><span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-        <Link id="llll" to="#"><span className="s1" style={{ fontSize: '20px' }}>Result Page</span></Link>
+        {/* <Link id="llll" to="#"><span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link> */}
+        <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+        {/* <Link id="llll" to="#"><span className="s1" style={{ fontSize: '20px' }}>Result Page</span></Link> */}
         <Link id="llll" to="/"><span className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
+      <div id="iui">Add Results</div>
 
       <div id="niu">
         <div>

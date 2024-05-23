@@ -39,6 +39,15 @@ import StudentResult from "./Results/StudentResult";
 import StudentCompWiseResult from "./Results/StudentCompanyWiseResult";
 import AdminResultStats from "./Results/AdminResultStats";
 import RemoveStudents from "./Approval NavPage/RemoveStudetns";
+import StPostMaterial from "./Post/StPostMaterial";
+import UpdateStudents from "./Pages/UpdateStudents";
+import Alumnii from "./Alumni/Alumnii";
+import StAlumni from "./Alumni/StAlumni";
+import PrepMaterial from "./Post/PrepMaterial";
+import StResume from "./Pages/StResume";
+import AlumniDetail from "./Alumni/AluminiDetail";
+import StAluminiDetail from "./Alumni/StAluminiDetails";
+import AddAdmins from "./Pages/AddAdmins";
 
 function App(){
     return(
@@ -62,15 +71,15 @@ function App(){
             <Route path="/Events/:Id" element={<EventAdmin/>}/>
             <Route path="/addEvents/:Id" element={<EventDetailsAdd/>}/>
             <Route path="/EventStudent/:Id" element={<EventStudent/>}/>
-            <Route path="/Contactus" element = {<Contactus/>}/>
-            <Route path="/Recuriter" element={<Recuriter/>}/>
-            <Route path="/Coordinators" element={<Coordinator/>}/>
+            <Route path="/Contactus/:Id" element = {<Contactus/>}/>
+            <Route path="/Recuriter/:Id" element={<Recuriter/>}/>
+            <Route path="/Coordinators/:Id" element={<Coordinator/>}/>
             <Route path="/StuApplied/:Id" element={<StuApplied/>}/>
             <Route path="/StuPending/:Id" element={<StuPending/>}/>
             <Route path="/AdminCoordinators/:Id" element={<AdminCoordinator/>}/>
             <Route path="/AddCoordinators/:Id" element={<AddCoorniators/>}/>
             <Route path="/StuProfilePage/:Id" element={<StuProfilePage/>}/>
-            <Route path="/allStudents" element={<AllStudents/>}/>
+            <Route path="/allStudents/:Id" element={<AllStudents/>}/>
             <Route path="/changePass/:Id" element={<ChangePassword/>}/>
             <Route path="/AdminProfilePage/:Id" element={<AdminProfilePage/>}/>
             <Route path="/PostStudent/:Id" element={<PostStudent/>}/>
@@ -78,12 +87,21 @@ function App(){
             <Route path="/ApproveHiringDetails/:Id/:jobId" element={<ApproveHiringDetails/>}/>
             <Route path="/Adminresult/:Id" element={<Adminresult/>}/>
             <Route path ="/AddResult/:Id" element={<AddResult/>}/>
-            <Route path="/CompanyWiseResult/:comp" element={<CompanyWiseResult/>}/>
-            <Route path="/StudentResult" element={<StudentResult/>}/>
-            <Route path="/CompStudResult/:comp" element={<StudentCompWiseResult/>}/>
+            <Route path="/CompanyWiseResult/:comp/:Id" element={<CompanyWiseResult/>}/>
+            <Route path="/StudentResult/:Id" element={<StudentResult/>}/>
+            <Route path="/CompStudResult/:comp/:Id" element={<StudentCompWiseResult/>}/>
             <Route path ="/ResultStats/:Id" element={<AdminResultStats/>}/>
             <Route path="/removeStudents/:Id" element={<RemoveStudents/>}/>
-        </Routes>
+            <Route path="/stPostMaterial/:Id" element={<StPostMaterial/>}/>
+            <Route path="/UpdateStudents/:Id" element={<UpdateStudents/>}/>
+            <Route path="/Alumnii/:Id" element={<Alumnii/>}/>
+            <Route path="/StAlumni/:Id" element={<StAlumni/>}/>
+            <Route path="/prepMaterial/:Id" element={<PrepMaterial/>}/>
+            <Route path="/StResume/:Id" element={<StResume/>}/>
+            <Route path="/AluminiDetail/:Id/:Idd" element={<AlumniDetail/>}/>
+            <Route path="/StAluminiDetails/:Id/:Idd" element={<StAluminiDetail/>}/>
+            <Route path="/AddAdmins/:Id" element={<AddAdmins/>}/>
+            </Routes>
     );
 }
 export default App;

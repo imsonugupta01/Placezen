@@ -4,7 +4,9 @@ import com.example.PlaceZen.Module.ResultShow;
 import com.example.PlaceZen.Module.Student;
 import com.example.PlaceZen.Repository.ResultRepository;
 import com.example.PlaceZen.Repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -203,7 +205,26 @@ public class StudentController {
     {
         studentRepository.deleteById(id);
         return "Deleted";
+   }
+
+    @GetMapping("update/{roll}/{cgpa}")
+    @Transactional
+    public String updatuu(@PathVariable("roll")Integer roll,
+                          @PathVariable("cgpa") Float cgpa)
+    {
+        studentRepository.updte(roll);
+       Student student= studentRepository.Stud(roll);
+       Float AvgCgpa= student.getCgpa();
+       Integer currSem=student.getSemester()-1;
+       Float CurrCgpa=( (AvgCgpa*currSem)+cgpa)/(currSem+1);
+       studentRepository.updteCgpa(roll,cgpa);
+
+        return "Updated";
     }
 
-
+    @GetMapping("/stu/{dept}")
+    public List<Student> deptu(@PathVariable("dept") String dept)
+    {
+        return  studentRepository.deptStd(dept);
+    }
 }

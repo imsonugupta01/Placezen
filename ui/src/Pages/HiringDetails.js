@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../CSS/HiringDetails.css";
 
 function HiringDetails() {
@@ -100,6 +100,19 @@ function HiringDetails() {
   return (
     <div>
       <div id="bcd">I.K. Gujral Punjab Technical University</div>
+      <div id="mySidebarrr">
+        <span className="s2" id="sus">Welcome</span>
+        <Link id="llll" to={`/StudentProfile/${Id}`}>
+          <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span>
+        </Link>
+        <Link id="llll" to={`/StuProfilePage/${Id}`}>
+          <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
+        </Link>
+        <Link id="llll" to="/">
+          <span className="s1" style={{ fontSize: '20px' }}>Logout</span>
+        </Link>
+      </div>
+      <div id="iui">Hiring Details</div>
       {loading ? (
         <div className="loader"></div>
       ) : (

@@ -4,7 +4,7 @@ import "./StudCompWiseResult.css"
 import boy from "../Pics/boy.jpg";
 import girl from "../Pics/girl.jpg"
 function StudentCompWiseResult(){
-  let{comp}=useParams();
+  let{comp,Id}=useParams();
   const [result, setStudents] = useState([]);
   let [company, setCompany] = useState();
   const [loading, setLoading] = useState(true); // State to track loading status
@@ -50,10 +50,11 @@ function StudentCompWiseResult(){
       <div id="mySidebar">
         <span className="s2" id="sus">{comp} Results</span>
         {company && company.map(index => (
-            <Link id="llll" to={`/CompStudResult/${index}`} key={index}>
+            <Link id="llll" to={`/CompStudResult/${index}/${Id}`} key={index}>
               <span className="s1">{index}</span>
             </Link>
           ))}
+          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
       </div>
       
         {/* <span id="huh">{comp} </span>

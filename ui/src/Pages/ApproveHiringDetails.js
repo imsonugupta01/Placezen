@@ -82,8 +82,9 @@ function ApproveHiringDetails(){
       <div id="header2"> I.K. Gujral Punjab Technical University</div>
       <div  id="mySidebar">
            <span className="s2" id="sus" >Welcome</span>  
-           <span className="s1">Dashboard</span> 
-           <span className="s1" >Profile</span> 
+           {/* <span className="s1">Dashboard</span>  */}
+           <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+           {/* <span className="s1" >Profile</span>  */}
            <span className="s1">Logout</span>
       </div><br></br>
     
@@ -91,10 +92,21 @@ function ApproveHiringDetails(){
          {/* <h1>{hiring.companyName}</h1>  */}
          <div id="hihi">Company Name : {requests.companyName}</div>
          <h3>Role : {requests.role}</h3>
-         <h3>Posted By : {student.name}</h3>
-         <h3>Branch : {student.branch}</h3>
-         <h3>Semester : {student.semester}th</h3>
-         <h3>Roll No : {student.roll}</h3>
+         {student && (
+          <h3>Branch : {student.branch}</h3>
+          
+         )}
+         {student && (
+          <h3>Branch : {student.semester}</h3>
+          
+         )}
+         {student && (
+          <h3>Branch : {student.roll}</h3>
+          
+         )}
+         
+         
+         {/* <h3>Roll No : {student.roll}</h3> */}
          <h3><a href={`${requests.link}`} target="_blank" >View Details</a></h3>
       </div>
       <div id="devu">

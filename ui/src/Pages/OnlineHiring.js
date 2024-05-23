@@ -28,9 +28,17 @@ function OnlineHiring(){
      return(
      <div>
         <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+        <div  id="mySidebar">
+        <span className="s2" id="sus">Welcome</span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
+          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      </div>
+      <div id="iui">Off Campus Recruitment</div>
         <div id="offf">
-         <div id="off1">Off Campus Recuirtment</div>
-         <Link to={`/AddOnlineHiring/${Id}`}><div id="off2">Add More +</div></Link>
+         <div id="off1"></div>
+         <Link id="lola" to={`/AddOnlineHiring/${Id}`}><div id="off2">Add More +</div></Link>
          </div>
 
          <div id="doremon">

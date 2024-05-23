@@ -49,25 +49,16 @@ function RemoveStudents()
     return(
         <div>
              <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-             <div id="navbar1">
-       <div id="navbox2">"      "</div>
-       <div>    </div>
-       <div></div>
-       <div>Remove Students</div>
-        <Link id="lul" to={`/AdminApprovals/${Id}`}><div id="navbox1">Online Hiring Request</div></Link>
-        
-        <Link id="lul" ><div id="navbox3">Profile Edit Request</div></Link>
-        <Link id="lul" to = {`/SignUpRequest/${Id}`}><div id="navbox2">SignUp Request</div></Link>
-        {/* <Link id="lul" to={`/removeStudents/${Id}`}><div id="navbox4">Remove Student</div></Link> */}
-        <Link id="lul"><div id="navbox5">Add Admins</div></Link>
-       </div>
-         <div  id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
-          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+             <div  id="mySidebar">
+      <span className="s2" id="sus">Welcome </span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span> */}
+           <Link id="llll" to = {`/SignUpRequest/${Id}`} > <span className="s1" style={{ fontSize: '20px' }}>SignUp Request</span></Link>
+           <Link id="llll" to={`/removeStudents/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Remove Student</span></Link>
+           {/* <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link> */}
+           <Link id="llll" to={`/AddAdmins/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
+           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span  className="s1" style={{ fontSize: '20px' }}>Online Hiring Request</span></Link>
       </div>
+            <div id="iui">Students Removal Page</div>
 
 
       <div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../CSS/AddHiring.css"
+import { Link, useParams } from "react-router-dom";
 function AddHiring(){
+  let {Id}=useParams();
   let[Company,setCompany]=useState("");
   let[Role,setRole]=useState("");
   let[Cgpa,setCgpa]=useState();
@@ -94,7 +96,16 @@ function AddHiring(){
   return(
     <div>
       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-      <div id="wow">
+      <div  id="mySidebar">
+        <span className="s2" id="sus">Welcome</span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
+          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      </div>
+      <div id="iui">Add Hirings</div>
+      <div id="fd22">
+        <div>
         <label>Name of Company</label><br></br>
         <input placeholder="Company" onChange={input1} value={Company}/><br></br>
         <label>Role</label><br></br>
@@ -105,12 +116,16 @@ function AddHiring(){
         <input placeholder="Average CTC " onChange={input12} value={CTC}/><br></br>
         <label>Number of Backlogs</label><br></br>
         <input placeholder="Backlogs" onChange={input4} value={Backlogs}/><br></br>
+        
         <label>Start Session</label><br></br>
         <input placeholder="Session" onChange={input5} value={Session}/><br></br>
         <label>Semester</label><br></br>
         <input placeholder="Semester" onChange={input6} value={Semester}/><br></br>
+        </div>
+        <div>
         <label>Branch</label><br></br>
         <input placeholder="Branch" onChange={input7} value={Branch}/><br></br>
+
         <label>Description</label><br></br>
         <input placeholder="Description" onChange={input8} value={Description}/><br></br>
         <label>Location</label><br></br>
@@ -119,8 +134,11 @@ function AddHiring(){
         <input placeholder="Start Date" type="date" onChange={input10} value={date1}/><br></br>
         <label>EndDate</label><br></br>
         <input placeholder="End Date" type="date" onChange={input11} value={date2}/><br></br>
-        <button onClick={submitadd}>Add</button>
+        <br></br><button onClick={submitadd} style={{ width:'80%', backgroundColor: 'green', color: '#fff', marginLeft:'10%',marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Submit</button></div>
+        {/* <button onClick={submitadd}>Add</button> */}
+        
       </div>
+      
     </div>
   )
 

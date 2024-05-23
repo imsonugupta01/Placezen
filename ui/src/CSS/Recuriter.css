@@ -1,0 +1,20 @@
+#aaaaa{
+  margin-left: 15%;
+}
+#mySidebarr {
+  
+  width: 230px;
+  height: 1060px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(61, 89, 123) ;
+  color: white;
+  position: absolute; 
+  /* /* left: -px; */
+  border: 1.5px solid wheat;
+  top:68px;
+  font-size: 22px;
+  font-weight: 550;
+  text-align: center;
+  
+}

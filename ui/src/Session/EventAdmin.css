@@ -6,7 +6,7 @@
 }
 
 #thiss {
-  background-color: rgb(188, 180, 180);
+  background-color: rgb(244, 233, 233);
   width: calc(420px - 60px); /* Adjust width to fit 2 per row, accounting for margin */
   margin: 25px 30px; /* Adjusted for demonstration; provides space around */
   text-align: center;
@@ -20,3 +20,4 @@
   margin-top: 0; /* Remove margin-top if not needed */
   padding: 10px 0; /* Adjust padding as needed */
 }
+

@@ -49,7 +49,7 @@ function AdminApprovals(){
   return(
     <div>
       <div id="header2"> I.K. Gujral Punjab Technical University</div>
-      <div id="navbar1">
+      {/* <div id="navbar1">
         <div id="navbox1"></div>
         <div>"         " </div>
         <div></div>
@@ -58,8 +58,8 @@ function AdminApprovals(){
         <Link id="lul"><div id="navbox3">Profile Edit Request</div></Link>
         <Link id="lul" to={`/removeStudents/${Id}`}><div id="navbox4">Remove Student</div></Link>
         <Link id="lul"><div id="navbox5">Add Admins</div></Link>
-       </div>
-       <div  id="mySidebar">
+       </div> */}
+       {/* <div  id="mySidebar">
            <span className="s2" id="sus" >Welcome</span>
           
           
@@ -71,7 +71,18 @@ function AdminApprovals(){
            <span className="s1">Logout</span>
            
           
+      </div> */}
+
+      <div  id="mySidebar">
+      <span className="s2" id="sus">Welcome </span>
+          {/* <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span> */}
+           <Link id="llll" to = {`/SignUpRequest/${Id}`} > <span className="s1" style={{ fontSize: '20px' }}>SignUp Request</span></Link>
+           <Link id="llll" to={`/removeStudents/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Remove Student</span></Link>
+           {/* <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link> */}
+           <Link id="llll"  to={`/AddAdmins/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
+           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span  className="s1" style={{ fontSize: '20px' }}>Hiring Request</span></Link>
       </div>
+            <div id="iui">Online Hiring Approval</div>
        <div id="doremon" className="dor">
         { requests && requests.map(request =>(<Link id="lalu" to={`/ApproveHiringDetails/${request.sid}/${request.jobId}`}>
            <div id="thisthat">

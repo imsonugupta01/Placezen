@@ -40,14 +40,11 @@
   font-size: 22px;
   font-weight: 550;
   text-align: center;
+  /* margin-right: 20%; */
   
 }
 
-/* #mySidebar.open {
-  display: flex;
-  
-  
-} */
+
 .s1{
   margin-bottom: 10px;
 }
@@ -70,7 +67,7 @@
 #box2{
   text-align: center;
   display: inline-block;
-  background-color:  #bfc9ca ;
+  background-color:  #bfc9ca;
   position: relative;
   margin-left: 100px;
   width: 250px;
@@ -146,4 +143,45 @@
 }
 #hid{
   display: none;
+}
+.s1 {
+  cursor: pointer;
+  
+}
+
+.s1:hover {
+  
+  color: rgb(224, 220, 94); /* Change to whatever color you prefer */
+}
+
+/* Original CSS styles */
+
+/* Your existing styles here */
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Adjustments for smaller screens */
+  #mySidebar {
+    width: 100%; /* Occupy full width */
+    height: auto; /* Allow content to expand vertically */
+    position: static; /* Remove absolute positioning */
+    top: auto; /* Reset top positioning */
+    border: none; /* Remove border */
+  }
+  
+  #box1, #box2, #box3, #box4, #box5, #box6 {
+    width: calc(50% - 20px); /* Two boxes per row with 20px margin between */
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+  }
+}
+#ioo{
+  margin-left: 32%;
+ 
+  /* height: 20%; */
+}
+.box-icon{
+  color: rgb(170, 108, 153);
+  height: 34%;
 }

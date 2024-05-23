@@ -44,7 +44,8 @@ function StuPending() {
         <Link id="llll" to="/"> <span className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
 
-      <h2><center>Pending Campus Recruitment</center></h2>
+      {/* <h2><center>Pending Campus Recruitment</center></h2> */}
+      <div id="iui">Pending Campus Recruitment</div>
       {loading ? (
         <div className="loader"></div>
       ) : (

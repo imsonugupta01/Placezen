@@ -14,9 +14,7 @@ function Contactus(){
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
 
-       <div id="offf">
-        <div id="off1">Contact Us</div>
-       </div>
+      <div id="iui">Contac Us</div>
 
        <div> 
                 <table id="tabu">

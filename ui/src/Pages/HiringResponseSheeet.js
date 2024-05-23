@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams,Link } from "react-router-dom";
 import "../CSS/HiringResponseSheet.css"
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 function HiringResponseSheet ()
 { 
     let {Id,jobId}=useParams();
@@ -59,34 +60,24 @@ function convertDate(dateStr) {
     return date.toLocaleDateString();
 }
 
-
-
-
-
-
-
-
     return(
         <div>
             <div id="bcd"> I.K. Gujral Punjab Technical University</div>
             <div  id="mySidebar">
            <span className="s2" id="sus" >{hiring.companyName}</span>
           
-          {/* <span className="s1"><img id ="simg" height="120" width="120" ></img></span> */}
+         
           
            <span className="s1">Results</span>
-           {/* <span className="s1" ><Link to={`AdminApprovals/${Id}`}>Approvals</Link></span> */}
+          
            <span className="s1" >Statistics</span>
-           {/* <span className="s1">Posts</span> */}
+          
            <span className="s1">Our Alumni</span>
            <span className="s1">Upcoming Events</span>
-           {/* <span className="s1">Results</span>
-           <span className="s1">Students</span>
-           <Link id="llll" to={`/AdminCoordinators/${Id}`}><span className="s1">T & P Coordinators</span></Link> */}
-           {/* <span className="s1"></span> */}
+           
       </div>
       
-            <table id="tabu">
+            <table id="tabu" >
                 <thead className="tt" id="tabuh">
                     
                     <th>Company Name</th>
@@ -111,7 +102,7 @@ function convertDate(dateStr) {
             <h3><center>Student Response List </center></h3>
             <div>
                 
-                <table id="tabu">
+                <table id="tabu1" className="tut">
                     <thead className="tt" id="tabuh">
                         <th>Sl No.</th>
                         <th>Student Name</th>
@@ -133,6 +124,15 @@ function convertDate(dateStr) {
                     }
                 </table>
             </div>
+            <ReactHTMLTableToExcel
+            
+            id="test-table-xls-button"
+            className="ccc"
+            table="tabu1"
+            filename="students"
+            sheet="students_sheet"
+            buttonText="Download as Excel"
+             />
             
 
         </div>
