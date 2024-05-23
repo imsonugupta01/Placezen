@@ -23,6 +23,22 @@ import Recuriter from "./Pages/Recuriter";
 import Coordinator from "./Pages/Coordinators";
 import StuApplied from "./Pages/StuApplied";
 import StuPending from "./Pages/StuPending";
+import AdminCoordinator from "./Pages/AdminCoordinators";
+import AddCoorniators from "./Pages/AddCoordinators";
+import StuProfilePage from "./Pages/StuProfilePage";
+import AllStudents from "./Students/AllStudents";
+import ChangePassword from "./Pages/ChangePassword";
+import AdminProfilePage from "./Pages/AdminProfilePage";
+import PostStudent from "./Pages/PostStudent";
+import AddHiringStudent from "./Pages/AddHiringStudent";
+import ApproveHiringDetails from "./Pages/ApproveHiringDetails";
+import Adminresult from "./Results/Adminresult";
+import AddResult from "./Results/AddResult";
+import CompanyWiseResult from "./Results/CompanyWiseResult";
+import StudentResult from "./Results/StudentResult";
+import StudentCompWiseResult from "./Results/StudentCompanyWiseResult";
+import AdminResultStats from "./Results/AdminResultStats";
+import RemoveStudents from "./Approval NavPage/RemoveStudetns";
 
 function App(){
     return(
@@ -51,6 +67,22 @@ function App(){
             <Route path="/Coordinators" element={<Coordinator/>}/>
             <Route path="/StuApplied/:Id" element={<StuApplied/>}/>
             <Route path="/StuPending/:Id" element={<StuPending/>}/>
+            <Route path="/AdminCoordinators/:Id" element={<AdminCoordinator/>}/>
+            <Route path="/AddCoordinators/:Id" element={<AddCoorniators/>}/>
+            <Route path="/StuProfilePage/:Id" element={<StuProfilePage/>}/>
+            <Route path="/allStudents" element={<AllStudents/>}/>
+            <Route path="/changePass/:Id" element={<ChangePassword/>}/>
+            <Route path="/AdminProfilePage/:Id" element={<AdminProfilePage/>}/>
+            <Route path="/PostStudent/:Id" element={<PostStudent/>}/>
+            <Route path="/AddHiringStudent/:Id" element={<AddHiringStudent/>}/>
+            <Route path="/ApproveHiringDetails/:Id/:jobId" element={<ApproveHiringDetails/>}/>
+            <Route path="/Adminresult/:Id" element={<Adminresult/>}/>
+            <Route path ="/AddResult/:Id" element={<AddResult/>}/>
+            <Route path="/CompanyWiseResult/:comp" element={<CompanyWiseResult/>}/>
+            <Route path="/StudentResult" element={<StudentResult/>}/>
+            <Route path="/CompStudResult/:comp" element={<StudentCompWiseResult/>}/>
+            <Route path ="/ResultStats/:Id" element={<AdminResultStats/>}/>
+            <Route path="/removeStudents/:Id" element={<RemoveStudents/>}/>
         </Routes>
     );
 }

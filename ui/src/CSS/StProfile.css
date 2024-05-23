@@ -1,0 +1,29 @@
+#sus{
+    color: black;
+}
+#pff{
+    margin-left: 20%;
+    margin-top: 2%;
+    font-size: 20px;
+    font-weight: 300;
+    padding-left:1%;
+    display: flex;
+    justify-content: space-around;
+    
+    /* font-size: ; */
+}
+#pff2{
+    margin-right: 2%;
+    /* padding-top: 2%; */
+}
+ .chik{
+    /* padding-bottom: 10%; */
+    position: relative;
+    top: 2%;
+    
+   
+
+}
+#iti{
+    width: 250px;
+}

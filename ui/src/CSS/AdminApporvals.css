@@ -9,5 +9,13 @@
 }
 #navbox1,#navbox2,#navbox3,#navbox4,#navbox5{
   padding-top: 1px;
+ 
 
+}
+#lul{
+  /* text-decoration: none; */
+  color: white;
+}
+.dor{
+margin-left: 20%;
 }

@@ -4,15 +4,15 @@ import com.example.PlaceZen.Module.*;
 import com.example.PlaceZen.Repository.AppliedRepository;
 import com.example.PlaceZen.Repository.HiringRepository;
 import com.example.PlaceZen.Repository.StudentRepository;
+import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @RestController
 @RequestMapping("/Applied")
@@ -51,10 +51,10 @@ public class AppliedController {
 
               List<StudentRespose> studentResposeList =new ArrayList<>();
               List<Applied> appList;
-              appList= (List<Applied>) appliedRepository.findAllById(Collections.singleton(Jid));
+              appList= (List<Applied>) appliedRepository.findus(Jid);
               List<Student> stList;
               stList= (List<Student>) studentRepository.findAll();
-
+             System.out.println(appList.size()+" "+ stList.size());
               for(int i=0;i<appList.size();i++)
               {
                   for(int j=0;j<stList.size();j++)
@@ -102,21 +102,40 @@ public class AppliedController {
         List<Hiring> Phirings = new ArrayList<>();
         List<Applied> applieds = (List<Applied>) appliedRepository.findAll();
         List<Hiring> hirings1 = (List<Hiring>) hiringRepository.findAll();
+        int j=0;
         for(int i=0;i<hirings1.size();i++){
-            for(int j=0;j<applieds.size();j++){
-                if(applieds.get(j).getStudentId()==Id && hirings1.get(i).getJobId()!=applieds.get(j).getJobId()){
-              System.out.println(hirings1.get(i).getJobId()+ " "+ applieds.get(j).getJobId() );
 
-                    Hiring hiring =new Hiring();
-                    hiring.setCompanyName(hirings1.get(i).getCompanyName());
-                    hiring.setRole(hirings1.get(i).getRole());
-                    hiring.setLocation(hirings1.get(i).getLocation());
-                    hiring.setCTC(hirings1.get(i).getCTC());
-                    hiring.setEndDate(hirings1.get(i).getEndDate());
+
+            String date1= (hirings1.get(i).getEndDate());
+            LocalDate date= LocalDate.parse(date1);
+            LocalDate now = LocalDate.now();
+            j=0;
+
+            for( j=0; j<applieds.size() && ( date.isAfter(now) || date.isEqual(now) ) ;j++){
+
+                System.out.println(date);
+
+                if(applieds.get(j).getStudentId()==Id && hirings1.get(i).getJobId()==applieds.get(j).getJobId()){
+                 break;
+                }
+
+            }
+
+            if(j==applieds.size())
+            {
+                Hiring hiring =new Hiring();
+                hiring.setCompanyName(hirings1.get(i).getCompanyName());
+                hiring.setRole(hirings1.get(i).getRole());
+                hiring.setLocation(hirings1.get(i).getLocation());
+                hiring.setCTC(hirings1.get(i).getCTC());
+                hiring.setEndDate(hirings1.get(i).getEndDate());
+                hiring.setJobId(hirings1.get(i).getJobId());
+
 
                     Phirings.add(hiring);
-                }
+
             }
+
         }
         return  Phirings;
 

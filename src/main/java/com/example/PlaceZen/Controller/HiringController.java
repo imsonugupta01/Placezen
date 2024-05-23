@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +24,7 @@ public class HiringController {
         @RequestParam("company") String Company,
         @RequestParam("role") String Role,
         @RequestParam("cgpa") float Cgpa,
-        @RequestParam("CTC") float CTC,
+        @RequestParam("CTC") Integer CTC,
         @RequestParam("backlog") int Backlogs,
         @RequestParam("session") int Session,
         @RequestParam("semester") int Semester,
@@ -41,6 +42,25 @@ public class HiringController {
     }
     @GetMapping("/get")
     public List<Hiring> thisthat(){
+//      return (List<Hiring>) hiringRepository.findAll();
+
+        List<Hiring> hirings= (List<Hiring>) hiringRepository.findAll();
+        List<Hiring> hr=new ArrayList<>();
+        for(int i=0;i<hirings.size();i++)
+        {
+            String date1= (hirings.get(i).getEndDate());
+            LocalDate date= LocalDate.parse(date1);
+            LocalDate now = LocalDate.now();
+            if(( date.isAfter(now) || date.isEqual(now) )){
+                hr.add(hirings.get(i));
+            }
+        }
+       return hr;
+    }
+
+    @GetMapping("/gett")
+    public  List<Hiring> thisthat2()
+    {
         return (List<Hiring>) hiringRepository.findAll();
 
     }

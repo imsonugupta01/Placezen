@@ -41,18 +41,25 @@ function AdminProfile(){
       </div>
 
       <div  id="mySidebar">
-      <span className="s2">Admin Dashboard</span>
+      <span className="s2" id="sus">Admin Dashboard</span>
           <span className="s1"><img id ="simg" height="120" width="120" src={PTU_logo}></img></span>
           
-           <span className="s1">Profile</span>
+          <Link id="llll" to={`/AdminProfilePage/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
            {/* <span className="s1" ><Link to={`AdminApprovals/${Id}`}>Approvals</Link></span> */}
-           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span className="s1" >Approvals</span></Link>
+           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span className="s1" style={{ fontSize: '20px' }} >Approvals</span></Link>
            {/* <span className="s1">Posts</span> */}
+<<<<<<< HEAD
            <span className="s1">Alumni</span>
            <span className="s1">Results</span>
            <span className="s1">Students</span>
            <span className="s1">T & P Coordinators</span>
            <span className="s1" id="delL">Logout</span>
+=======
+           <span className="s1" style={{ fontSize: '20px' }}>Alumni</span>
+           <Link id="llll" to ={`/Adminresult/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Results</span></Link>
+           <Link id="llll" to="/allStudents"><span className="s1" style={{ fontSize: '20px' }}>Students</span></Link>
+           <Link id="llll" to={`/AdminCoordinators/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>T & P Coordinators</span></Link>
+>>>>>>> fe3b08ab7037e871756554cd93a1606842d919cd
            {/* <span className="s1"></span> */}
       </div>
       
@@ -70,7 +77,7 @@ function AdminProfile(){
        </div></Link>
 
        <Link to={`/Events/${Id}`}><div id="box3"><h2 id="boxspan1">UpcomingEvents</h2><div id="nob">0</div></div></Link>
-       <div id="box4"><h2 id="boxspan1">Results Statistics</h2></div>
+       <Link to={`/ResultStats/${Id}`}><div id="box4"><h2 id="boxspan1">Results Statistics</h2></div></Link>
        <div id="box5"><h2 id="boxspan1">Placement Guides</h2></div>
        <div id="box6"><h2 id="boxspan1">z</h2></div>
        

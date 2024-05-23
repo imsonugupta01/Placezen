@@ -50,13 +50,14 @@
 } */
 
 #doremon {
+  margin-left: 16%;
   display: flex; /* Use modern Flexbox */
   flex-wrap: wrap; /* Allow items to wrap to the next line */
   justify-content: space-around; /* Space out items evenly */
 }
 
 #thisthat {
-  background-color: rgb(188, 180, 180);
+  background-color: rgb(217, 212, 212);
   width: calc(420px - 60px); /* Adjust width to fit 2 per row, accounting for margin */
   margin: 25px 30px; /* Adjusted for demonstration; provides space around */
   text-align: center;

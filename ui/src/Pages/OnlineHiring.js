@@ -3,7 +3,7 @@ import "../CSS/OnlineHiring.css";
 import { Link, useParams } from "react-router-dom";
 function OnlineHiring(){
    let[hiring,sethiring]=useState("");
-    let {Id}=useParams();
+   let {Id}=useParams();
     useEffect( ()=>{
     const fetchData = async () => {
       try {
