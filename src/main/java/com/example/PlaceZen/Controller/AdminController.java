@@ -1,14 +1,11 @@
 package com.example.PlaceZen.Controller;
 
 import com.example.PlaceZen.Module.Admin;
-import com.example.PlaceZen.Module.Hiring;
 import com.example.PlaceZen.Module.Student;
 import com.example.PlaceZen.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.Optional;
 
 @CrossOrigin
@@ -18,25 +15,6 @@ public class AdminController {
     @Autowired
     private AdminRepository adminRepository;
 
-
-    @PostMapping("/add")
-    public ResponseEntity<String> addAdmin(
-
-            @RequestParam("name") String Name,
-            @RequestParam("phone") String Phone,
-            @RequestParam("email") String Email,
-            @RequestParam("linkdin") String Linkdin,
-            @RequestParam("designation") String Designation,
-            @RequestParam("department") String Department,
-            @RequestParam("username") String Username,
-            @RequestParam("password") String Password
-    ) throws IOException {
-
-        Admin admin=new Admin(Name,Phone,Email,Linkdin,Designation,Department,Username,Password);
-        adminRepository.save(admin);
-        return ResponseEntity.ok("Added successful");
-
-    }
 
     @GetMapping("/getId/{username}/{password}")
     public int getProfileId(@PathVariable("username") String username, @PathVariable("password") String password) {
@@ -56,11 +34,18 @@ public class AdminController {
             return -1;
         }
     }
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
+=======
     @GetMapping("/getAdmin/{Id}")
     public Optional<Admin> getprofile(@PathVariable("Id") Integer Id)
     {
         return adminRepository.findById(Id);
     }
-
-
+>>>>>>> fe3b08ab7037e871756554cd93a1606842d919cd
 }
