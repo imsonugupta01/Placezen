@@ -119,38 +119,7 @@ public class StudentController {
        return  rs;
 
     }
-    @GetMapping("/details/{name}")
-    public List<ResultShow> resultShows(@PathVariable("name")String Name){
-        List<Student> students= (List<Student>) studentRepository.findAll();
-        List<Result> results= (List<Result>) resultRepository.findAll();
-        List<ResultShow> rs=new ArrayList<>();
-        for(int i=0;i<results.size();i++)
-        {
-            if(results.get(i).getCName().equals(Name)){
-                for(int j=0;j<students.size();j++)
-                {
-                    if(results.get(i).getSId()== students.get(j).getRoll())
-                    {
-                        ResultShow resultShow=new ResultShow();
-                        resultShow.setCompName(results.get(i).getCName());
-                        resultShow.setBranch(students.get(j).getBranch());
-                        resultShow.setRole(results.get(i).getRole());
-                        resultShow.setCTC(results.get(i).getCTC());
-                        resultShow.setRoll(students.get(j).getRoll());
-                        resultShow.setStudName(students.get(j).getName());
-                        resultShow.setSession(students.get(j).getSSession());
-                        resultShow.setGender(students.get(j).getGender());
-                        rs.add(resultShow);
-//                   break;
-                    }
-                }
-            }
 
-        }
-        return  rs;
-
-
-    }
     @GetMapping("/find/{Id}")
     public  Integer finduuu(@PathVariable("Id") Integer Id)
     {
@@ -227,4 +196,75 @@ public class StudentController {
     {
         return  studentRepository.deptStd(dept);
     }
+
+
+
+    @GetMapping("/details/{name}")
+    public List<ResultShow> resultShows(@PathVariable("name")String Name){
+        List<Student> students= (List<Student>) studentRepository.findAll();
+        List<Result> results= (List<Result>) resultRepository.findAll();
+        List<ResultShow> rs=new ArrayList<>();
+        for(int i=0;i<results.size();i++)
+        {
+            if(results.get(i).getCName().equals(Name)){
+                for(int j=0;j<students.size();j++)
+                {
+                    if(results.get(i).getSId()== students.get(j).getRoll())
+                    {
+                        ResultShow resultShow=new ResultShow();
+                        resultShow.setCompName(results.get(i).getCName());
+                        resultShow.setBranch(students.get(j).getBranch());
+                        resultShow.setRole(results.get(i).getRole());
+                        resultShow.setCTC(results.get(i).getCTC());
+                        resultShow.setRoll(students.get(j).getRoll());
+                        resultShow.setStudName(students.get(j).getName());
+                        resultShow.setSession(students.get(j).getSSession());
+                        resultShow.setGender(students.get(j).getGender());
+                        rs.add(resultShow);
+//                   break;
+                    }
+                }
+            }
+
+        }
+        return  rs;
+
+
+    }
+
+    @GetMapping("/std/{year}/{lpa}")
+    public  List<ResultShow> StdyearLpa(@PathVariable("year") Integer year,@PathVariable("lpa") Integer lpa)
+    {
+        List<Student> students= (List<Student>) studentRepository.findAll();
+        List<Result> results= (List<Result>) resultRepository.findAll();
+        List<ResultShow> rs=new ArrayList<>();
+
+        for(int i=0;i<results.size();i++)
+        {
+            if(results.get(i).getCTC()>=lpa*100000 ){
+                for(int j=0;j<students.size();j++)
+                {
+                    if(results.get(i).getSId()== students.get(j).getRoll() && students.get(j).getSSession()==year-4)
+                    {
+                        ResultShow resultShow=new ResultShow();
+                        resultShow.setCompName(results.get(i).getCName());
+                        resultShow.setBranch(students.get(j).getBranch());
+                        resultShow.setRole(results.get(i).getRole());
+                        resultShow.setCTC(results.get(i).getCTC());
+                        resultShow.setRoll(students.get(j).getRoll());
+                        resultShow.setStudName(students.get(j).getName());
+                        resultShow.setSession(students.get(j).getSSession());
+                        resultShow.setGender(students.get(j).getGender());
+                        rs.add(resultShow);
+//                   break;
+                    }
+                }
+            }
+
+        }
+        return  rs;
+
+
+    }
+
 }
