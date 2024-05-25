@@ -80,7 +80,7 @@ function Alumnii()
                    
                     {   
     students && students.map(student => {
-        if (student.semester === 9) {
+        if (student.semester >=8) {
             return (
                 <tr key={student.roll}>
                     <td>{i++}</td>

@@ -118,7 +118,7 @@ function AllStudents() {
             <div id="bcd">I.K. Gujral Punjab Technical University</div>
 
             <div id="mySidebar">
-                <span className="s2" id="sus">All Students</span>
+                <span className="s2" id="sus">Branches</span>
                 <span onClick={() => branchHandler("CSE")} className="s1">Computer Science</span>
                 <span onClick={() => branchHandler("ECE")} className="s1">Electronics</span>
                 <span onClick={() => branchHandler("EE")} className="s1">Electrical</span>
