@@ -8,13 +8,13 @@
   height: 60px;
   padding-top: 8px;
 }
-<<<<<<< Updated upstream
+
 #nob{
   font-size: 60px;
   font-stretch: expanded;
   color: rgb(112, 112, 112);
   font-weight: 600;
-=======
+}
 #sd{
   display: none;
   /* visibility: hidden; */
@@ -77,5 +77,5 @@
    }
  
 
->>>>>>> Stashed changes
+
 }

@@ -48,18 +48,18 @@ function AdminProfile(){
            {/* <span className="s1" ><Link to={`AdminApprovals/${Id}`}>Approvals</Link></span> */}
            <Link id="llll" to={`/AdminApprovals/${Id}`} > <span className="s1" style={{ fontSize: '20px' }} >Approvals</span></Link>
            {/* <span className="s1">Posts</span> */}
-<<<<<<< HEAD
+
            <span className="s1">Alumni</span>
            <span className="s1">Results</span>
            <span className="s1">Students</span>
            <span className="s1">T & P Coordinators</span>
            <span className="s1" id="delL">Logout</span>
-=======
+
            <span className="s1" style={{ fontSize: '20px' }}>Alumni</span>
            <Link id="llll" to ={`/Adminresult/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Results</span></Link>
            <Link id="llll" to="/allStudents"><span className="s1" style={{ fontSize: '20px' }}>Students</span></Link>
            <Link id="llll" to={`/AdminCoordinators/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>T & P Coordinators</span></Link>
->>>>>>> fe3b08ab7037e871756554cd93a1606842d919cd
+
            {/* <span className="s1"></span> */}
       </div>
       

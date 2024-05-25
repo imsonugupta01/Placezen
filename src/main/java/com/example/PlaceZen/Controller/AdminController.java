@@ -34,18 +34,14 @@ public class AdminController {
             return -1;
         }
     }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
-=======
+
     @GetMapping("/getAdmin/{Id}")
     public Optional<Admin> getprofile(@PathVariable("Id") Integer Id)
     {
         return adminRepository.findById(Id);
     }
->>>>>>> fe3b08ab7037e871756554cd93a1606842d919cd
+
 }
