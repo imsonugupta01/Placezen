@@ -53,7 +53,7 @@ function CompanyWiseResult() {
         <span className="s2" id="sus" >All Students</span>
         {
           company && company.map(index => (
-            <Link id="llll" to={`/CompanyWiseResult/${index}`} key={index}><span className="s1">{index}</span></Link>
+            <Link id="llll" to={`/CompanyWiseResult/${index}/${Id}`} key={index}><span className="s1">{index}</span></Link>
           ))
         }
         <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>

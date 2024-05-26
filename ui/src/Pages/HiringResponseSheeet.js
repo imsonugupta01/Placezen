@@ -68,12 +68,14 @@ function convertDate(dateStr) {
           
          
           
-           <span className="s1">Results</span>
+           <Link id="llll" to ={`/Adminresult/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Results</span></Link>
+           <Link id="llll" to={`/ResultStats/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Statics</span></Link>
+           {/* <span className="s1" >Statistics</span> */}
           
-           <span className="s1" >Statistics</span>
-          
-           <span className="s1">Our Alumni</span>
-           <span className="s1">Upcoming Events</span>
+           {/* <span className="s1">Our Alumni</span> */}
+           <Link id="llll" to={`/Alumnii/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Alumni</span></Link>
+           <Link id="llll" to ={`/`}><span className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+           {/* <span className="s1">Upcoming Events</span> */}
            
       </div>
       

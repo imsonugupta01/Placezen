@@ -68,7 +68,7 @@ function StAlumni()
           <div className="dis1" key={res.id}> <Link id="lola" to={`/StAluminiDetails/${res.roll}/${Id}`}>
               <h2 className="company-heading">{res.name}</h2>
               <img src={res.gender === 'Female' ? girl : boy} style={{ width: '120px', height: '120px' }} alt="Student" />
-              <h3>{res.job}</h3>
+              <h3>{res.description}</h3>
               <p><b>Batch:</b> {res.session} - {res.session + 4}</p>
               {/* <p>{res.description}</p> */}
               </Link>

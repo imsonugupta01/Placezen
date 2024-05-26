@@ -49,7 +49,7 @@ function Adminresult() {
     <div>
       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
       <div id="mySidebar">
-        <span className="s2" id="sus" >All Students</span>
+        <span className="s2" id="sus" >Companies</span>
         {company && company.map(index => (
           <Link id="llll" to={`/CompanyWiseResult/${index}/${Id}`} key={index}><span className="s1">{index}</span></Link>
         ))}

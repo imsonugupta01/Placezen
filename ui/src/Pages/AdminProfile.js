@@ -160,7 +160,7 @@ function AdminProfile(){
        <Link to={`/OnlineHiring/${Id}`}><div id="box2"><h2 id="boxspan1">Online Hiring</h2><FontAwesomeIcon icon={ faChartSimple} className="box-icon" /></div></Link>
        <Link to={`/prepMaterial/${Id}`}><div id="box3"><h2 id="boxspan1">Preparation Material</h2><FontAwesomeIcon icon={faFile} className="box-icon" /></div></Link>
        <Link to={`/allStudents/${Id}`}><div id="box4"><h2 id="boxspan1">Manage Students</h2><FontAwesomeIcon icon={ faUniversity} className="box-icon" /></div></Link>
-       <Link to={`/ResultStats/${Id}`}><div id="box5"><h2 id="boxspan1">Placement Results</h2><FontAwesomeIcon icon={faChartLine} className="box-icon" /></div></Link>
+       <Link to={`/ResultStats/${Id}`}><div id="box5"><h2 id="boxspan1">Placement Statics</h2><FontAwesomeIcon icon={faChartLine} className="box-icon" /></div></Link>
        <Link to={`/Events/${Id}`}><div id="box6"><h2 id="boxspan1">Upcoming Sessions</h2><FontAwesomeIcon icon={faCalendarDays } className="box-icon" /></div></Link>
 
 

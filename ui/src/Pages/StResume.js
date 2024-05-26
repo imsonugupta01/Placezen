@@ -25,23 +25,27 @@ function StResume() {
         fetchData();
     }, [Id]);
 
+    function onFileChange(event) {
+        setFile(event.target.files[0]);
+    }
+
     function upload(event) {
         event.preventDefault();
         const formdata = new FormData();
-        formdata.append('sid', Id)
-        formdata.append('file', file)
+        formdata.append('sid', Id);
+        formdata.append('file', file);
         fetch('http://localhost:8050/resume/upload', {
             method: 'POST',
             body: formdata,
         })
-            .then(response => response.text())
-            .then(data => {
-                console.log('Uplaoded:', data);
-                alert("Resume Updated !!!");
-            })
-            .catch(error => {
-                console.error('Error during SignUp:', error);
-            });
+        .then(response => response.text())
+        .then(data => {
+            console.log('Uploaded:', data);
+            alert("Resume Updated !!!");
+        })
+        .catch(error => {
+            console.error('Error during upload:', error);
+        });
     }
 
     function enlargeImage() {
@@ -74,20 +78,45 @@ function StResume() {
     return (
         <div>
             <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-            <div  id="mySidebar">
-      <span className="s2" id="sus">Welcome </span>
-          {/* <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span> */}
-          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
-      </div>
+            <div id="mySidebar">
+                <span className="s2" id="sus">Welcome </span>
+                <Link id="llll" to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+                <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
+                <Link id="llll" to="/"> <span className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+            </div>
             <div id="iui">Resume</div>
             <div id="resu">
                 <img src={imageURL} width="340px" alt="No image to Display" onClick={enlargeImage} style={{ cursor: 'pointer' }} />
-                <button onClick={upload} style={{ width: '20%', backgroundColor: 'green', color: '#fff', marginTop: '2%', marginRight: '8%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Update Resume</button>
+                <br></br>
+                <input
+                    type="file"
+                    id="fileInput"
+                    onChange={onFileChange}
+                    style={{ display: 'none' }}
+                />
+                <label htmlFor="fileInput" style={{ cursor: 'pointer', color: 'crimson', textDecoration: 'underline' }}>
+                    {file ? file.name : 'Choose another resume'}
+                </label>
+                &nbsp;&nbsp;&nbsp;
+                <button
+                    onClick={upload}
+                    style={{
+                        width: '20%',
+                        backgroundColor: 'green',
+                        color: '#fff',
+                        marginTop: '2%',
+                        marginRight: '8%',
+                        padding: '10px',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    Update Resume
+                </button>
             </div>
         </div>
-    )
+    );
 }
 
 export default StResume;

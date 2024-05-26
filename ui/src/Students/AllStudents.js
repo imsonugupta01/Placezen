@@ -128,7 +128,7 @@ function AllStudents() {
                     <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span>
                 </Link>
             </div>
-            <div id="iui">All Students</div>
+            <div id="iui">{dept} students</div>
 
             <div>
                 

@@ -45,7 +45,7 @@ public class AluminiController {
 
         for (int i=0;i<students.size();i++)
         {
-            if(students.get(i).getSemester()==9)
+            if(students.get(i).getSemester()>=7)
             {
                 StringBuilder Desription= new StringBuilder();
                 StringBuilder job= new StringBuilder();
@@ -54,8 +54,9 @@ public class AluminiController {
                 {
                     if(students.get(i).getRoll()==alumniiList.get(j).getRoll())
                     {
-                        Desription.append(alumniiList.get(j).getDescription());
+                        Desription.append(students.get(i).getSkills());
                         job.append(alumniiList.get(j).getJob());
+                        break;
                     }
                 }
                 Alumnii alumnii=new Alumnii(students.get(i).getRoll(), job.toString(),students.get(i).getName(),students.get(i).getSSession(), Desription.toString(),students.get(i).getGender());
