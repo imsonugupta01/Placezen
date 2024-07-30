@@ -143,15 +143,15 @@ function HiringDetails() {
               <br /><br />
               <button
   onClick={adding}
-  disabled={status >= 2}
-  title={status >= 2 ? "You are Already Placed 2 in Company whose CTC is higher than this" : ""}
+  disabled={status >= 1}
+  title={status >= 1 ? "You are Already Placed  in Company whose CTC is higher than this" : ""}
   style={{
-    backgroundColor: status >= 2 ? "lightgray" : "green",
+    backgroundColor: status >= 1 ? "lightgray" : "green",
     color: "white",
     border: "none",
     borderRadius: "5px",
     padding: "10px 20px",
-    cursor: status >= 2 ? "not-allowed" : "pointer",
+    cursor: status >= 1 ? "not-allowed" : "pointer",
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     outline: "none"
   }}
