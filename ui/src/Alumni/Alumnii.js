@@ -77,6 +77,7 @@ function Alumnii()
                         {/* <th>Date</th> */}
                         
                     </thead>
+                    <br></br>
                    
                     {   
     students && students.map(student => {

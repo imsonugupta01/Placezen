@@ -34,8 +34,6 @@ public class SessionController {
     }
     @GetMapping("/hate")
     public List<Session> hated(){
-
-
         return (List<Session>) sessionRepository.findAll();
 
     }
