@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && robocopy D:\\SpringbootProject\\Trial2\\ui\\build D:\\SpringbootProject\\Trial2\\src\\main\\resources\\Public /E\n ",
+    "build": "react-scripts build && robocopy D:\\SpringbootProject\\Trial2\\ui\\build D:\\SpringbootProject\\Trial2\\src\\main\\resources\\public /E\n ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../CSS/StResume.css";
-import boy from "../Pics/boy.jpg";
+// import boy from "../Pics/boy.jpg";
 
 function StResume() {
     let { Id } = useParams();

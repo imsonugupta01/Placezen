@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useRef } from 'react';
-import Chart from 'chart.js/auto';
-import "../CSS/StApplied.css"
-
-
+import { useParams} from "react-router-dom";
+import Header from '../sidebar/Header';
+import Sidebar from '../sidebar/Sidebar';
+import '../CSS/StApplied.css'; // Ensure you have the corresponding CSS file
 
 function StuApplied() {
-  
-  let { Id } = useParams();
+  const { Id } = useParams();
   const [hiring, setHiring] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8050/Applied/find/${Id}`);
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/Applied/find/${Id}`);
         if (!response.ok) {
-          throw new Error('Network response was not okk');
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
         setHiring(data);
       } catch (error) {
         console.error('Error fetching data: ', error.message);
@@ -37,61 +34,59 @@ function StuApplied() {
     return date.toLocaleDateString();
   }
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/StuProfilePage/${Id}`, label: 'Profile' },
+    { path: `/StuPending/${Id}`, label: 'Pending' },
+    { path: '/', label: 'Logout' }
+  ];
+
   return (
     <div>
-      <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-      <div id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-        <Link id="llll" to={`/StudentProfile/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span>
-        </Link>
-        <Link id="llll" to={`/StuProfilePage/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
-        </Link>
-        <Link id="llll" to={`/StuPending/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Pending</span>
-        </Link>
-        <Link id="llll" to="/">
-          <span className="s1" style={{ fontSize: '20px' }}>Logout</span>
-        </Link>
-      </div>
-
-      {/* <h2><center>Applied Forms for Campus Recruitment</center></h2> */}
-      <div id="iui">Applied Forms for Campus Recruitment</div>
-
-      {loading ? (
-        <div className="loader"></div>
-      ) : (
-        <div>
-          <table id="tabu">
-            <thead className="tt" id="tabuh">
-              <th>Company Name</th>
-              <th>Role</th>
-              <th>Location</th>
-              <th>CTC</th>
-              <th>Date Applied</th>
-            </thead>
-            <tbody>
-              {hiring.map((hire, index) => (
-                <tr key={index}>
-                  <td>{hire.companyName}</td>
-                  <td>{hire.role}</td>
-                  <td>{hire.location}</td>
-                  <td>{hire.ctc}</td>
-                  <td>{convertDate(hire.dateApplied)}</td>
+      <Header onMenuClick={toggleSidebar} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      
+      <main className="main-contennt">
+        <div className="page-header">Applied Forms</div>
+        {loading ? (
+          <div className="loading-spinner"></div>
+        ) : (
+          <div className="table-wrapper">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Company Name</th>
+                  <th>Role</th>
+                  <th>Location</th>
+                  <th>CTC</th>
+                  <th>Date Applied</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {hiring.map((hire, index) => (
+                  <tr key={index}>
+                    <td>{hire.companyName}</td>
+                    <td>{hire.role}</td>
+                    <td>{hire.location}</td>
+                    <td>{hire.ctc}</td>
+                    <td>{convertDate(hire.dateApplied)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </main>
     </div>
   );
-
-
-
-
-  
 }
 
 export default StuApplied;

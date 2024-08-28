@@ -1,11 +1,12 @@
 import React, { useState ,useEffect} from "react";
-import { Link, useParams,useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../CSS/AdminApporvals.css";
 function AdminApprovals(){
   let {Id} = useParams();
   let[requests,setRequests]=useState("");
   let[status,setStatus]=useState(1);
-  const navigate = useNavigate();
+  setStatus(1);
+  // const navigate = useNavigate();
   useEffect( ()=>{
     const fetchData = async () => {
       try {
@@ -28,24 +29,24 @@ function AdminApprovals(){
   }        
    },[status])
 
-   const next = async (request)=>{
-    const formdata = new FormData();
-    formdata.append('Company',request.companyName)
-    formdata.append('Role',request.role)
-    formdata.append('Apply',request.link)
-    fetch('http://localhost:8050/OnlineApproval/adds', {
-      method:'POST',
-      body: formdata,
+  //  const next = async (request)=>{
+  //   const formdata = new FormData();
+  //   formdata.append('Company',request.companyName)
+  //   formdata.append('Role',request.role)
+  //   formdata.append('Apply',request.link)
+  //   fetch('http://localhost:8050/OnlineApproval/adds', {
+  //     method:'POST',
+  //     body: formdata,
     
-    })
-      .then(response => response.text())
-      .then(data => {
-        console.log('SignUp successful:', data);
-      })
-      .catch(error => {
-        console.error('Error during SignUp:', error);
-      });
-  }
+  //   })
+  //     .then(response => response.text())
+  //     .then(data => {
+  //       console.log('SignUp successful:', data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error during SignUp:', error);
+  //     });
+  // }
   return(
     <div>
       <div id="header2"> I.K. Gujral Punjab Technical University</div>

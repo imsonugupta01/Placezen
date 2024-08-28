@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
+import Header from '../sidebar/Header';
+import Sidebar from "../sidebar/Sidebar";
+import "./EventAdmin.css"; // Ensure you have the corresponding CSS file
 
 function EventStudent() {
   let { Id } = useParams();
   let [eventt, setEventt] = useState([]);
   let [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true); // Set loading to true when fetching data starts
       try {
-        const response = await fetch(`http://localhost:8050/session/get`);
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/session/get`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -26,45 +30,41 @@ function EventStudent() {
     fetchData();
   }, []);
 
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/StuProfilePage/${Id}`, label: 'Profile' },
+    { path: `/StuPending/${Id}`, label: 'Pending' },
+    { path: '/', label: 'Logout' }
+  ];
+
   return (
     <div>
-      <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-      <div id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-        <Link id="llll" to={`/StudentProfile/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span>
-        </Link>
-        <Link id="llll" to={`/StuProfilePage/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
-        </Link>
-        <Link id="llll" to={`/StuPending/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Pending</span>
-        </Link>
-        <Link id="llll" to="/">
-          <span className="s1" style={{ fontSize: '20px' }}>Logout</span>
-        </Link>
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      
+      <div className="event-main-content">
+        <div id="event-title">Upcoming Events</div>
+        
+        {loading ? ( 
+          <div className="event-loader"></div> 
+        ) : (
+          <div id="event-list">
+            {eventt && eventt.map((ee, index) => (
+              <div className="event-card" key={index}>
+                <h2>{ee.sname}</h2>
+                <h4><span className="event-question">Location:</span> {ee.location}</h4>
+                <h4><span className="event-question">Speaker:</span> {ee.speaker}</h4>
+                <h4><span className="event-question">Date:</span> {ee.date}</h4>
+                <h4><span className="event-question">Timings:</span> {ee.timings}</h4>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-      <div id="iui">Upcoming Events</div>
-      {/* <div id="offf">
-        <div id="off1">Sessions</div>
-      </div> */}
-
-      {loading ? ( // Display loading spinner while fetching data
-        <div className="loader"></div> // Use CSS to style loader
-      ) : (
-        <div id="nobita">
-          {eventt && eventt.map((ee, index) => (
-            <div id="thiss" key={index}>
-              <h2>{ee.sname}</h2>
-              <h4>Location : {ee.location}</h4>
-              <h4>Speaker : {ee.speaker}</h4>
-              <h4>Date : {ee.date}</h4>
-              <h4>Timings : {ee.timings}</h4>
-              {/* <h4>Description : {ee.description}</h4> */}
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

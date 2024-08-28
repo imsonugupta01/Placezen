@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../CSS/OffHiring.css";
 import { Link, useParams } from "react-router-dom";
-import ReactHTMLTableToExcel from "react-html-table-to-excel";
+// import ReactHTMLTableToExcel from "react-html-table-to-excel";
 function OffHiring(){
   let[hiring,sethiring]=useState("");
   let {Id}=useParams();

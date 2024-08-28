@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "../CSS/StuOnlineHiring.css";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Header from '../sidebar/Header';
+import Sidebar from "../sidebar/Sidebar";
 
 function StuOnlineHiring() {
   const [hiring, setHiring] = useState([]);
   const { Id } = useParams();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8050/AddOn/alll`);
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/AddOn/alll`);
         if (!response.ok) {
-          throw new Error('Network response was not okk');
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
         setHiring(data);
       } catch (error) {
         console.error('Error fetching data: ', error.message);
@@ -27,39 +29,46 @@ function StuOnlineHiring() {
     fetchData();
   }, []);
 
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/StuProfilePage/${Id}`, label: 'Profile' },
+    { path: `/StuPending/${Id}`, label: 'Pending' },
+    { path: '/', label: 'Logout' }
+  ];
+
   return (
     <div>
-      <div id="bcd">I.K. Gujral Punjab Technical University</div>
-       <div id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-        <Link id="llll" to={`/StudentProfile/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span>
-        </Link>
-        <Link id="llll" to={`/StuProfilePage/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
-        </Link>
-        <Link id="llll" to={`/StuPending/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Pending</span>
-        </Link>
-        <Link id="llll" to="/">
-          <span className="s1" style={{ fontSize: '20px' }}>Logout</span>
-        </Link>
-      </div>
-      <div id="iui">Online Hirings</div>
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      <main className={`stu-online-hiring-content ${sidebarOpen ? 'stu-online-hiring-with-sidebar' : ''}`}>
+        <div className="stu-online-hiring-main-content">
+          <h1 className="stu-online-hiring-title">Online Hirings</h1>
 
-      {loading ? (
-        <div className="loader"></div>
-      ) : (
-        <div id="doremon">
-          {hiring.map((hire) => (
-            <div id="thisthat" key={hire.id}>
-              <h2>{hire.companyName}</h2>
-              <h4>ROLE: {hire.role}</h4>
-              <h4><a href={`${hire.link}`} target="_blank" rel="noopener noreferrer">Apply Here</a></h4>
+          {loading ? (
+            <div className="stu-online-hiring-loader"></div>
+          ) : (
+            <div className="stu-online-hiring-job-list">
+              {hiring.length > 0 ? (
+                hiring.map((hire) => (
+                  <div className="stu-online-hiring-job-card" key={hire.id}>
+                    <h2>{hire.companyName}</h2>
+                    <h4>ROLE: {hire.role}</h4>
+                    <h4>
+                      <a href={`${hire.link}`} target="_blank" rel="noopener noreferrer">Apply Here</a>
+                    </h4>
+                  </div>
+                ))
+              ) : (
+                <p>No job listings available.</p>
+              )}
             </div>
-          ))}
+          )}
         </div>
-      )}
+      </main>
     </div>
   );
 }

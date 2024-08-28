@@ -1,28 +1,42 @@
 import React from "react";
-import "../CSS/Recuriter.css";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Header from '../sidebar/Header';
+import Sidebar from '../sidebar/Sidebar';
+import '../CSS/Recuriter.css'; // Ensure you have the corresponding CSS file
 import top from "../Pics/top.jpg";
-function Recuriter(){
-  let {Id}=useParams();
-  return(
+
+function Recuriter() {
+  let { Id } = useParams();
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/StuProfilePage/${Id}`, label: 'Profile' },
+    { path: '/', label: 'Logout' }
+  ];
+
+  return (
     <div>
-      <div id="bcd"> I.K. Gujral Punjab Technical University</div>
+      <Header onMenuClick={toggleSidebar} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      
+      <main id="main-content">
+        <div id="page-title">Top Recruiters</div>
 
-      <div  id="mySidebarr">
-        <span className="s2" id="sus">Welcome</span>
-          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
-          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/StuProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
-      </div>
-
-      <div id="iui">Top Recruiters</div>
-
-    <div id="aaaaa">
-      <img height="1000" width="1100"src={top}></img>
+        <div id="image-container">
+          <img id="recruiter-image" src={top} alt="Top Recruiters" />
+        </div>
+      </main>
     </div>
-
-    </div>
-  )
+  );
 }
+
 export default Recuriter;

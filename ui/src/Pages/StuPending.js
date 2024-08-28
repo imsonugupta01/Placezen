@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import "../CSS/StPending.css"
+import Header from '../sidebar/Header';
+import Sidebar from '../sidebar/Sidebar';
+// import './StuPending.css'; // Ensure you have the corresponding CSS file
 
 function StuPending() {
-  let { Id } = useParams();
+  const { Id } = useParams();
   const [hiring, setHiring] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8050/Applied/queen/${Id}`);
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/Applied/queen/${Id}`);
         if (!response.ok) {
-          throw new Error('Network response was not okk');
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
         setHiring(data);
       } catch (error) {
         console.error('Error fetching data: ', error.message);
@@ -33,49 +35,59 @@ function StuPending() {
     navigate(`/HiringDetails/${Id}/${jobId}`);
   }
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/StuProfilePage/${Id}`, label: 'Profile' },
+    { path: `/StuApplied/${Id}`, label: 'Applied' },
+    { path: '/', label: 'Logout' }
+  ];
+
   return (
     <div>
-      <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-      <div id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-        <Link id="llll" to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-        <Link id="llll" to={`/StuProfilePage/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-        <Link id="llll" to={`/StuApplied/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Applied</span></Link>
-        <Link id="llll" to="/"> <span className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
-      </div>
-
-      {/* <h2><center>Pending Campus Recruitment</center></h2> */}
-      <div id="iui">Pending Campus Recruitment</div>
-      {loading ? (
-        <div className="loader"></div>
-      ) : (
-        <div>
-          <table id="tabu">
-            <thead className="tt" id="tabuh">
-              <tr>
-                <th>Company Name</th>
-                <th>Role</th>
-                <th>Location</th>
-                <th>CTC</th>
-                <th>End Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {hiring.map((hire) => (
-                <tr key={hire.jobId} onClick={() => next(hire.jobId)} className="clickable-row">
-                  <td>{hire.companyName}</td>
-                  <td>{hire.role}</td>
-                  <td>{hire.location}</td>
-                  <td>{hire.ctc}</td>
-                  <td>{hire.endDate}</td>
+      <Header onMenuClick={toggleSidebar} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      
+      <main className="main-contennt">
+        <div className="page-header">Pending Forms</div>
+        {loading ? (
+          <div className="loading-spinner"></div>
+        ) : (
+          <div className="table-container">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Company Name</th>
+                  <th>Role</th>
+                  <th>Location</th>
+                  <th>CTC</th>
+                  <th>End Date</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {hiring.map((hire) => (
+                  <tr key={hire.jobId} onClick={() => next(hire.jobId)} className="clickable-row">
+                    <td>{hire.companyName}</td>
+                    <td>{hire.role}</td>
+                    <td>{hire.location}</td>
+                    <td>{hire.ctc}</td>
+                    <td>{hire.endDate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </main>
     </div>
-  )
+  );
 }
 
 export default StuPending;

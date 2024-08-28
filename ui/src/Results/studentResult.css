@@ -1,122 +1,144 @@
-    #dis {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: 26%; /* Adjust margin instead of padding */
-    margin-right: 10%; /* Adjust margin instead of padding */
-    margin-top: 2%;
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
 }
 
-.dis1 {
-    width: calc(25% - 20px); /* Each item takes up approximately one-third of the container width */
-    background-color: #a8d8f9; /* Background color of each item */
-    border-radius: 10px;
-    margin-bottom: 20px; /* Adds space between rows */
-    /* margin-left:2px; */
-    text-align: center;
-   
+/* Content Styles */
+.student-main-content {
+  padding: 20px;
+  margin-left: 350px; /* Sidebar width */
+  margin-right: 20px; /* Right margin for larger screens */
+  transition: margin-left 0.3s ease, margin-right 0.3s ease;
 }
 
-/* Rest of the CSS remains the same */
- 
-
-.company-heading {
-    width: 100%; /* Same width as the parent */
-    font-family: cursive;
-    background-color: crimson; /* Background color for the company name */
-    color: white; /* Text color */
-     /* Padding for better spacing */
-    border-top-left-radius: 10px; /* Rounded corners */
-    border-top-right-radius: 10px; /* Rounded corners */
-    margin-top: 0; /* Remove margin for better alignment */
-    margin-bottom: 10px; /* Add margin for better spacing */
+.student-main-content-with-sidebar {
+  margin-left: 250px;
 }
 
-.dis1 img {
-    width: 120px; /* Increased width for student image */
-    height: 120px; /* Increased height for student image */
-    border-radius: 50%; /* Make the image circular */
-    margin-bottom: 10px; /* Add space below the image */
+.student-search-container {
+  display: flex;
+  gap: 15px; /* Increased space between input field and button */
+  margin-bottom: 20px;
 }
 
-.dis1 h3 {
-    margin: 5px 0; /* Adjust margin for the student name */
+.student-search-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Ensures padding is included in width */
 }
 
-.dis1 h4 {
-    margin: 5px 0;
-    font-size: 18px; /* Adjust the font size of the ctc */
+.student-search-button {
+  padding: 12px 20px;
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.dis1 p {
-    margin: 5px 0;
-    font-size: 16px; /* Adjust the font size of the role */
+.student-search-button:hover {
+  background-color: #16a085;
 }
-.chart-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 6%;
-    /* margin-bottom: 20px; */
-    margin-left: 30%;
-    height: 90vh;
-  }
-  
-  .chart {
-    /* height: 30rem; */
-    width: 120%; /* Increase the width to occupy more space */
-    margin-right: 10%;
-    max-width: 800px; /* Adjust the maximum width as needed */
-  }
-  
-  canvas {
-    width: 100%; /* Set the width of the canvas to 100% to fill the container */
-    height: 1000px; /* Adjust the height of the canvas as needed */
-  }
-  
-  
 
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 3%;
-    margin-top: 2%;;
-  }
-  
-  .search-container input {
-    margin-right: 5%;
+.student-result-list {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to the next line */
+  justify-content: center; /* Center the cards horizontally */
+  gap: 20px; /* Space between cards */
+}
+
+.student-card {
+  background-color: #192f50;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 40px); /* Adjusted width for larger screens */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.student-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.student-company-heading {
+  margin: 0;
+  font-size: 24px; /* Increased font size for larger screens */
+  color: #f7f0f0;
+}
+
+.student-name, .student-branch {
+  margin: 8px 0;
+  font-size: 20px; /* Increased font size for larger screens */
+  color:white
+}
+
+.student-session, .student-ctc, .student-role {
+  margin: 8px 0;
+}
+
+.student-ctc {
+  font-size: 28px; /* Increased font size for larger screens */
+  font-weight: 700;
+  color: crimson;
+}
+
+/* Responsive Design for Screens 768px and smaller */
+@media (max-width: 768px) {
+  .student-main-content {
+    margin-left: 0;
+    margin-right: 10px;
     padding: 10px;
-    font-size: 16px;
-  }
-  
-  .search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
   }
 
-  .search-container label {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #aaa;
-    transition: 0.2s;
-    pointer-events: none;
-  }
-  
-  .search-container input:focus + label,
-  .search-container input:not(:placeholder-shown) + label {
-    top: -10px;
-    left: 10px;
-    font-size: 12px;
-    color: #000;
-  }
-  
-  .search-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+  .student-search-container {
+    flex-direction: column;
+    gap: 10px;
   }
 
-  
+  .student-search-input, .student-search-button {
+    width: 100%;
+  }
+
+  .student-card {
+    padding: 15px;
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .student-card img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Additional Responsive Design for Smaller Screens (Mobile) */
+@media (max-width: 480px) {
+  .student-main-content {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+  }
+
+  .student-card {
+    padding: 8px;
+    width: 900%;
+  }
+
+  .student-card img {
+    width: 60px;
+    height: 60px;
+  }
+}

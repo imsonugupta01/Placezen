@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
-import "../CSS/OnlineHiring.css";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
+import Header from '../sidebar/Header';
+import Sidebar from "../sidebar/Sidebar";
+import "./Coordinator.css"; // Ensure you have the corresponding CSS file
 
 function AdminCoordinator() {
   const [tp, setTp] = useState([]);
   const { Id } = useParams();
   const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8050/TP/total`);
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/TP/total`);
         if (!response.ok) {
-          throw new Error('Network response was not okk');
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
         setTp(data);
       } catch (error) {
         console.error('Error fetching data: ', error.message);
@@ -27,53 +29,53 @@ function AdminCoordinator() {
     fetchData();
   }, []);
 
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/StuProfilePage/${Id}`, label: 'Profile' },
+    { path: '/', label: 'Logout' }
+  ];
+
   return (
     <div>
-      <div id="bcd">I.K. Gujral Punjab Technical University</div>
-      <div id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-        <Link id="llll" to={`/StudentProfile/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span>
-        </Link>
-        <Link id="llll" to={`/StuProfilePage/${Id}`}>
-          <span className="s1" style={{ fontSize: '20px' }}>Profile</span>
-        </Link>
-        <Link id="llll" to="/">
-          <span className="s1" style={{ fontSize: '20px' }}>Logout</span>
-        </Link>
-      </div>
-      <div id="iui">Coordinators</div>
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
 
-      {/* <div id="offf">
-        <div id="off1">T & P Coordinators</div>
-      </div> */}
-      
-      {loading ? (
-        <div className="loader"></div>
-      ) : (
-        <div>
-          <table id="tabu">
-            <thead className="tt" id="tabuh">
-              <th>Name</th>
-              <th>Branch</th>
-              <th>Semester</th>
-              <th>Contact</th>
-              <th>Email</th>
-            </thead>
-            <tbody>
-              {tp.map((cl, index) => (
-                <tr key={index}>
-                  <td>{cl.name}</td>
-                  <td>{cl.branch}</td>
-                  <td>{cl.semester}</td>
-                  <td>{cl.contact}</td>
-                  <td>{cl.email}</td>
+      <div className={`admin-content ${sidebarOpen ? 'admin-content-with-sidebar' : ''}`}>
+        <div id="admin-title">Coordinators</div>
+
+        {loading ? (
+          <div className="loader"></div>
+        ) : (
+          <div className="admin-table-container">
+            <table className="admin-table">
+              <thead className="admin-table-head">
+                <tr>
+                  <th>Name</th>
+                  <th>Branch</th>
+                  <th>Semester</th>
+                  <th>Contact</th>
+                  <th>Email</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {tp.map((cl, index) => (
+                  <tr key={index}>
+                    <td>{cl.name}</td>
+                    <td>{cl.branch}</td>
+                    <td>{cl.semester}</td>
+                    <td>{cl.contact}</td>
+                    <td>{cl.email}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

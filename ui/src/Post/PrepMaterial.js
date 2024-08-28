@@ -1,115 +1,121 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState,useEffect } from "react";
-function PrepMaterial()
-{  let{Id} =useParams();
-const [loading, setLoading] = useState(true);
-const [materials, setMaterials] = useState([]);
-var i=1;
-useEffect(() => {
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(`http://localhost:8050/post/all`);
-      if (!response.ok) {
-        throw new Error('Network response was not okk');
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Header from '../sidebar/Header';
+import Sidebar from '../sidebar/Sidebar';
+import './PrepMaterial.css'; // Ensure you have the corresponding CSS file
+
+function PrepMaterial() {
+  const { Id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [materials, setMaterials] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`http://localhost:8050/post/all`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setMaterials(data);
+      } catch (error) {
+        console.error('Error fetching data: ', error.message);
+      } finally {
+        setLoading(false);
       }
-      const data = await response.json();
-      console.log(data);
-      setMaterials(data);
+    };
+    fetchData();
+  }, []);
+
+  const update = async (Id) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/post/gett/${Id}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Check if the content type is a file
+      const contentType = response.headers.get('Content-Type');
+      if (contentType && contentType.includes('application/pdf')) {
+        // If it's a file, create a blob and initiate a download
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `document_${Id}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      } else {
+        console.error('Invalid content type');
+      }
     } catch (error) {
       console.error('Error fetching data: ', error.message);
-    } finally {
-      setLoading(false);
     }
   };
-  fetchData();
-}, []);
 
-// const update = async(Id)=>{
+  // const toggleSidebar = () => {
+  //   setSidebarOpen(!sidebarOpen);
+  // };
 
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/StuProfilePage/${Id}`, label: 'Profile' },
+    { path: `/StuPending/${Id}`, label: 'Pending' },
+    { path: '/', label: 'Logout' }
+  ];
 
-//   const response= await fetch(`http://localhost:8050/post/gett/${Id}`)
-//   .then(response => response.text())
-//   .then(data => {
-//     console.log('Successfully Downloaded:', data);
-  
-//   })
-//   .catch(error => {
-//     console.error('Error during Download:', error);
-//   });
-//  }
-
- const update = async (Id) => {
-  try {
-    const response = await fetch(`http://localhost:8050/post/gett/${Id}`);
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    // Check if the content type is a file
-    const contentType = response.headers.get('Content-Type');
-    if (contentType && contentType.includes('application/pdf')) {
-      // If it's a file, create a blob and initiate a download
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(new Blob([blob]));
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `document_${Id}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    } else {
-      console.error('Invalid content type');
-    }
-  } catch (error) {
-    console.error('Error fetching data: ', error.message);
-  }
-};
-
-    return(
+  return (
     <div>
-    <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-        <div  id="mySidebar">
-      <span className="s2" id="sus">Welcome </span>
-      {/* <Link id="llll" to={`/stPostMaterial/${Id}`} > <span  className="s1" style={{ fontSize: '20px' }}>Post Materials</span></Link> */}
-          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
-          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          {/* <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link> */}
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
-      </div>
-      <div id="iui">Study Materials</div>
-      {loading ? (
-        <div className="loader"></div>
-      ) : (
-        <div>
-          <table id="tabu">
-            <thead className="tt" id="tabuh">
-              <th>No.</th>
-              <th>Pdf Name</th>
-              <th>Posted On</th>
-              <th>Download</th>
-              {/* <th>Date Applied</th> */}
-            </thead>
-            <tbody>
-              {materials.map((hire, index) => (
-                <tr key={index}>
-                  <td>{i++}</td>
-                  <td>{hire.description}</td>
-                  <td>{hire.postDate}</td>
-                  <td><button onClick={() => update(hire.id)} style={{backgroundColor: 'green', color: '#fff', marginLeft: '30%', marginRight: '10%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Download File</button></td>
-                  {/* <td>{convertDate(hire.dateApplied)}</td> */}
+     <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+    
+    <main className="main-content">
+        <div className="page-title">Study Materials</div>
+
+        {loading ? (
+          <div className="loader"></div>
+        ) : (
+          <div className="table-wrapper">
+            <table className="material-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Pdf Name</th>
+                  <th>Posted On</th>
+                  <th>Download</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      
-
-    </div>)
+              </thead>
+              <tbody>
+                {materials.map((material, index) => (
+                  <tr key={material.id}>
+                    <td>{index + 1}</td>
+                    <td>{material.description}</td>
+                    <td>{material.postDate}</td>
+                    <td>
+                      <button 
+                        onClick={() => update(material.id)} 
+                        className="download-btn"
+                      >
+                        Download File
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </main>
+    </div>
+  );
 }
+
 export default PrepMaterial;

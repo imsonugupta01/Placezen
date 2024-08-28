@@ -1,176 +1,187 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams ,useNavigate} from "react-router-dom";
-import "../CSS/StProfile.css"
+import { useParams } from "react-router-dom";
+import Header from '../sidebar/Header';
+import Sidebar from "../sidebar/Sidebar";
+import "../CSS/StProfile.css"; // Ensure you have the corresponding CSS file
 
-function StuProfilePage(){
-  let[pf,setprofile]=useState("");
-  let[imageURL,setImageUrl]=useState("")
-  let {Id}=useParams();
-  let[postion,setPosition]=useState("")
-  let[journey,setJourney]=useState("")
-  let[SRoll,setRoll]=useState();
-  let[Name,setName]=useState("");
-  let[Session,setSession]=useState("")
+function StuProfilePage() {
+  const [profile, setProfile] = useState({});
+  // const [imageURL, setImageUrl] = useState("");
+  const { Id } = useParams();
+  const [position, setPosition] = useState("");
+  const [journey, setJourney] = useState("");
+  const [roll, setRoll] = useState("");
+  const [name, setName] = useState("");
+  const [session, setSession] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  function input1(event)
-  {
-     console.log(event.target.value);
-     setPosition(event.target.value);
-  }
-  function input2(event)
-  {
-     console.log(event.target.value);
-     setJourney(event.target.value);
+  function handlePositionChange(event) {
+    setPosition(event.target.value);
   }
 
-  function submit(event){
+  function handleJourneyChange(event) {
+    setJourney(event.target.value);
+  }
+
+  function handleSubmit(event) {
     event.preventDefault();
-    const formdata = new FormData();
-    formdata.append('SRoll',SRoll)
-    formdata.append('SName',Name)
-    formdata.append('Session',Session)
-    formdata.append('Jobs',postion)
-    formdata.append('Description',journey)
+    const formData = new FormData();
+    formData.append('SRoll', roll);
+    formData.append('SName', name);
+    formData.append('Session', session);
+    formData.append('Jobs', position);
+    formData.append('Description', journey);
 
-    
-   
-    fetch('http://localhost:8050/alumini/add', {
-      method:'POST',
-      body: formdata,
-    
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/alumini/add`, {
+      method: 'POST',
+      body: formData,
     })
       .then(response => response.text())
       .then(data => {
-        console.log('Request sent successful:', data);
-        alert("successfully updated !!!")
+        console.log('Request sent successfully:', data);
+        alert("Successfully updated!");
       })
       .catch(error => {
-        console.error('Error during Added:', error);
+        console.error('Error during update:', error);
       });
   }
-   
-   useEffect( ()=>{
-   const fetchData = async () => {
-     try {
-         const response = await fetch(`http://localhost:8050/student/getStudent/${Id}`);
-          const response2 = await fetch(`http://localhost:8050/student/downloadImage/${Id}`);
-         if (!response.ok ) {
-           throw new Error('Network response was not okk');
-         }
-        //  if (!response.ok ) {
-        //   throw new Error('Network response was not okk');
-        // }
-         const data = await response.json();
-         setRoll(data.roll)
-         const imageBlob = await response2.blob(); 
-         const imageObjectUrl = URL.createObjectURL(imageBlob);
-         console.log(data);
-         setprofile(data);
-         setName(data.name)
-         setSession(data.ssession)
-           setImageUrl(imageObjectUrl);
-        //  console.log(profile); 
-       } 
-       catch (error) {
-         console.error('Error fetching data: ', error.message);
-       }
- }  ;
- if(1)
- {
-     fetchData();
- }        
-  },[1])
-  return(
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/student/getStudent/${Id}`);
+        const response2 = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/student/downloadImage/${Id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const imageBlob = await response2.blob();
+        const imageObjectUrl = URL.createObjectURL(imageBlob);
+
+        setProfile(data);
+        setRoll(data.roll);
+        setName(data.name);
+        setSession(data.ssession);
+        // setImageUrl(imageObjectUrl);
+      } catch (error) {
+        console.error('Error fetching data: ', error.message);
+      }
+    };
+    fetchData();
+  }, [Id]);
+
+  const sidebarLinks = [
+    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    { path: `/changePass/${Id}`, label: 'Password' },
+    { path: '/', label: 'Logout' }
+  ];
+
+  return (
     <div>
-      <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-      <div  id="mySidebar">
-      <span className="s2" id="sus">Welcome  {pf.name}</span>
-          <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span>
-          <Link id="llll"  to={`/StudentProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+
+      <div className={`profile-content ${sidebarOpen ? 'profile-content-with-sidebar' : ''}`}>
+       
+
+          <div className="profile-main">
+            <div className="profile-info">
+              <div className="profile-info-section">
+                <label>Name</label>
+                <input value={profile.name} disabled />
+              </div>
+              <div className="profile-info-section">
+                <label>Session</label>
+                <input value={`${profile.ssession} - ${profile.ssession + 4}`} disabled />
+              </div>
+              <div className="profile-info-section">
+                <label>Branch</label>
+                <input value={profile.branch} disabled />
+              </div>
+              <div className="profile-info-section">
+                <label>Roll No</label>
+                <input value={profile.roll} disabled />
+              </div>
+              <div className="profile-info-section">
+                <label>Semester</label>
+                <input value={profile.semester < 9 ? `${profile.semester}th` : "Degree Completed"} disabled />
+              </div>
+            </div>
+
+            <div className="profile-contact">
+              <div className="profile-contact-section">
+                <label>Mobile</label>
+                <input value={profile.mobile} disabled />
+              </div>
+              <div className="profile-contact-section">
+                <label>Email</label>
+                <input value={profile.email} disabled />
+              </div>
+              <div className="profile-contact-section">
+                <label>LinkedIn</label>
+                <input value={profile.linkedin} disabled />
+              </div>
+              <div className="profile-contact-section">
+                <label>GitHub</label>
+                <input value={profile.github} disabled />
+              </div>
+              <div className="profile-contact-section">
+                <label>Portfolio</label>
+                <input value={profile.portfolio} disabled />
+              </div>
+            </div>
+
+            <div className="profile-extra">
+              <div className="profile-extra-section">
+                <label>Average CGPA</label>
+                <input value={profile.cgpa} disabled />
+              </div>
+              <div className="profile-extra-section">
+                <label>Backlogs</label>
+                <input value={profile.backlog} disabled />
+              </div>
+              <div className="profile-extra-section">
+                <label>Experiences</label>
+                <input value={profile.experience} disabled />
+              </div>
+              <div className="profile-extra-section">
+                <label>Skills</label>
+                <input value={profile.skills} disabled />
+              </div>
+              <div className="profile-extra-section">
+                <label>Interest</label>
+                <input value={profile.interest} disabled />
+              </div>
+            </div>
+
+            {profile.semester === 9 && (
+              <div className="profile-update">
+                <textarea
+                  value={position}
+                  onChange={handlePositionChange}
+                  rows="3"
+                  cols="60"
+                  placeholder="Share Current Position & Institution"
+                />
+                <textarea
+                  value={journey}
+                  onChange={handleJourneyChange}
+                  rows="7"
+                  cols="60"
+                  placeholder="Share your Placement Journey...."
+                />
+                <button onClick={handleSubmit} className="update-button">Update Profile</button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-
-      <div id="pff">
-        <div id="pff2">
-          {/* <h2>Profile</h2> */}
-            Profile<br></br>
-          <label className="chik">Name</label><br></br>
-          <input value={pf.name} disabled></input><br></br>
-          <span className="chik">Session</span><br></br>
-          <input value={`${pf.ssession} -${pf.ssession+4}`} disabled></input><br></br>
-          <span className="chik">Branch</span><br></br>
-          <input value={pf.branch} disabled></input><br></br>
-          <span className="chik">Roll No</span><br></br>
-          <input value={pf.roll} disabled></input><br></br>
-          <span>Semester</span><br></br>
-          <input value={pf.semester < 9 ? `${pf.semester}th` : " Degree Completed"} disabled></input><br></br>
-          {/* <span>Date of Birth</span><br></br>
-          <input value={pf.dob} disabled></input><br></br> */}
-         
-
-
-        </div>
-        
-
-        <div id="pff3">
-          {/* <h2>Profile</h2> */}
-          <br></br><label></label>
-          <label>Mobile</label><br></br>
-          <input id="iti"value={pf.mobile} disabled></input><br></br>
-          <span>Email</span><br></br>
-          <input id="iti" value={pf.email} disabled></input><br></br>
-          <span>Linkedin</span><br></br>
-          <input id="iti"value={pf.linkedin} disabled></input><br></br>
-          <span>Github</span><br></br>
-          <input id="iti"value={pf.github} disabled></input><br></br>
-          <span>Portfolio</span><br></br>
-          <input id="iti"value={pf.github} disabled></input><br></br>
-          
-
-        </div>
-        <div id="pff3">
-          {/* <h2>Profile</h2> */}
-          <br></br><label></label>
-          <span>Average CGPA</span><br></br>
-          <input id="iti" value={pf.cgpa} disabled></input><br></br>
-          <label>Backlogs</label><br></br>
-          <input id="iti"value={pf.backlog} disabled></input><br></br>
-          
-          <span>Experiences</span><br></br>
-          <input id="iti"value={pf.experience} disabled></input><br></br>
-          <span>Skills</span><br></br>
-          <input id="iti"value={pf.skills} disabled></input><br></br>
-          <span>Interest</span><br></br>
-          <input id="iti"value={pf.interest} disabled></input><br></br>
-          <br></br><br></br>
-         {/* <button style={{ width: '100px', color:"white",backgroundColor:'green' }}>Save details</button> */}
-         <button style={{ display: pf.semester === 9 ? 'none' : 'block', backgroundColor: 'green', color: '#fff', marginLeft: '30%', marginRight: '10%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Save Profile</button>
-
-          
-
-        </div>
-      </div> 
-      
-      
-      { pf.semester === 9 && (
-          <div id="dd1">
-          
-          <textarea  value={postion} onChange={input1} rows="3" cols="60" placeholder="Share Current Position & Institution"></textarea>
-            
-          </div>
-        )}
-        { pf.semester === 9 && (
-          <div id="dd">
-          
-            
-            <textarea value={journey} onChange={input2} placeholder="Share your Placement Journey...."rows="7" cols="60"></textarea>
-
-             <button onClick={submit} style={{backgroundColor: 'green', color: '#fff', marginLeft: '30%', marginRight: '10%', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Update Profile</button>
-          </div>
-        )}
-      
-    </div> 
-  )
+   
+  );
 }
+
 export default StuProfilePage;

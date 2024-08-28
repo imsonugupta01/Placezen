@@ -29,7 +29,7 @@ useEffect( ()=>{
   {
       fetchData();
   }  
-},[])
+},[jobId])
 
 useEffect( ()=>{
     
@@ -51,7 +51,7 @@ useEffect( ()=>{
   {
       fetchData();
   }  
-},[])
+},[jobId])
 
 function convertDate(dateStr) {
      

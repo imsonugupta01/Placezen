@@ -1,12 +1,12 @@
 import React, { useState ,useEffect} from "react";
-import { Link, useParams,useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../CSS/ApprovHiringDetails.css"
 function ApproveHiringDetails(){
   let {Id,jobId} = useParams();
   let[requests,setRequests]=useState("");
   let[status,setStatus]=useState(1);
   let[student,setstudent]=useState(1);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   useEffect( ()=>{
     const fetchData = async () => {
       try {
@@ -31,7 +31,7 @@ function ApproveHiringDetails(){
   {
       fetchData();
   }        
-   },[status])
+   },[status,,Id,jobId])
 
 
    const next = async (request)=>{
@@ -52,6 +52,8 @@ function ApproveHiringDetails(){
         console.error('Error during SignUp:', error);
       });
 
+      // const response= await fetch(`http://localhost:8050/OnlineApproval/delete/${Id}`)
+      // .then(response => response.text())
       const response= await fetch(`http://localhost:8050/OnlineApproval/delete/${Id}`)
       .then(response => response.text())
       .then(data => {
@@ -107,7 +109,7 @@ function ApproveHiringDetails(){
          
          
          {/* <h3>Roll No : {student.roll}</h3> */}
-         <h3><a href={`${requests.link}`} target="_blank" >View Details</a></h3>
+         <h3><a href={`${requests.link}`}  >View Details</a></h3>
       </div>
       <div id="devu">
         <button onClick={() => next(requests)} className="devus">Approve Request</button>

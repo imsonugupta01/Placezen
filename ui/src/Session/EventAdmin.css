@@ -1,23 +1,148 @@
-#nobita {
-  margin-left: 20%;
-  display: flex; /* Use modern Flexbox */
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  justify-content: space-around; /* Space out items evenly */
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
 }
 
-#thiss {
-  background-color: rgb(244, 233, 233);
-  width: calc(420px - 60px); /* Adjust width to fit 2 per row, accounting for margin */
-  margin: 25px 30px; /* Adjusted for demonstration; provides space around */
+/* Content Styles */
+.event-main-content {
+  padding: 20px;
+  margin-left: 250px; /* Adjusted sidebar width */
+  margin-right: 20px; /* Right margin for larger screens */
+  transition: margin-left 0.3s ease, margin-right 0.3s ease;
+}
+
+.event-main-content-with-sidebar {
+  margin-left: 250px;
+}
+
+#event-header {
+  font-size: 24px;
+  margin-bottom: 20px;
   text-align: center;
-  color: black;
+  color: #2c3e50;
+  font-weight: bold;
 }
 
-#thiss h2 {
-  background-color: crimson;
-  color: white;
+#event-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.event-welcome {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+#event-link {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+#event-link:hover {
+  color: #2980b9;
+}
+
+.event-link-text {
+  font-size: 20px;
+}
+
+#event-title {
+  font-size: 28px;
+  margin-bottom: 20px;
   text-align: center;
-  margin-top: 0; /* Remove margin-top if not needed */
-  padding: 10px 0; /* Adjust padding as needed */
+  color: #e74c3c;
+  font-weight: bold;
 }
 
+.event-loader {
+  margin: auto;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #1abc9c;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.event-card {
+  background-color: #0d2b48;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.event-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #e4e8ec;
+}
+
+.event-card h4 {
+  font-size: 13px;
+  margin: 5px 0;
+  color: #e3e7ea;
+}
+
+.event-question {
+  font-variant: small-caps;
+  font-weight: bold;
+  color: #f6f2f2;
+  font-size: larger;
+}
+
+/* Responsive Design for Screens 768px and smaller */
+@media (max-width: 768px) {
+  .event-main-content {
+    margin-left: 0;
+    margin-right: 10px;
+    padding: 10px;
+  }
+
+  .event-card {
+    padding: 15px;
+    max-width: 100%;
+  }
+}
+
+/* Additional Responsive Design for Smaller Screens (Mobile) */
+@media (max-width: 480px) {
+  .event-main-content {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+  }
+
+  .event-card {
+    padding: 8px;
+  }
+}

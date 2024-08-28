@@ -90,7 +90,7 @@ public class StudentController {
         return (List<Student>) studentRepository.findAll();
     }
 
-    @GetMapping("allS")
+    @GetMapping("/allS")
     public List<ResultShow> find()
     {
        List<Student> students= (List<Student>) studentRepository.findAll();

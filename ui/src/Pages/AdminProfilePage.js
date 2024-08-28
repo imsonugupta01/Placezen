@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams ,useNavigate} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../CSS/StProfile.css"
 import "../CSS/AdminProfilePage.css"
 import girl from "../Pics/girl.jpg"
-import boy from "../Pics/boy.jpg"
+// import boy from "../Pics/boy.jpg"
 function AdminProfilePage(){
   let[pr,setprofil]=useState("");
   let {Id}=useParams();
@@ -33,7 +33,7 @@ function AdminProfilePage(){
       
       <div  id="mySidebar">
       <span className="s2" id="sus">Welcome {pr.name}  </span>
-          <span className="s1"><img id ="simg" height="120" width="120" src={girl} ></img></span>
+          <span className="s1"><img id ="simg" height="120" width="120" src={girl}  alt="no-im"></img></span>
           <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
           <Link id="llll" to={`/changePass/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Password</span></Link>
            <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
