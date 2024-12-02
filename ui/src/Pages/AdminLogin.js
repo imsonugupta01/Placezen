@@ -16,7 +16,7 @@ function AdminLogin(){
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let response = await fetch(`http://localhost:8050/Admin/getId/${Username}/${Password}`);
+        let response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/Admin/getId/${Username}/${Password}`);
         if(!response.ok) {
           throw new Error('Network response was not ok');
         }

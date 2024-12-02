@@ -28,6 +28,7 @@ com\example\PlaceZen\Module\SignUpApprovals.class
 com\example\PlaceZen\Controller\OnlineHiringApprovalController.class
 com\example\PlaceZen\Controller\AluminiController.class
 com\example\PlaceZen\Controller\ResultController.class
+com\example\PlaceZen\Module\passed.class
 com\example\PlaceZen\Repository\OnlineHiringRepository.class
 com\example\PlaceZen\Controller\AppliedController.class
 com\example\PlaceZen\PlaceZenApplication.class

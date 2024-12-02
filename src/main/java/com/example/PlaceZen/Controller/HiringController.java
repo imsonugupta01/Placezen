@@ -45,17 +45,18 @@ public class HiringController {
 //      return (List<Hiring>) hiringRepository.findAll();
 
         List<Hiring> hirings= (List<Hiring>) hiringRepository.findAll();
-        List<Hiring> hr=new ArrayList<>();
-        for(int i=0;i<hirings.size();i++)
-        {
-            String date1= (hirings.get(i).getEndDate());
-            LocalDate date= LocalDate.parse(date1);
-            LocalDate now = LocalDate.now();
-            if(( date.isAfter(now) || date.isEqual(now) )){
-                hr.add(hirings.get(i));
-            }
-        }
-       return hr;
+        return hirings;
+//        List<Hiring> hr=new ArrayList<>();
+//        for(int i=0;i<hirings.size();i++)
+//        {
+//            String date1= (hirings.get(i).getEndDate());
+//            LocalDate date= LocalDate.parse(date1);
+//            LocalDate now = LocalDate.now();
+//            if(( date.isAfter(now) || date.isEqual(now) )){
+//                hr.add(hirings.get(i));
+//            }
+//        }
+//       return hr;
     }
 
     @GetMapping("/gett")

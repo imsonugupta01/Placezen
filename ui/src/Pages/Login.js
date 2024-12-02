@@ -4,7 +4,7 @@ import "../CSS/Login.css";
 
 function Login() {
   let [Username, setUsername] = useState("2124402");
-  let [Password, setPassword] = useState("");
+  let [Password, setPassword] = useState("123456");
   let [Id, setId] = useState("");
 
   function input1(event) {
@@ -63,7 +63,7 @@ function Login() {
               value={Password}
               onChange={input2}
               type="password"
-              placeholder="******"
+              // placeholder="123456"
             />
           </center>
           <center>
