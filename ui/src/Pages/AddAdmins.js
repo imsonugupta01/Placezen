@@ -59,7 +59,7 @@ function AddAdmins()
     
 
     
-    fetch('http://localhost:8050/Admin/add', {
+    fetch('http://localhost:5000/Admin/add', {
       method:'POST',
       body: formdata,
     

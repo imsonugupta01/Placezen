@@ -8,7 +8,7 @@ function OnlineHiringApproval(){
   useEffect( ()=>{
     const fetchData = async () => {
       try {
-          const response = await fetch(`http://localhost:8050/OnlineApproval/allApprovals`);
+          const response = await fetch(`http://localhost:5000/OnlineApproval/allApprovals`);
           if (!response.ok) {
             throw new Error('Network response was not okk');
           }
@@ -32,7 +32,7 @@ function OnlineHiringApproval(){
     formdata.append('Company',request.companyName)
     formdata.append('Role',request.role)
     formdata.append('Apply',request.link)
-    fetch('http://localhost:8050/OnlineApproval/adds', {
+    fetch('http://localhost:5000/OnlineApproval/adds', {
       method:'POST',
       body: formdata,
     

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams,Link,useNavigate } from "react-router-dom";
 import "./EventDetailsAdd.css";
+import Header from "../sidebar/Header";
+import Sidebar from "../sidebar/Sidebar";
 function EventDetailsAdd()
 { 
   let{Id}=useParams();
@@ -51,7 +53,7 @@ function EventDetailsAdd()
     formdata.append("timing",eventTimings)
     formdata.append("description",setEventDescription)
 
-    fetch('http://localhost:8050/session/add', {
+    fetch('http://localhost:5000/session/add', {
       method:'POST',
       body: formdata,
     
@@ -67,17 +69,23 @@ function EventDetailsAdd()
       });
   }
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+   const sidebarLinks = [
+    { path: `/AdminProfile/${Id}`, label: "Dashboard" },
+    { path: `/ResultStats/${Id}`, label: "Statics" },
+    { path: `/Alumnii/${Id}`, label: "Alumni" },
+    { path: "/", label: "Logout" },
+  ];
+
   return(
      <div>
-        <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-        <div  id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
-          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
-      </div>
-      <div id="iui">Add Events</div>
+            <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      <div id="iui" style={{marginLeft:"23%"}}>Add Events</div>
 
        <div id="fd">
        <br></br><br></br>

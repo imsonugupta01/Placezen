@@ -28,7 +28,7 @@ function StPostMaterial() {
     const formData = new FormData();
     formData.append('sid', Id);
     formData.append('documentFile', file);
-    formData.append('description', desc);
+    formData.append('discription', desc);
     formData.append('date', formattedDate);
 
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/post/upload`, {
@@ -42,7 +42,7 @@ function StPostMaterial() {
         return response.text();
       })
       .then(data => {
-        console.log('Server response:', data);
+        console('Server response:', data);
       })
       .catch(error => {
         console.error('Failed to upload file:', error);
@@ -50,7 +50,7 @@ function StPostMaterial() {
   }
 
   const sidebarLinks = [
-    { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
+    // { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
     { path: `/AddHiringStudent/${Id}`, label: 'Post Online Hiring' },
     { path: `/stPostMaterial/${Id}`, label: 'Post Material' },
     { path: '/', label: 'Logout' }

@@ -9,7 +9,7 @@ function Header({ onMenuClick }) {
       <button className="menu-button" onClick={onMenuClick}>
         <FontAwesomeIcon icon={faBars} />
       </button>
-      I.K. Gujral Punjab Technical University
+      <center style={{marginLeft:"22%"}}>I.K. Gujral Punjab Technical University</center>
     </header>
   );
 }

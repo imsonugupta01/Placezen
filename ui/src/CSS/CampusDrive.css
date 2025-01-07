@@ -5,7 +5,7 @@
 }
 
 .campus-drive-content {
-  margin-left: 250px; /* Adjust the value to add space between sidebar and content */
+  margin-left: 290px; /* Adjust the value to add space between sidebar and content */
   padding: 20px;
   flex: 1;
   display: flex;
@@ -79,4 +79,42 @@
     padding: 15px;
     font-size: 14px;
   }
+}
+
+
+.campus-drive-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.campus-drive-tab {
+  padding: 12px 25px;
+  margin: 0 15px;
+  background: linear-gradient(135deg, #6a11cb, #185506); /* Gradient background */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.campus-drive-tab.active {
+  background: linear-gradient(135deg, #2575fc, #1d1877); /* Slightly reversed gradient */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.campus-drive-tab:hover {
+  background: linear-gradient(135deg, #5a10bb, #1e65ec); /* Darker hover gradient */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.campus-drive-tab:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.5);
 }

@@ -64,6 +64,7 @@ public class AppliedController {
                         studentRespose.setName(stList.get(j).getName());
                         studentRespose.setRoll(stList.get(j).getRoll());
                         studentRespose.setDate(appList.get(i).getDate());
+                        studentRespose.setBranch(stList.get(j).getBranch());
                           studentResposeList.add(studentRespose);
 
                       }
@@ -97,6 +98,7 @@ public class AppliedController {
         return stuAppliedList;
 
     }
+
     @GetMapping("/queen/{Id}")
     private List<Hiring> hire(@PathVariable("Id") Integer Id){
         List<Hiring> Phirings = new ArrayList<>();
@@ -110,6 +112,9 @@ public class AppliedController {
             LocalDate date= LocalDate.parse(date1);
             LocalDate now = LocalDate.now();
             j=0;
+
+            System.out.println(date+" "+now );
+
 
             for( j=0; j<applieds.size() && ( date.isAfter(now) || date.isEqual(now) ) ;j++){
 
@@ -140,6 +145,8 @@ public class AppliedController {
         return  Phirings;
 
     }
+
+
 
 
 

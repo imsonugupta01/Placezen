@@ -45,7 +45,7 @@ public class AluminiController {
 
         for (int i=0;i<students.size();i++)
         {
-            if(students.get(i).getSemester()>=7)
+            if(students.get(i).getSSession()<=2020)
             {
                 StringBuilder Desription= new StringBuilder();
                 StringBuilder job= new StringBuilder();

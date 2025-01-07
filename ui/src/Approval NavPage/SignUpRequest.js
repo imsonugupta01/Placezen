@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from "react";
 import { Link, useParams,useNavigate } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
 function SignUpRequest(){
   let {Id} = useParams();
 
@@ -10,7 +11,7 @@ function SignUpRequest(){
   useEffect( ()=>{
     const fetchData = async () => {
       try {
-          const response = await fetch(`http://localhost:8050/signApprov/all`);
+          const response = await fetch(`http://localhost:5000/signApprov/all`);
           if (!response.ok) {
             throw new Error('Network response was not okk');
           }
@@ -95,20 +96,25 @@ function SignUpRequest(){
 
 
   }
-  
+   const [sidebarOpen, setSidebarOpen] = useState(false);
+      const sidebarLinks = [
+        { path: `/AdminProfile/${Id}`, label: "Dashboard" },
+        // { path: `/SignUpRequest/${Id}`, label: "New Students" },
+        { path: `/removeStudents/${Id}`, label: "Delete students" },
+        { path: `/AddAdmins/${Id}`, label: "Add Admins" },
+        // {path:'/logout'}
+      ];
   return(
     <div>
-      <div id="header2"> I.K. Gujral Punjab Technical University</div>
-      <div  id="mySidebar">
-      <span className="s2" id="sus">Welcome </span>
-          {/* <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span> */}
-           <Link id="llll" to = {`/SignUpRequest/${Id}`} > <span className="s1" style={{ fontSize: '20px' }}>SignUp Request</span></Link>
-           <Link id="llll" to={`/removeStudents/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Remove Student</span></Link>
-           {/* <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link> */}
-           <Link id="llll" to={`/AddAdmins/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
-           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span  className="s1" style={{ fontSize: '20px' }}>Online Hiring Request</span></Link>
-      </div>
-            <div id="iui">SignUp Request</div>
+      <div id="bcd"  style={{marginLeft:"20%"}}>I.K. Gujral Punjab Technical University</div>
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+
+     
+            <div id="material-title" style={{marginTop:"10px",marginLeft:"190px"}}>SignUp Request</div>
        
 
        <div id="doremon" >

@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -45,6 +42,36 @@ public class ResultController {
         }
         return set;
     }
+
+    @GetMapping("/allC2")
+    public List<Map<String, Object>> allCompay() {
+        List<Result> results = (List<Result>) resultRepository.findAll();
+        List<Map<String, Object>> companyList = new ArrayList<>();
+        Set<String> seenCompanies = new HashSet<>();
+
+        for (Result result : results) {
+            String companyName = result.getCName();
+            int id = result.getJId();
+
+            // Create a unique key based on company name and ID to check for duplicates
+            String key = companyName + "-" + id;
+
+            if (!seenCompanies.contains(key)) {
+                // Add to the set to avoid duplicates
+                seenCompanies.add(key);
+
+                // Create a new map for the unique company
+                Map<String, Object> companyMap = new HashMap<>();
+                companyMap.put("companyName", companyName);
+                companyMap.put("id", id);
+
+                // Add the map to the list
+                companyList.add(companyMap);
+            }
+        }
+
+        return companyList;
+    }
     @GetMapping("/StResult")
     public List<Result> findallresult(){
         return (List<Result>) resultRepository.findAll();
@@ -66,6 +93,31 @@ public class ResultController {
         return cnt;
     }
 
+
+
+    @GetMapping("/stdIn/{JobId}")
+    public List<ResultShow> getResult(@PathVariable ("JobId") Integer JobId){
+        List<ResultShow> resultShowList=new ArrayList<>();
+        List<Result> resultList= (List<Result>) resultRepository.findAll();
+        List<Student> studentList= (List<Student>) studentRepository.findAll();
+        for (int i=0;i<resultList.size();i++)
+        {
+            if(resultList.get(i).getJId()==JobId)
+            {
+                for(int j=0;j<studentList.size();j++)
+                {
+                    if(resultList.get(i).getSId()==studentList.get(j).getRoll())
+                    {
+                        ResultShow resultShow=new ResultShow(resultList.get(i).getCName(),studentList.get(j).getName(),studentList.get(j).getGender(),studentList.get(j).getRoll(),5,studentList.get(j).getBranch(),resultList.get(i).getRole(),resultList.get(i).getCTC());
+                        resultShowList.add(resultShow);
+                    }
+                }
+            }
+
+        }
+
+return  resultShowList;
+    }
 
 
 

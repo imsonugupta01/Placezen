@@ -72,15 +72,27 @@ function StuPending() {
                 </tr>
               </thead>
               <tbody>
-                {hiring.map((hire) => (
-                  <tr key={hire.jobId} onClick={() => next(hire.jobId)} className="clickable-row">
-                    <td>{hire.companyName}</td>
-                    <td>{hire.role}</td>
-                    <td>{hire.location}</td>
-                    <td>{hire.ctc}</td>
-                    <td>{hire.endDate}</td>
-                  </tr>
-                ))}
+              {hiring
+  .filter((hire) => {
+    const today = new Date();
+    const hireDate = new Date(hire.endDate);
+    return hireDate >= today; // Filter by date comparison
+  })
+  .map((hire) => (
+    <tr
+      key={hire.jobId}
+      onClick={() => next(hire.jobId)}
+      className="clickable-row"
+      style={{ cursor: "pointer" }}
+    >
+      <td>{hire.companyName}</td>
+      <td>{hire.role}</td>
+      <td>{hire.location}</td>
+      <td>{hire.ctc}</td>
+      <td>{hire.endDate.split('-').reverse().join('-')}</td>
+    </tr>
+  ))}
+
               </tbody>
             </table>
           </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../CSS/AddHiring.css"
 import { Link, useParams } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
 function AddHiring(){
   let {Id}=useParams();
   let[Company,setCompany]=useState("");
@@ -64,45 +65,114 @@ function AddHiring(){
     console.log(event.target.value)
     setdate2(event.target.value)
   }
-  function submitadd(event){
-    event.preventDefault();
-    const formdata = new FormData();
-    formdata.append('company',Company)
-    formdata.append('role',Role)
-    formdata.append('cgpa',Cgpa)
-    formdata.append('CTC',CTC)
-    formdata.append('backlog',Backlogs)
-    formdata.append('session',Session)
-    formdata.append('semester',Semester)
-    formdata.append('branch',Branch)
-    formdata.append('desciption',Description)
-    formdata.append('Location',location)
-    formdata.append('Date1',date1)
-    formdata.append('Date2',date2)
+//   function submitadd(event){
+//     event.preventDefault();
+//     const formdata = new FormData();
+//     formdata.append('company',Company)
+//     formdata.append('role',Role)
+//     formdata.append('cgpa',Cgpa)
+//     formdata.append('CTC',CTC)
+//     formdata.append('backlog',Backlogs)
+//     formdata.append('session',Session)
+//     formdata.append('semester',Semester)
+//     formdata.append('branch',Branch)
+//     formdata.append('desciption',Description)
+//     formdata.append('Location',location)
+//     formdata.append('Date1',date1)
+//     formdata.append('Date2',date2)
   
-    fetch('http://localhost:8050/Hiring/add', {
-      method:'POST',
-      body: formdata,
+//     fetch('http://localhost:5000/Hiring/add', {
+//       method:'POST',
+//       body: formdata,
     
+//     })
+//     .then((data) => {
+//       if (data.id) {
+//         alert(`Added Successfully! Hiring ID: ${data.id}`); // Display ID in alert
+//         console.log('Added successfully:', data);
+//       } else {
+//         alert('Added Successfully but no ID was returned.');
+//       }
+//     })
+//     .catch((error) => {
+//       console.error('Error during Added:', error);
+//     });
+// }
+
+
+function submitadd(event) {
+  event.preventDefault();
+  const formdata = new FormData();
+  formdata.append('company', Company);
+  formdata.append('role', Role);
+  formdata.append('cgpa', Cgpa);
+  formdata.append('CTC', CTC);
+  formdata.append('backlog', Backlogs);
+  formdata.append('session', Session);
+  formdata.append('semester', Semester);
+  formdata.append('branch', Branch);
+  formdata.append('desciption', Description);
+  formdata.append('Location', location);
+  formdata.append('Date1', date1);
+  formdata.append('Date2', date2);
+
+  // Add hiring
+  fetch('http://localhost:5000/Hiring/add', {
+    method: 'POST',
+    body: formdata,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to add hiring');
+      }
+      return response.json(); // Parse response as JSON
     })
-      .then(response => response.text())
-      .then(data => {
-        console.log('Added successful:', data);
-      })
-      .catch(error => {
-        console.error('Error during Added:', error);
-      });
-  }
+    .then((data) => {
+      if (data && data.id) {
+        alert(`Added Successfully! Hiring ID: ${data.id}`);
+        console.log('Added successfully:', data);
+
+        // Call the status add API with the hiring ID
+        return fetch(`http://localhost:5000/status/add/${data.id}`, {
+          method: 'POST',
+        });
+      } else {
+        alert('Added Successfully but no ID was returned.');
+        throw new Error('No ID returned from hiring add API');
+      }
+    })
+    .then((statusResponse) => {
+      if (!statusResponse.ok) {
+        throw new Error('Failed to add status');
+      }
+      return statusResponse.text(); // Handle response from status API
+    })
+    .then((statusData) => {
+      alert(`Status Added Successfully: ${statusData}`);
+      console.log('Status added successfully:', statusData);
+    })
+    .catch((error) => {
+      console.error('Error during operation:', error);
+    });
+}
+
+  
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarLinks = [
+    { path: `/AdminProfile/${Id}`, label: "Dashboard" },
+    { path: `/ResultStats/${Id}`, label: "Statics" },
+    { path: `/Alumnii/${Id}`, label: "Alumni" },
+    { path: "/", label: "Logout" },
+  ];
+
   return(
     <div>
       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-      <div  id="mySidebar">
-        <span className="s2" id="sus">Welcome</span>
-          {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
-          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
-      </div>
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
       <div id="iui">Add Hirings</div>
       <div id="fd22">
         <div>
@@ -134,7 +204,7 @@ function AddHiring(){
         <input placeholder="Start Date" type="date" onChange={input10} value={date1}/><br></br>
         <label>EndDate</label><br></br>
         <input placeholder="End Date" type="date" onChange={input11} value={date2}/><br></br>
-        <br></br><button onClick={submitadd} style={{ width:'80%', backgroundColor: 'green', color: '#fff', marginLeft:'10%',marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Submit</button></div>
+        <br></br><button onClick={submitadd} style={{ width:'80%', backgroundColor: 'green', color: '#fff', marginLeft:'10%',marginRight: '8%', padding: '15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Submitt</button></div>
         {/* <button onClick={submitadd}>Add</button> */}
         
       </div>

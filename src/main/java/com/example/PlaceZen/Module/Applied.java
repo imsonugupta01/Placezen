@@ -24,4 +24,6 @@ public class Applied {
         StudentId = studentId;
         Date = date;
     }
+
+
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import Sidebar from "../sidebar/Sidebar";
 function RemoveStudents()
 {
     let{Id}=useParams();
@@ -11,7 +12,7 @@ function RemoveStudents()
     useEffect( ()=>{
         const fetchData = async () => {
           try {
-              const response = await fetch(`http://localhost:8050/student/all`);
+              const response = await fetch(`http://localhost:5000/student/all`);
               if (!response.ok) {
                 throw new Error('Network response was not okk');
               }
@@ -34,7 +35,7 @@ function RemoveStudents()
 
    const remove= async(id)=>
     {
-        const response= await fetch(`http://localhost:8050/student/delete/${id}`)
+        const response= await fetch(`http://localhost:5000/student/delete/${id}`)
       .then(response => response.text())
       .then(data => {
         console.log('Successfully Deleted also:', data);
@@ -46,19 +47,25 @@ function RemoveStudents()
       });
 
     }
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+          const sidebarLinks = [
+            { path: `/AdminProfile/${Id}`, label: "Dashboard" },
+            // { path: `/SignUpRequest/${Id}`, label: "New Students" },
+            // { path: `/removeStudents/${Id}`, label: "Delete students" },
+            
+            { path: `/AddAdmins/${Id}`, label: "Add Admins" },
+            {path:'/',label:"logout"}
+          ];
     return(
         <div>
-             <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-             <div  id="mySidebar">
-      <span className="s2" id="sus">Welcome </span>
-          {/* <span className="s1"><img id ="simg" height="120" width="120" src={imageURL} ></img></span> */}
-           <Link id="llll" to = {`/SignUpRequest/${Id}`} > <span className="s1" style={{ fontSize: '20px' }}>SignUp Request</span></Link>
-           <Link id="llll" to={`/removeStudents/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Remove Student</span></Link>
-           {/* <Link id="llll" > <span  className="s1" style={{ fontSize: '20px' }}>Profile Edit Request</span></Link> */}
-           <Link id="llll" to={`/AddAdmins/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Add admins</span></Link>
-           <Link id="llll" to={`/AdminApprovals/${Id}`} > <span  className="s1" style={{ fontSize: '20px' }}>Online Hiring Request</span></Link>
-      </div>
-            <div id="iui">Students Removal Page</div>
+             <div id="bcd" style={{position:"fixed",width:"100vw"}}> I.K. Gujral Punjab Technical University</div>
+             <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      <br></br><br></br><br></br>
+            <div id="material-title">Manage Students</div>
 
 
       <div>

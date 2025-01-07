@@ -1,143 +1,267 @@
 import React, { useEffect, useState } from "react";
-import { useParams,Link } from "react-router-dom";
-import "../CSS/HiringResponseSheet.css"
-import ReactHTMLTableToExcel from "react-html-table-to-excel";
-function HiringResponseSheet ()
-{ 
-    let {Id,jobId}=useParams();
-    let[hiring,sethiring]=useState("")
-    let[students,setStudents]=useState("") 
-    let i=1;  
+import { useParams } from "react-router-dom";
+import "../CSS/HiringResponseSheet.css";
+import Sidebar from "../sidebar/Sidebar";
 
-useEffect( ()=>{
-    
-    const fetchData = async () => {
+function HiringResponseSheet() {
+  let { Id, jobId } = useParams();
+  let [hiring, setHiring] = useState("");
+  let [students, setStudents] = useState([]);
+  let [formVisible, setFormVisible] = useState(false);
+  let [roundNumber, setRoundNumber] = useState("");
+  let [roundName, setRoundName] = useState("");
+  let [message, setMessage] = useState("");
+  let [rollNumbers, setRollNumbers] = useState([""]);
+  
+  const [rounds, setRounds] = useState([]);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarLinks = [
+    { path: `/AdminProfile/${Id}`, label: "Dashboard" },
+    { path: `/ResultStats/${Id}`, label: "Statics" },
+    { path: `/Alumnii/${Id}`, label: "Alumni" },
+    { path: "/", label: "Logout" },
+  ];
+
+  useEffect(() => {
+    const fetchHiringData = async () => {
       try {
-          const response = await fetch(`http://localhost:8050/Hiring/fetch/${jobId}`);
-          if (!response.ok) {
-            throw new Error('Network response was not okk');
-          }
-          const data = await response.json();
-          console.log(data);
-          sethiring(data);
-        } 
-        catch (error) {
-          console.error('Error fetching data: ', error.message);
+        const response = await fetch(`http://localhost:5000/Hiring/fetch/${jobId}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-  }  ;
-  if(1)
-  {
-      fetchData();
-  }  
-},[jobId])
+        const data = await response.json();
+        console.log(data);
+        setHiring(data);
+      } catch (error) {
+        console.error("Error fetching data: ", error.message);
+      }
+    };
+    fetchHiringData();
+  }, [jobId]);
 
-useEffect( ()=>{
-    
-    const fetchData = async () => {
+  useEffect(() => {
+    const fetchStudentsData = async () => {
       try {
-          const response = await fetch(`http://localhost:8050/Applied/search/${jobId}`);
-          if (!response.ok) {
-            throw new Error('Network response was not okk');
-          }
-          const data = await response.json();
-          console.log(data);
-          setStudents(data);
-        } 
-        catch (error) {
-          console.error('Error fetching data: ', error.message);
+        const response = await fetch(`http://localhost:5000/Applied/search/${jobId}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-  }  ;
-  if(1)
-  {
-      fetchData();
-  }  
-},[jobId])
+        const data = await response.json();
+        console.log(data);
+        setStudents(data);
+      } catch (error) {
+        console.error("Error fetching data: ", error.message);
+      }
+    };
+    fetchStudentsData();
+  }, [jobId]);
 
-function convertDate(dateStr) {
-     
-    const date = new Date(dateStr);
-    // console.log(date.toLocaleDateString())
-    return date.toLocaleDateString();
-}
+  useEffect(() => {
+    const fetchRoundsData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/round/findAllByJobId/${jobId}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        setRounds(data);
+      } catch (error) {
+        console.error("Error fetching rounds data: ", error.message);
+      }
+    };
+    fetchRoundsData();
+  }, [jobId]);
 
-    return(
-        <div>
-            <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-            <div  id="mySidebar">
-           <span className="s2" id="sus" >{hiring.companyName}</span>
-          
-         
-          
-           <Link id="llll" to ={`/Adminresult/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Results</span></Link>
-           <Link id="llll" to={`/ResultStats/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Statics</span></Link>
-           {/* <span className="s1" >Statistics</span> */}
-          
-           {/* <span className="s1">Our Alumni</span> */}
-           <Link id="llll" to={`/Alumnii/${Id}`}><span className="s1" style={{ fontSize: '20px' }}>Alumni</span></Link>
-           <Link id="llll" to ={`/`}><span className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
-           {/* <span className="s1">Upcoming Events</span> */}
-           
-      </div>
-      
-            <table id="tabu" >
-                <thead className="tt" id="tabuh">
-                    
-                    <th>Company Name</th>
-                    <th>Role</th>
-                    <th>CTC</th>
-                    <th>Batch</th>
-                    <th>CGPA</th>
-                    <th>Last Date</th>
-                </thead>
-                <tr id="tabuh">
-                    
-                    <td>{hiring.companyName}</td>
-                    <td>{hiring.role}</td>
-                    <td>{hiring.ctc/100000} LPA</td>
-                    <td>{hiring.startSession} - {hiring.startSession+4}</td>
-                    <td>{hiring.cgpa}</td>
-                    <td>{hiring.endDate}</td>
+  function handleAddRollNumber() {
+    setRollNumbers([...rollNumbers, ""]);
+  }
+
+  function handleRollNumberChange(index, value) {
+    const newRollNumbers = [...rollNumbers];
+    newRollNumbers[index] = value;
+    setRollNumbers(newRollNumbers);
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    // Get current date in yyyy-mm-dd format
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    const formData = {
+      rndNumber: roundNumber,
+      roundName: roundName,
+      jobId: jobId,
+      rollNumList: rollNumbers.join(","),
+      description: message,
+      date: currentDate, // Use current date in yyyy-mm-dd format
+    };
+
+    fetch("http://localhost:5000/round/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        alert("Updated Successfully")
+        if (!response.ok) {
+          throw new Error("Failed to submit data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Form submitted successfully:", data);
+        setFormVisible(false);
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+      });
+  }
+
+  function closeForm() {
+    setFormVisible(false);
+  }
+
+  return (
+    <div>
+      <div id="bcd">I.K. Gujral Punjab Technical University</div>
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+
+      <table id="tabu">
+        <thead className="tt" id="tabuh">
+          <tr>
+            <th>Company Name</th>
+            <th>Role</th>
+            <th>CTC</th>
+            <th>Batch</th>
+            <th>CGPA</th>
+            <th>Last Date</th>
+          </tr>
+        </thead>
+        <tr id="tabuh">
+          <td>{hiring.companyName}</td>
+          <td>{hiring.role}</td>
+          <td>{hiring.ctc / 100000} LPA</td>
+          <td>{hiring.startSession} - {hiring.startSession + 4}</td>
+          <td>{hiring.cgpa}</td>
+          {hiring && <td>{hiring.endDate.split('-').reverse().join('-')}</td>}
+        </tr>
+      </table>
+
+      <h2 style={{ marginLeft: "22%" }}>
+        <center>Total Students Applied : {students.length}</center>
+      </h2>
+      <button className="button-right" onClick={() => setFormVisible(true)}>
+        Update Status
+      </button>
+<br></br><br></br>
+<br></br>
+<div className="cnt" >
+  {rounds.length > 0 ? (
+    <div className="rounds-container">
+      {rounds
+        .slice()
+        .reverse()
+        .map((round, index) => (
+          <div className="round-card" key={index}>
+            <h3>
+             {round.roundNum}: {round.roundName}
+            </h3>
+            <p>
+              <strong>Date:</strong> <p><strong>Date:</strong> {round.date.split('-').reverse().join('-')}</p>
+
+            </p>
+            <p className="round-message">{round.message}</p>
+            <h4>Selected Students:</h4>
+            <table className="student-table">
+              <thead>
+                <tr>
+                  <th>Roll Number</th>
+                  <th>Name</th>
+                  <th>Branch</th>
                 </tr>
+              </thead>
+              <tbody>
+                {round.stdDetails.map((student, idx) => (
+                  <tr key={idx}>
+                    <td>{student.roll}</td>
+                    <td>{student.name}</td>
+                    <td>{student.branch}</td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
+          </div>
+        ))}
+    </div>
+  ) : (
+    <p>No rounds found for this job.</p>
+  )}
+</div>
 
 
-            <h3><center>Student Response List </center></h3>
+
+      {formVisible && (
+        <div className="form-container">
+          <button onClick={closeForm}>❌</button>
+          <h2>Update Status</h2>
+          <form onSubmit={handleFormSubmit}>
             <div>
-                
-                <table id="tabu1" className="tut">
-                    <thead className="tt" id="tabuh">
-                        <th>Sl No.</th>
-                        <th>Student Name</th>
-                        <th>Roll Number</th>
-                        <th>Branch</th>
-                        <th>Date</th>
-                        
-                    </thead>
-                    {   
-                        students && students.map(student =>(
-                            <tr>
-                               <td>{i++}</td>
-                               <td>{student.name}</td>
-                               <td>{student.roll}</td>
-                               <td>CSE</td>
-                               <td>{convertDate(student.date)}</td>
-                            </tr>
-                        ))
-                    }
-                </table>
+              <label>Round Number:</label>
+              <input
+                type="text"
+                value={roundNumber}
+                onChange={(e) => setRoundNumber(e.target.value)}
+                required
+              />
             </div>
-            <ReactHTMLTableToExcel
-            
-            id="test-table-xls-button"
-            className="ccc"
-            table="tabu1"
-            filename="students"
-            sheet="students_sheet"
-            buttonText="Download as Excel"
-             />
-            
-
+            <div>
+              <label>Round Name:</label>
+              <input
+                type="text"
+                value={roundName}
+                onChange={(e) => setRoundName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>Message:</label>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>Roll Numbers:</label>
+              {rollNumbers && rollNumbers.map((roll, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  value={roll}
+                  onChange={(e) => handleRollNumberChange(index, e.target.value)}
+                  required
+                  placeholder={`Roll Number ${index + 1}`}
+                />
+              ))}
+              <button type="button" onClick={handleAddRollNumber}>
+                Add Roll Number
+              </button>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
         </div>
-    )
+      )}
+    </div>
+  );
 }
+
 export default HiringResponseSheet;

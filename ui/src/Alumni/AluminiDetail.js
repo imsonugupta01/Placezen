@@ -13,8 +13,8 @@ function AlumniDetail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8050/alumini/asl/${Id}`);
-        const response2 = await fetch(`http://localhost:8050/alumini/asls/${Id}`);
+        const response = await fetch(`http://localhost:5000/alumini/asl/${Id}`);
+        const response2 = await fetch(`http://localhost:5000/alumini/asls/${Id}`);
         
         if (!response.ok || !response2.ok) {
           throw new Error('Network response was not ok');

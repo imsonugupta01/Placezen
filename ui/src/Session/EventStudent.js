@@ -47,7 +47,7 @@ function EventStudent() {
       />
       
       <div className="event-main-content">
-        <div id="event-title">Upcoming Events</div>
+        <div id="event-title" style={{color:"black"}}>Upcoming Events</div>
         
         {loading ? ( 
           <div className="event-loader"></div> 

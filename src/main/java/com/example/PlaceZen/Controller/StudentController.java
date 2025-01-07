@@ -1,7 +1,9 @@
 package com.example.PlaceZen.Controller;
+import com.example.PlaceZen.Module.Hiring;
 import com.example.PlaceZen.Module.Result;
 import com.example.PlaceZen.Module.ResultShow;
 import com.example.PlaceZen.Module.Student;
+import com.example.PlaceZen.Repository.HiringRepository;
 import com.example.PlaceZen.Repository.ResultRepository;
 import com.example.PlaceZen.Repository.StudentRepository;
 import jakarta.transaction.Transactional;
@@ -27,6 +29,9 @@ public class StudentController {
     private StudentRepository studentRepository;
     @Autowired
     private ResultRepository resultRepository;
+
+    @Autowired
+    private HiringRepository hiringRepository;
    private final String path = "../../Images";
 
 //    @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -199,38 +204,63 @@ public class StudentController {
 
 
 
-    @GetMapping("/details/{name}")
-    public List<ResultShow> resultShows(@PathVariable("name")String Name){
-        List<Student> students= (List<Student>) studentRepository.findAll();
-        List<Result> results= (List<Result>) resultRepository.findAll();
-        List<ResultShow> rs=new ArrayList<>();
-        for(int i=0;i<results.size();i++)
+//    @GetMapping("/details/{Name}")
+//    public List<ResultShow> resultShows(@PathVariable("name")String Name){
+//        List<Student> students= (List<Student>) studentRepository.findAll();
+//        List<Result> results= (List<Result>) resultRepository.findAll();
+//        List<ResultShow> rs=new ArrayList<>();
+//        for(int i=0;i<results.size();i++)
+//        {
+//            if(results.get(i).getCName().equals(Name)){
+//                for(int j=0;j<students.size();j++)
+//                {
+//                    if(results.get(i).getSId()==students.get(j).getRoll())
+//                    {  System.out.println("Matched:" + students.get(j).getName());
+//                        ResultShow resultShow=new ResultShow();
+//                        resultShow.setCompName(results.get(i).getCName());
+//                        resultShow.setBranch(students.get(j).getBranch());
+//                        resultShow.setRole(results.get(i).getRole());
+//                        resultShow.setCTC(results.get(i).getCTC());
+//                        resultShow.setRoll(students.get(j).getRoll());
+//                        resultShow.setStudName(students.get(j).getName());
+//                        resultShow.setSession(students.get(j).getSSession());
+//                        resultShow.setGender(students.get(j).getGender());
+//                        rs.add(resultShow);
+////                   break;
+//                    }
+//                }
+//            }
+//
+//        }
+//        return  rs;
+//
+//
+//    }
+
+
+    @GetMapping("/details/{compId}")
+    public List<ResultShow> resultShows(@PathVariable("compId") Integer compId){
+
+
+        List<Object[]> results = resultRepository.findRollNumbersAndCTCByCompanyId(compId);
+        List<Student> studentList= (List<Student>) studentRepository.findAll();
+        List<ResultShow> resultShowList=new ArrayList<>();
+        for(Object[] result : results)
         {
-            if(results.get(i).getCName().equals(Name)){
-                for(int j=0;j<students.size();j++)
+            for(int i=0;i<studentList.size();i++)
+            {
+                if(result[0].equals(studentList.get(i).getRoll()))
                 {
-                    if(results.get(i).getSId()== students.get(j).getRoll())
-                    {
-                        ResultShow resultShow=new ResultShow();
-                        resultShow.setCompName(results.get(i).getCName());
-                        resultShow.setBranch(students.get(j).getBranch());
-                        resultShow.setRole(results.get(i).getRole());
-                        resultShow.setCTC(results.get(i).getCTC());
-                        resultShow.setRoll(students.get(j).getRoll());
-                        resultShow.setStudName(students.get(j).getName());
-                        resultShow.setSession(students.get(j).getSSession());
-                        resultShow.setGender(students.get(j).getGender());
-                        rs.add(resultShow);
-//                   break;
-                    }
+                    ResultShow resultShow=new ResultShow("",studentList.get(i).getName(),studentList.get(i).getGender(),studentList.get(i).getRoll(),studentList.get(i).getSSession(),studentList.get(i).getBranch(),result[2].toString(),(Integer) result[1]
+                    );
+                    resultShowList.add(resultShow);
+                    break;
                 }
             }
-
         }
-        return  rs;
-
-
+return resultShowList;
     }
+
 
     @GetMapping("/std/{year}/{lpa}")
     public  List<ResultShow> StdyearLpa(@PathVariable("year") Integer year,@PathVariable("lpa") Integer lpa)

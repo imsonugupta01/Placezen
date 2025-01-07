@@ -34,7 +34,7 @@ function Alumnii()
   useEffect( ()=>{
     const fetchData = async () => {
       try {
-          const response = await fetch(`http://localhost:8050/student/all`);
+          const response = await fetch(`http://localhost:5000/student/all`);
           if (!response.ok) {
             throw new Error('Network response was not okk');
           }
@@ -57,9 +57,9 @@ function Alumnii()
        <div  id="mySidebar">
         <span className="s2" id="sus">Welcome</span>
           {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
-          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+          <Link id="llll" style={{textDecoration:"none"}}  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px', textDecoration:"none"}}>Dashboard</span></Link>
+          <Link id="llll"  style={{textDecoration:"none"}} to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' ,textDecoration:"none"}}>Profile</span></Link>
+           <Link id="llll" style={{textDecoration:"none"}}  to="/"> <span  className="s1" style={{ fontSize: '20px' ,textDecoration:"none"}}>Logout</span></Link>
     </div>
      
       

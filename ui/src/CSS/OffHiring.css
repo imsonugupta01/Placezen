@@ -3,6 +3,7 @@
   flex-direction: row;
   margin-top: 1%;
   justify-content: center;
+  /* margin-left: 35%; */
 
 }
 #off1{
@@ -13,6 +14,7 @@
   width: 300px;
   margin-right: 300px;
   text-align: center;
+  visibility: hidden;
 }
 #off2{
   /* margin-left: 39%; */
@@ -56,7 +58,7 @@
 } */
 
 #doremon {
-  margin-left: 16%;
+  margin-left: 20%;
   display: flex; /* Use modern Flexbox */
   flex-wrap: wrap; /* Allow items to wrap to the next line */
   justify-content: space-around; /* Space out items evenly */
@@ -79,4 +81,30 @@
 }
 #lalu{
   text-decoration: none;
+}
+#tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+ 
+}
+
+.tab {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.tab:hover {
+  background-color: #ddd;
+}
+
+.active-tab {
+  background-color: crimson;
+  color: white;
+  border-color: crimson;
 }

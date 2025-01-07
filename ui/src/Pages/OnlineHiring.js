@@ -40,7 +40,7 @@ function OnlineHiring() {
         onClose={() => setSidebarOpen(false)}
         links={sidebarLinks}
       />
-      <main className="content">
+      {/* <main className="content">
         
         <div className="main-content">
         
@@ -63,7 +63,30 @@ function OnlineHiring() {
             )}
           </div>
         </div>
-      </main>
+      </main> */}
+      <main id="main-content">
+  <div id="content-container">
+    <div id="add-more-section">
+      <Link id="add-link" to={`/AddOnlineHiring/${Id}`}>Add More +</Link>
+    </div>
+    <div id="job-list-section">
+      {hiring.length > 0 ? (
+        hiring.map(hire => (
+          <div id={`job-card-${hire.id}`} key={hire.id}>
+            <h2 id={`company-name-${hire.id}`}>{hire.companyName}</h2>
+            <h4 id={`role-${hire.id}`}>ROLE: {hire.role}</h4>
+            <h4 id={`apply-link-${hire.id}`}>
+              <a href={`${hire.link}`} target="_blank" rel="noopener noreferrer">Apply Here</a>
+            </h4>
+          </div>
+        ))
+      ) : (
+        <p id="no-job-listings">No job listings available.</p>
+      )}
+    </div>
+  </div>
+</main>
+
     </div>
   );
 }

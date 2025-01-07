@@ -43,7 +43,7 @@ public class SignUpApprovalsController {
             @RequestParam("experience") String Experience,
             @RequestParam("file") MultipartFile file,
             @RequestParam("password") String Password,
-            @RequestParam("s") Integer SSession
+            @RequestParam("session") Integer SSession
     )  throws IOException {
         String fullPath = path + file.getOriginalFilename();
         file.transferTo(new File(fullPath));

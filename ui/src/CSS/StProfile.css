@@ -127,4 +127,37 @@ body, html {
       font-size: 12px;
     }
   }
+  .upload-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .upload-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Blue color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .upload-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  .upload-btn:active {
+    background-color: #003d80; /* Even darker blue on click */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); /* Pressed-in effect */
+  }
+  
+  .upload-btn:focus {
+    outline: none;
+    box-shadow: 0 0 4px 2px rgba(0, 123, 255, 0.5); /* Focus glow */
+  }
   

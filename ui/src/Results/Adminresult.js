@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Adminresult.css"
 import { Link, useParams } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
 
 function Adminresult() {
   let { Id } = useParams();
@@ -12,7 +13,7 @@ function Adminresult() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8050/result/allC");
+        const response = await fetch("http://localhost:5000/result/allC");
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -29,7 +30,7 @@ function Adminresult() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8050/student/allS");
+        const response = await fetch("http://localhost:5000/student/allS");
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -44,17 +45,27 @@ function Adminresult() {
     };
     fetchData();
   }, []);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarLinks = [
+    { path: `/AdminProfile/${Id}`, label: "Dashboard" },
+    // { path: `/CompanyWiseResult/${index}/${Id}`, label: "Statics" },
+    // 
+    // { path: `/Alumnii/${Id}`, label: "Alumni" },
+    { path: "/", label: "Logout" },
+  ];
+
 
   return (
     <div>
       <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-      <div id="mySidebar">
-        <span className="s2" id="sus" >Companies</span>
-        {company && company.map(index => (
-          <Link id="llll" to={`/CompanyWiseResult/${index}/${Id}`} key={index}><span className="s1">{index}</span></Link>
-        ))}
-         <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-      </div>
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={sidebarLinks}
+      />
+      
+
+     
       <div id="iui">Placed Students</div>
       <Link id="addu" to={`/AddResult/${Id}`}><button >Add more results</button></Link>
       {loading ? ( // Display loading spinner while fetching data

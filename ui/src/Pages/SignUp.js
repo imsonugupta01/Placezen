@@ -124,7 +124,7 @@ function SignUp() {
     formdata.append('backlog', Backlog);
     formdata.append('session', session);
 
-    fetch('http://localhost:8050/signApprov/signup', {
+    fetch('http://localhost:5000/signApprov/signup', {
       method: 'POST',
       body: formdata,
     })

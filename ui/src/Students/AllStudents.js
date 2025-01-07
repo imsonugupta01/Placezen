@@ -86,6 +86,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import "./Allstudents.css"
+import Header from "../sidebar/Header";
 
 function AllStudents() {
     let { Id } = useParams();
@@ -95,7 +96,7 @@ function AllStudents() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:8050/student/stu/${dept}`);
+                const response = await fetch(`http://localhost:5000/student/stu/${dept}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -113,9 +114,12 @@ function AllStudents() {
         setDept(branch);
     };
 
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    
+
     return (
         <div>
-            <div id="bcd">I.K. Gujral Punjab Technical University</div>
+              <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
 
             <div id="mySidebar">
                 <span className="s2" id="sus">Branches</span>

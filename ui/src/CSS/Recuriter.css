@@ -9,8 +9,9 @@ body, html {
 
 /* Main Content Styles */
 #main-content {
+  width: 75%;
   padding: 20px;
-  margin-left: 250px; /* Adjust as needed based on sidebar width */
+  margin-left: 20%; /* Adjust as needed based on sidebar width */
   transition: margin-left 0.3s ease;
 }
 

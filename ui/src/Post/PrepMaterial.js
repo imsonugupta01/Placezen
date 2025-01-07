@@ -14,7 +14,7 @@ function PrepMaterial() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8050/post/all`);
+        const response = await fetch(`http://localhost:5000/post/all`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

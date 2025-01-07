@@ -19,7 +19,7 @@ function StudentResult() {
   const fetchStudents = async (year, lpa) => {
     setLoading(true);
     try {
-      const response1 = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/result/allC`);
+      const response1 = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/result/allC2`);
       const response2 = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/student/std/${year}/${lpa}`);
 
       if (!response1.ok || !response2.ok) {
@@ -30,6 +30,7 @@ function StudentResult() {
       const data2 = await response2.json();
 
       setCompany(data1);
+      console.log(data1)
       setStudents(data2);
     } catch (error) {
       console.error('Error fetching data: ', error.message);
@@ -44,9 +45,14 @@ function StudentResult() {
 
   const sidebarLinks = [
     { path: `/StudentProfile/${Id}`, label: 'Dashboard' },
-    ...company.map(c => ({ path: `/CompStudResult/${c}/${Id}`, label: c })),
+    ...company.map(c => ({
+      
+      path: `/CompStudResult/${c.companyName}/${c.id}/${Id}`,
+      label: `${c.companyName}`
+    })),
     { path: '/', label: 'Logout' }
   ];
+  
 
   return (
     <div >

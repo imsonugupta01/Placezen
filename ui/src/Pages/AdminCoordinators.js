@@ -7,7 +7,7 @@ function AdminCoordinator(){
     useEffect( ()=>{
     const fetchData = async () => {
       try {
-          const response = await fetch(`http://localhost:8050/TP/total`);
+          const response = await fetch(`http://localhost:5000/TP/total`);
           if (!response.ok) {
             throw new Error('Network response was not okk');
           }
@@ -28,17 +28,17 @@ function AdminCoordinator(){
   return(
     <div>
         <div id="bcd"> I.K. Gujral Punjab Technical University</div>
-        <div  id="mySidebar">
+        <div  id="mySidebar" >
         <span className="s2" id="sus">Welcome</span>
           {/* <span className="s1"><img id ="simg" height="120" width="120"  ></img></span> */}
-          <Link id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
-          <Link id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
-           <Link id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
+          <Link style={{textDecoration:"none"}} id="llll"  to={`/AdminProfile/${Id}`}> <span className="s1" style={{ fontSize: '20px' }}>Dashboard</span></Link>
+          <Link style={{textDecoration:"none"}} id="llll" to={`/AdminProfilePage/${Id}`}> <span  className="s1" style={{ fontSize: '20px' }}>Profile</span></Link>
+           <Link style={{textDecoration:"none"}} id="llll" to="/"> <span  className="s1" style={{ fontSize: '20px' }}>Logout</span></Link>
       </div>
       <div id="iui">T & P Coordinators</div>
         <div id="offf">
          <div id="off1"></div>
-         <Link id="lola" to={`/AddCoordinators/${Id}`}><div id="off2">Add More +</div></Link>
+         <Link id="lola" style={{textDecoration:"none"}} to={`/AddCoordinators/${Id}`}><div id="off2">Add More +</div></Link>
          </div>
 
          <div> 

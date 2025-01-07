@@ -48,6 +48,11 @@ import StResume from "./Pages/StResume";
 import AlumniDetail from "./Alumni/AluminiDetail";
 import StAluminiDetail from "./Alumni/StAluminiDetails";
 import AddAdmins from "./Pages/AddAdmins";
+import Completedpg from "./Pages/Completedpg";
+import Ongoing from "./Pages/Ongoing";
+import Upcoming from "./Pages/Upcoming";
+import AdminPrepMaterial from "./Pages/AdminPrepMaterial";
+import AdminMaterialUpload from "./Pages/AdminMaterialUpload";
 
 function App(){
     return(
@@ -58,8 +63,8 @@ function App(){
             <Route path="/SignUp" element = {<SignUp/>}/>
             <Route path="/StudentProfile/:Id" element={<StudentProfile/>}/>
             <Route path="/AdminProfile/:Id" element={<AdminProfile/>}/>
-            <Route path="/AdminApprovals/:Id" element={<AdminApprovals/>}/>
-            <Route path="/SignUpRequest/:Id" element={<SignUpRequest/>}/>
+            <Route path="/AdminApprovals/:Id" element={<SignUpRequest/>}/>
+            {/* <Route path="/SignUpRequest/:Id" element={<SignUpRequest/>}/> */}
             <Route path="/OffHiring/:Id" element={<OffHiring/>}/>
             <Route path="/AddHiring/:Id" element={<AddHiring/>}/>
             <Route path="/CampusDrive/:Id" element={<CampusDrive/>}/>
@@ -89,18 +94,23 @@ function App(){
             <Route path ="/AddResult/:Id" element={<AddResult/>}/>
             <Route path="/CompanyWiseResult/:comp/:Id" element={<CompanyWiseResult/>}/>
             <Route path="/StudentResult/:Id" element={<StudentResult/>}/>
-            <Route path="/CompStudResult/:comp/:Id" element={<StudentCompWiseResult/>}/>
+            <Route path="/CompStudResult/:Compname/:compId/:Id" element={<StudentCompWiseResult/>}/>
             <Route path ="/ResultStats/:Id" element={<AdminResultStats/>}/>
             <Route path="/removeStudents/:Id" element={<RemoveStudents/>}/>
             <Route path="/stPostMaterial/:Id" element={<StPostMaterial/>}/>
             <Route path="/UpdateStudents/:Id" element={<UpdateStudents/>}/>
-            <Route path="/Alumnii/:Id" element={<Alumnii/>}/>
+            <Route path="/Alumni/:Id" element={<Alumnii/>}/>
             <Route path="/StAlumni/:Id" element={<StAlumni/>}/>
             <Route path="/prepMaterial/:Id" element={<PrepMaterial/>}/>
             <Route path="/StResume/:Id" element={<StResume/>}/>
             <Route path="/AluminiDetail/:Id/:Idd" element={<AlumniDetail/>}/>
             <Route path="/StAluminiDetails/:Id/:Idd" element={<StAluminiDetail/>}/>
             <Route path="/AddAdmins/:Id" element={<AddAdmins/>}/>
+            <Route path="/Completed/:comp/:Id/:JobId" element={<Completedpg/>}/>
+            <Route path="/Ongoing/:Id/:jobId" element={<Ongoing/>}/>
+            <Route path="/Upcoming/:Id/:jobId" element={<Upcoming/>}/>
+            <Route path="/Admin-Preparation-Material/:Id" element={<AdminPrepMaterial/>}/>
+            <Route path="/Upload-Content/:Id" element={<AdminMaterialUpload/>}></Route>
             </Routes>
     );
 }

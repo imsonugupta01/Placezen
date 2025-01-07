@@ -15,7 +15,10 @@
     max-width: 600px; /* Adjust as needed */
     padding: 20px;
     box-sizing: border-box;
+
+    color: black;
   }
+
   
   #niu select {
     width: 100%;

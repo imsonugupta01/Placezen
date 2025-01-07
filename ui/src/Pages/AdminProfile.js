@@ -34,7 +34,7 @@ function AdminProfile() {
       <main className="content">
         <Link to={`/OffHiring/${Id}`}><div className="info-box"><h2 className="info-title">Campus Drives</h2><FontAwesomeIcon className="info-icon" icon={faGraduationCap} /></div></Link>
         <Link to={`/OnlineHiring/${Id}`}><div className="info-box"><h2 className="info-title">Online Hiring</h2><FontAwesomeIcon className="info-icon" icon={faChartSimple} /></div></Link>
-        <Link to={`/prepMaterial/${Id}`}><div className="info-box"><h2 className="info-title">Preparation Material</h2><FontAwesomeIcon className="info-icon" icon={faFile} /></div></Link>
+        <Link to={`/Admin-Preparation-Material/${Id}`}><div className="info-box"><h2 className="info-title">Preparation Material</h2><FontAwesomeIcon className="info-icon" icon={faFile} /></div></Link>
         <Link to={`/allStudents/${Id}`}><div className="info-box"><h2 className="info-title">Manage Students</h2><FontAwesomeIcon className="info-icon" icon={faUsers} /></div></Link>
         <Link to={`/ResultStats/${Id}`}><div className="info-box"><h2 className="info-title">Placement Statistics</h2><FontAwesomeIcon className="info-icon" icon={faChartSimple} /></div></Link>
         <Link to={`/Events/${Id}`}><div className="info-box"><h2 className="info-title">Upcoming Sessions</h2><FontAwesomeIcon className="info-icon" icon={faCalendarDays} /></div></Link>
